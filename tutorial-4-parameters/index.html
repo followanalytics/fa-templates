@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="fa-sdk.js"></script>
+    <script type="text/javascript" src="fa-params.js"></script>
+    <script type="text/javascript">
+      function loadParams(){ 
+        var popup = document.getElementById('popup');
+        popup.style.color = FollowAnalyticsParams.fgColor;
+        popup.style.backgroundColor = FollowAnalyticsParams.bgColor;
+        var text = document.getElementById('text');
+        text.innerText = FollowAnalyticsParams.text;
+      }
+
+      function onYes() {
+        FollowAnalytics.CurrentCampaign.logAction("Yes");
+        FollowAnalytics.CurrentCampaign.close();
+      }
+
+      function onNo() {
+        FollowAnalytics.CurrentCampaign.logAction("No");
+        FollowAnalytics.CurrentCampaign.close();
+      }
+    </script>
+  </head>
+  <body onload="loadParams();">
+    <div id="popup" style="position: fixed; top: 20%; left: 20%; bottom: 20%; right: 20%; padding: 5%; text-align: center; border-radius: 10px;">
+      <div id="text">
+        My awesome InApp template! Do you like it?
+      </div>
+      <div>
+        <button onclick="onYes();" style="background: green; color: white">Yes!</button>
+        <button onclick="onNo();" style="background: red; color: white">No</button>
+      </div>
+    </div>
+  </body>
+</html>

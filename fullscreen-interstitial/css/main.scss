@@ -1,0 +1,169 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup,
+tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form,
+label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+q, blockquote {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: auto;
+}
+
+h1 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  display: block;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.buttonGrid {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: auto;
+
+  .buttonCell {
+    flex: 0 0 100%;
+    margin-bottom: 0.5em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .actionButton {
+      align-items: center;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      flex: 0 0 100%;
+      justify-content: center;
+      line-height: 20px;
+      padding: 10px;
+      text-align: center;
+      word-break: break-word;
+    }
+  }
+
+  &--withMargins {
+    &> .buttonCell {
+      flex: 1;
+      margin-bottom: 0;
+      margin-left: 0.5em;
+
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &--full {
+    flex-direction: column;
+    justify-content: normal;
+
+    &> .buttonCell {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .buttonGrid {
+    margin-bottom: auto;
+  }
+}
+
+/* Small phones landscape */
+@media only screen and (max-height: 399px) {
+  .buttonGrid {
+    &.buttonGrid--full {
+      flex-direction: row-reverse;
+      justify-content: center;
+
+      &> .buttonCell {
+        flex: 1;
+        margin-bottom: 0;
+        margin-left: 0.5em;
+
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
+
+/* Tablet (medium) screens */
+@media (min-width: 600px) {
+  .buttonCell {
+    max-width: 250px;
+  }
+}
+
+@media only screen and (min-width: 600px) and (min-height: 500px) {
+  .buttonGrid {
+    margin-top: 3em;
+    margin-bottom: auto;
+  }
+}
+
+/* Large screens */
+@media (min-width: 960px) {
+  .buttonGrid--withMargins > .buttonCell {
+    flex: 1;
+  }
+}

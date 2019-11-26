@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="fa-sdk.js"></script>
+    <script type="text/javascript">
+      function onYes() {
+        FollowAnalytics.CurrentCampaign.logAction("Yes");
+        FollowAnalytics.CurrentCampaign.close();
+      }
+
+      function onNo() {
+        FollowAnalytics.CurrentCampaign.logAction("No");
+        FollowAnalytics.CurrentCampaign.close();
+      }
+    </script>
+  </head>
+  <body>
+    <div style="margin: 30%; padding: 5%; background: pink; color: white; text-align: center; border-radius: 10px;">
+      My awesome InApp template! Do you like it?
+      <div>
+        <button onclick="onYes();" style="background: green; color: white">Yes!</button>
+        <button onclick="onNo();" style="background: red; color: white">No</button>
+      </div>
+    </div>
+  </body>
+</html>

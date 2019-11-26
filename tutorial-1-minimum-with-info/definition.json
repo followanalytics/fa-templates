@@ -1,0 +1,16 @@
+{
+  "$schema": "https://api.follow-apps.com/json-schemas/inapp-templates/v1_0_0.json",
+  "template_options": {
+    "technical_name": "my_awesome_template",
+    "title": {
+      "en": "My awesome template",
+      "fr": "Mon template magnifique"
+    },
+    "description": {
+      "en": "A tutorial template.",
+      "fr": "Un template d'apprentissage."
+    },
+    "version": "1.0.0",
+    "author": "This is me!"
+  }
+}

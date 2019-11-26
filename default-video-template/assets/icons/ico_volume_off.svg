@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>45662F52-29D4-49F3-B44A-41D2AC29680F</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="TEMPLATES---In-App" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="InApp_Fullscreen-InApp_Fullscreen_portrait_video03interstitial_portrait_Video03" transform="translate(-38.000000, -357.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M50,381 C43.372583,381 38,375.627417 38,369 C38,362.372583 43.372583,357 50,357 C56.627417,357 62,362.372583 62,369 C62,375.627417 56.627417,381 50,381 Z M41,365.218604 L41,372.898146 L44.9787535,372.898146 L51.0720476,377.4527 L51.0720476,360.664279 L44.9787535,365.218604 L41,365.218604 Z M59.3150708,367.099304 L58.0789457,365.863395 L56.1835683,367.758124 L54.2888395,365.863395 L53.0524982,367.099304 L54.9474432,368.994249 L53.0524982,370.889843 L54.2888395,372.125968 L56.1835683,370.230374 L58.0789457,372.125968 L59.3150708,370.889843 L57.4196934,368.994249 L59.3150708,367.099304 Z" id="ico_volume_off"></path>
+        </g>
+    </g>
+</svg>

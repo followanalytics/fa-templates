@@ -1,0 +1,392 @@
+{
+  "template_options": {
+    "technical_name": "fullscreen_basic_template",
+    "title": {
+      "en": "Basic Template",
+      "fr": "Template basique"
+    },
+    "description": {
+      "en": "Basic fullscreen template with a background, title, body, action buttons and a library of icons. It doesn't require to upload any image.",
+      "fr": "Template plein écran de base avec un arrière-plan, un titre, un corps, des boutons d’action et une bibliothèque d’icônes. Aucune image n'est requise pour ce template."
+    },
+    "version": "1.0.0",
+    "author": "FollowAnalytics"
+  },
+  "sdk_options": {
+    "type": "fullscreen",
+    "window": {
+      "timeout": 0
+    },
+    "animation": {
+      "entry": {
+        "delay": 0.5,
+        "effect": "fadeIn"
+      },
+      "exit": {
+        "delay": 1.5,
+        "effect": "fadeOut"
+      }
+    },
+    "close_button": {
+      "appear_timeout": "never"
+    }
+  },
+  "inputs": [
+    {
+      "name": "background",
+      "label": {
+        "en": "Background",
+        "fr": "Arrière-plan"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "type": "color",
+          "size": 35,
+          "default": "#EFF4F7"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "label": {
+        "en": "Icon",
+        "fr": "Icône"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "svg",
+          "label": {
+            "en": "Icon",
+            "fr": "Icône"
+          },
+          "type": "enum",
+          "size": 55,
+          "default": "icoGrowth",
+          "values": [
+            {"value": "none", "caption": "None"},
+            {"value": "icoBook", "caption": "Book"},
+            {"value": "icoCalendar", "caption": "Calendar"},
+            {"value": "icoCar", "caption": "Car"},
+            {"value": "icoCart", "caption": "Cart"},
+            {"value": "icoCloud", "caption": "Cloud"},
+            {"value": "icoCommunity", "caption": "Community"},
+            {"value": "icoCoupon", "caption": "Coupon"},
+            {"value": "icoDownload", "caption": "Download"},
+            {"value": "icoEnvironment", "caption": "Environment"},
+            {"value": "icoFavorite", "caption": "Favorite"},
+            {"value": "icoFile", "caption": "File"},
+            {"value": "icoFolder", "caption": "Folder"},
+            {"value": "icoGift", "caption": "Gift"},
+            {"value": "icoGrowth", "caption": "Growth"},
+            {"value": "icoHealth", "caption": "Health"},
+            {"value": "icoHome", "caption": "Home"},
+            {"value": "icoKit", "caption": "Kit"},
+            {"value": "icoLocation", "caption": "Location"},
+            {"value": "icoMail", "caption": "Mail"},
+            {"value": "icoMessage", "caption": "Message"},
+            {"value": "icoNotification", "caption": "Notification"},
+            {"value": "icoProfile", "caption": "Profile"},
+            {"value": "icoQuestion", "caption": "Question"},
+            {"value": "icoRate", "caption": "Rate"},
+            {"value": "icoSearch", "caption": "Search"},
+            {"value": "icoShopping", "caption": "Shopping"},
+            {"value": "icoSport", "caption": "Sport"},
+            {"value": "icoSupport", "caption": "Support"},
+            {"value": "icoTag", "caption": "Tag"},
+            {"value": "icoTravel", "caption": "Travel"},
+            {"value": "icoValidate", "caption": "Validate"},
+            {"value": "icoVoice", "caption": "Voice"},
+            {"value": "icoWarning", "caption": "Warning"},
+            {"value": "icoWeb", "caption": "Web"}
+          ]
+        },
+        {
+          "name": "size",
+          "label": {
+            "en": "Size",
+            "fr": "Taille"
+          },
+          "hide_label": true,
+          "size": 27,
+          "type": "enum",
+          "default": "medium",
+          "values": [
+            {"value": "x-small", "caption": {"en": "Extra small", "fr": "Très petit"}},
+            {"value": "small", "caption": {"en": "Small", "fr": "Petit"}},
+            {"value": "medium", "caption": {"en": "Medium", "fr": "Moyen"}},
+            {"value": "large", "caption": {"en": "Large", "fr": "Grand"}},
+            {"value": "x-large", "caption": {"en": "Extra large", "fr": "Très grand"}}
+          ]
+        },
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "hide_label": true,
+          "size": 18,
+          "type": "color",
+          "default": "#5f7384"
+        }
+      ]
+    },
+    {
+      "name": "title",
+      "label": {
+        "en": "Title",
+        "fr": "Titre"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "text",
+          "label": {
+            "en": "Text",
+            "fr": "Texte"
+          },
+          "type": "string",
+          "default": "Your title here!",
+          "min_length": 1,
+          "max_length": 80
+        },
+        {
+          "name": "font",
+          "label": {
+            "en": "Font",
+            "fr": "Police"
+          },
+          "size": 67,
+          "type": "enum",
+          "default": "Open Sans",
+          "values": [
+            {"value": "Times", "caption": "Times"},
+            {"value": "Raleway", "caption": "Raleway"},
+            {"value": "Rockwell", "caption": "Rockwell"},
+            {"value": "Open Sans", "caption": "Open Sans"},
+            {"value": "Futura Bk", "caption": "Futura Book"},
+            {"value": "Tekton Pro", "caption": "Tekton Pro"},
+            {"value": "Montserrat", "caption": "Montserrat"}
+          ]
+        },
+        {
+          "name": "size",
+          "label": {
+            "en": "Size",
+            "fr": "Taille"
+          },
+          "size": 15,
+          "hide_label": true,
+          "type": "number",
+          "default": 24,
+          "min": 19,
+          "max": 32
+        },
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "size": 18,
+          "hide_label": true,
+          "type": "color",
+          "default": "#5f7384"
+        }
+      ]
+    },
+    {
+      "name": "body",
+      "label": {
+        "en": "Body",
+        "fr": "Corps"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "text",
+          "label": {
+            "en": "Text",
+            "fr": "Texte"
+          },
+          "type": "string",
+          "default": "Lorem ipsum dolor sit amet, vel libris scripta et, iudico detracto consetetur et duo. Te bonorum facilis vix. Ut est legere insolens adipisci, sed ubique aliquam no. In habeo harum duo.",
+          "max_length": 255,
+          "lines": 5
+        },
+        {
+          "name": "font",
+          "label": {
+            "en": "Font",
+            "fr": "Police"
+          },
+          "size": 67,
+          "type": "enum",
+          "default": "Open Sans",
+          "values": [
+            {"value": "Times", "caption": "Times"},
+            {"value": "Raleway", "caption": "Raleway"},
+            {"value": "Rockwell", "caption": "Rockwell"},
+            {"value": "Open Sans", "caption": "Open Sans"},
+            {"value": "Futura Bk", "caption": "Futura Book"},
+            {"value": "Tekton Pro", "caption": "Tekton Pro"},
+            {"value": "Montserrat", "caption": "Montserrat"}
+          ]
+        },
+        {
+          "name": "size",
+          "label": {
+            "en": "Size",
+            "fr": "Taille"
+          },
+          "size": 15,
+          "hide_label": true,
+          "type": "number",
+          "default": 15,
+          "min": 13,
+          "max": 19
+        },
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "size": 18,
+          "hide_label": true,
+          "type": "color",
+          "default": "#5f7384"
+        }
+      ]
+    },
+    {
+      "name": "close",
+      "label": {
+        "en": "Close Button",
+        "fr": "Bouton Fermer"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "type": "color",
+          "size": 35,
+          "default": "#5f7384"
+        }
+      ]
+    },
+    {
+      "name": "buttons",
+      "label": {
+        "en": "Buttons",
+        "fr": "Boutons"
+      },
+      "type": "table",
+      "min_size": 1,
+      "max_size": 3,
+      "inputs": [
+        {
+          "name": "text",
+          "label": {
+            "en": "Text",
+            "fr": "Texte"
+          },
+          "type": "string",
+          "default": "Button 1",
+          "min_length": 1,
+          "max_length": 30
+        },
+        {
+          "name": "font_family",
+          "label": {
+            "en": "Font",
+            "fr": "Police"
+          },
+          "size": 64,
+          "type": "enum",
+          "default": "Open Sans",
+          "values": [
+            { "value": "Times", "caption": "Times" },
+            { "value": "Raleway", "caption": "Raleway" },
+            { "value": "Rockwell", "caption": "Rockwell" },
+            { "value": "Open Sans", "caption": "Open Sans" },
+            { "value": "Futura Bk", "caption": "Futura Book" },
+            { "value": "Tekton Pro", "caption": "Tekton Pro" },
+            { "value": "Montserrat", "caption": "Montserrat" }
+          ]
+        },
+        {
+          "name": "font_size",
+          "label": {
+            "en": "Font Size",
+            "fr": "Taille de police"
+          },
+          "size": 16,
+          "hide_label": true,
+          "type": "number",
+          "default": 17,
+          "min": 14,
+          "max": 19
+        },
+        {
+          "name": "font_color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "size": 20,
+          "hide_label": true,
+          "type": "color",
+          "default": "#FFFFFF"
+        },
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "size": 40,
+          "type": "color",
+          "default": "#5f7384"
+        },
+        {
+          "name": "deeplink_url",
+          "label": {
+            "en": "Deeplink Url",
+            "fr": "Url de Deeplink"
+          },
+          "type": "string"
+        }
+      ],
+      "defaults": [
+        {
+          "text": "Button 1",
+          "font_family": "Open Sans",
+          "font_size": 17,
+          "font_color": "#FFFFFF",
+          "background": "#5f7384",
+          "deeplink_url": ""
+        },
+        {
+          "text": "Button 2",
+          "font_family": "Open Sans",
+          "font_size": 17,
+          "font_color": "#5f7384",
+          "background": "#FFFFFF",
+          "deeplink_url": ""
+        }
+      ]
+    }
+  ]
+}

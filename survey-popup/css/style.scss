@@ -1,0 +1,213 @@
+/*Define max and min function */
+
+@function max($numbers...) {
+    @return m#{a}x(#{$numbers});
+}
+
+body {
+  background-color: transparent;
+  box-sizing: border-box;
+  transition: background-color 0.1s ease-in-out;
+
+  &.overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: background-color 0.7s ease-in-out;
+
+    .template {
+      transform: scale(1);
+    }
+  }
+}
+
+.page {
+  border-radius: 10px;
+  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  height: auto;
+  margin: 0 2em;
+  padding: 1em;
+  position: absolute;
+  transition: transform .5s cubic-bezier(0.8, -0.2, 0.2, 1.2);
+  width: calc(100% - 4em);
+
+  &--current {
+    transform: translateX(0);
+  }
+
+  &--previous {
+    transform: translateX(calc(-100% - 2em));
+  }
+
+  &--next {
+    transform: translateX(calc(100% + 2em));
+  }
+
+  &__image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 160px;
+    margin-bottom: 1em;
+  }
+
+  &__close {
+    cursor: pointer;
+    height: 20px;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    width: 20px;
+    z-index: 2;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  &__title,
+  &__body {
+    align-items: center;
+    display: flex;
+    flex: 100%;
+    justify-content: center;
+    text-align: center;
+
+    span {
+      line-height: 25px;
+      word-break: break-word;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  &__body {
+    color: #777777;
+    line-height: 20px;
+    margin-top: 1em;
+  }
+
+  &__buttons {
+    margin-top: 2em;
+  }
+
+  &__pageNumber {
+    margin-top: 1em;
+    text-align: center;
+  }
+}
+
+.surveyButton {
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.template {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  padding: 1em 0;
+  position: relative;
+  transform: scale(0);
+  transition: transform 0.7s cubic-bezier(0.8, -0.2, 0.2, 1.2);
+  width: 100%;
+}
+
+.deeplinkFrame {
+  background-color: #FFFFFF;
+  height: 100%;
+  position: absolute;
+  transform: scale(0);
+  transition: transform 0.7s cubic-bezier(0.8, -0.2, 0.2, 1.2);
+  width: 100%;
+  z-index: 1;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .template .template__title,
+  .template .template__body {
+    margin-top: 1.5em;
+
+    span {
+      max-width: 400px;
+    }
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-height: 475px) {
+  .template .template__title,
+  .template .template__body {
+    margin-top: 1em;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .template .template__body span {
+    max-width: 500px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
+// support for iOS with safe area not defined (iOS < 11)
+@supports (-webkit-overflow-scrolling: touch) {
+  .template__close {
+      right: 1em;
+      top: 1.5em;
+  }
+}
+
+// iOS < 11.2
+@supports(padding-top: constant(safe-area-inset-top)) {
+    html, body {
+        height: 100vh;
+    }
+    .template {
+        padding-left: calc(1em + constant(safe-area-inset-left));
+        padding-right: calc(1em + constant(safe-area-inset-right));
+        padding-top: calc(2em + constant(safe-area-inset-top));
+        padding-bottom: calc(2em + constant(safe-area-inset-bottom));
+    }
+    .template__close {
+        right: calc(1em + constant(safe-area-inset-right));
+        top: calc(.5em + constant(safe-area-inset-top));
+    }
+}
+
+// iOS >= 11.2
+@supports(padding: max(0px)) {
+    html, body {
+        height: 100vh;
+    }
+    .template {
+        padding-left: max(1em, env(safe-area-inset-left));
+        padding-right: max(1em, env(safe-area-inset-right));
+        padding-top: max(2em, env(safe-area-inset-top));
+        padding-bottom: max(2em, env(safe-area-inset-bottom));
+    }
+    .template__close {
+        right: max(1em, env(safe-area-inset-right));
+        top: max(.5em, env(safe-area-inset-top));
+    }
+}

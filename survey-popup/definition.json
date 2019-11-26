@@ -1,0 +1,566 @@
+{
+  "template_options": {
+    "technical_name": "survey_popup",
+    "title": {
+      "en": "Survey Popup",
+      "fr": "Popup questionnaire"
+    },
+    "description": {
+      "en": "",
+      "fr": ""
+    },
+    "version": "1.0.0",
+    "author": "FollowAnalytics"
+  },
+  "sdk_options": {
+    "type": "popup",
+    "window": {
+      "timeout": 0
+    },
+    "animation": {
+      "entry": {
+        "delay": 0.5,
+        "effect": "fadeIn"
+      },
+      "exit": {
+        "delay": 1.5,
+        "effect": "fadeOut"
+      }
+    },
+    "close_button": {
+      "appear_timeout": "never"
+    }
+  },
+  "inputs": [
+    {
+      "name": "pages",
+      "label": {
+        "en": "Questionnaire Pages",
+        "fr": "Pages du questionnaire"
+      },
+      "type": "pages",
+      "min_pages": 1,
+      "max_pages": 5,
+      "inputs": [
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "size": 35,
+              "default": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "name": "image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "upload",
+              "label": {
+                "en": "Upload",
+                "fr": "Uploader"
+              },
+              "type": "image",
+              "default": "./assets/images/sample-image.png"
+            }
+          ]
+        },
+        {
+          "name": "title",
+          "label": {
+            "en": "Title",
+            "fr": "Titre"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Your title here!",
+              "max_length": 75,
+              "lines": 4
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#565656"
+            }
+          ]
+        },
+        {
+          "name": "body",
+          "label": {
+            "en": "Body",
+            "fr": "Corps"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "",
+              "max_length": 100,
+              "lines": 4
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#777777"
+            }
+          ]
+        },
+        {
+          "name": "buttons",
+          "label": {
+            "en": "Buttons",
+            "fr": "Boutons"
+          },
+          "type": "table",
+          "min_size": 2,
+          "max_size": 4,
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Button 1",
+              "min_length": 1,
+              "max_length": 30
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#89C5CC"
+            },
+            {
+              "name": "border",
+              "label": {
+                "en": "Border",
+                "fr": "Bordure"
+              },
+              "type": "color",
+              "default": "#89C5CC"
+            }
+          ]
+        },
+        {
+          "name": "close_button",
+          "label": {
+            "en": "Close Button",
+            "fr": "Close Button"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#565656"
+            }
+          ]
+        },
+        {
+          "name": "page_indicator",
+          "label": {
+            "en": "Page Indicator",
+            "fr": "Indicateur de page"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#565656"
+            }
+          ]
+        }
+      ],
+      "defaults": [
+        {
+          "background": {
+            "color": "#FFFFFF"
+          },
+          "image": {
+            "upload": "./assets/images/sample-image.png"
+          },
+          "title": {
+            "text": "Your question here ?",
+            "color": "#565656"
+          },
+          "body": {
+            "text": "",
+            "color": "#777777"
+          },
+          "buttons": [
+            {
+              "text": "Answer 1",
+              "text_color": "#777777",
+              "background": "#FFFFFF",
+              "border": "#89C5CC"
+            },
+            {
+              "text": "Answer 2",
+              "text_color": "#FFFFFF",
+              "background": "#89C5CC",
+              "border": "#89C5CC"
+            },
+            {
+              "text": "Answer 3",
+              "text_color": "#777777",
+              "background": "#FFFFFF",
+              "border": "#89C5CC"
+            }
+          ],
+          "close_button": {
+            "color": "#565656"
+          },
+          "page_indicator": {
+            "color": "#565656"
+          }
+        },
+        {
+          "background": {
+            "color": "#FFFFFF"
+          },
+          "image": {
+            "upload": "./assets/images/sample-image.png"
+          },
+          "title": {
+            "text": "Your question here ?",
+            "color": "#565656"
+          },
+          "body": {
+            "text": "",
+            "color": "#777777"
+          },
+          "buttons": [
+            {
+              "text": "Lorem ipsum dolor sit amet 1",
+              "text_color": "#777777",
+              "background": "#FFFFFF",
+              "border": "#89C5CC"
+            },
+            {
+              "text": "Lorem ipsum dolor sit amet 2",
+              "text_color": "#777777",
+              "background": "#FFFFFF",
+              "border": "#89C5CC"
+            },
+            {
+              "text": "Lorem ipsum dolor sit amet 3",
+              "text_color": "#FFFFFF",
+              "background": "#89C5CC",
+              "border": "#89C5CC"
+            }
+          ],
+          "close_button": {
+            "color": "#565656"
+          },
+          "page_indicator": {
+            "color": "#565656"
+          }
+        }
+      ]
+    },
+    {
+      "name": "final_page",
+      "label": {
+        "en": "Final page",
+        "fr": "Dernière Page"
+      },
+      "type": "pages",
+      "min_pages": 1,
+      "max_pages": 1,
+      "inputs": [
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "size": 35,
+              "default": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "name": "image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "upload",
+              "label": {
+                "en": "Upload",
+                "fr": "Uploader"
+              },
+              "type": "image",
+              "default": "./assets/images/sample-image.png"
+            }
+          ]
+        },
+        {
+          "name": "title",
+          "label": {
+            "en": "Title",
+            "fr": "Titre"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Your title here!",
+              "max_length": 75,
+              "lines": 4
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#565656"
+            }
+          ]
+        },
+        {
+          "name": "body",
+          "label": {
+            "en": "Body",
+            "fr": "Corps"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "",
+              "max_length": 100,
+              "lines": 4
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#777777"
+            }
+          ]
+        },
+        {
+          "name": "buttons",
+          "label": {
+            "en": "Buttons",
+            "fr": "Boutons"
+          },
+          "type": "table",
+          "min_size": 2,
+          "max_size": 4,
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Button 1",
+              "min_length": 1,
+              "max_length": 30
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#89C5CC"
+            },
+            {
+              "name": "border",
+              "label": {
+                "en": "Border",
+                "fr": "Bordure"
+              },
+              "type": "color",
+              "default": "#89C5CC"
+            },
+            {
+              "name": "deeplink_url",
+              "label": "Deeplink",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "close_button",
+          "label": {
+            "en": "Close Button",
+            "fr": "Close Button"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#565656"
+            }
+          ]
+        },
+        {
+          "name": "page_indicator",
+          "label": {
+            "en": "Page Indicator",
+            "fr": "Indicateur de page"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#565656"
+            }
+          ]
+        }
+      ],
+      "defaults": [
+        {
+          "background": {
+            "color": "#FFFFFF"
+          },
+          "image": {
+            "upload": "./assets/images/sample-image.png"
+          },
+          "title": {
+            "text": "Thank you!",
+            "color": "#565656"
+          },
+          "body": {
+            "text": "Lorem ipsum dolor sit amet, sed do eiusmod tempor incididiunt ut labor consectetur adipiscing elit.",
+            "color": "#777777"
+          },
+          "buttons": [
+            {
+              "text": "Ok, let's go!",
+              "text_color": "#FFFFFF",
+              "background": "#89C5CC",
+              "border": "#89C5CC",
+              "deeplink_url": ""
+            },
+            {
+              "text": "No thanks",
+              "text_color": "#777777",
+              "background": "#FFFFFF",
+              "border": "#89C5CC",
+              "deeplink_url": ""
+            }
+          ],
+          "close_button": {
+            "color": "#565656"
+          },
+          "page_indicator": {
+            "color": "#565656"
+          }
+        }
+      ]
+    }
+  ]
+}

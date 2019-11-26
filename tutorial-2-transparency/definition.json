@@ -1,0 +1,18 @@
+{
+  "template_options": {
+    "technical_name": "my_awesome_template",
+    "title": {
+      "en": "My awesome template",
+      "fr": "Mon template magnifique"
+    },
+    "description": {
+      "en": "A tutorial template.",
+      "fr": "Un template d'apprentissage."
+    },
+    "version": "1.0.0",
+    "author": "This is me!"
+  },
+  "sdk_options": {
+    "type": "popup"
+  }
+}

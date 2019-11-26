@@ -1,0 +1,235 @@
+/*Define max and min function */
+
+@function max($numbers...) {
+    @return m#{a}x(#{$numbers});
+}
+
+.containerBackground {
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  position: fixed;
+}
+.defaultTemplate {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  padding: 0 1em;
+
+  &__info {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 725px;
+    margin: 1em auto;
+    z-index: 1;
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    z-index: 2;
+    color: #ffffff;
+    svg {
+      height: 18px;
+      width: 18px;
+      fill: #ffffff;
+    }
+  }
+
+  &__title,
+  &__body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    word-break: break-word;
+  }
+  &__text {
+    line-height: 22px;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 725px;
+    z-index: 1;
+    span {
+      word-break: break-word;
+    }
+  }
+  &__title {
+    line-height: 25px;
+  }
+
+  &__body {
+    position: relative;
+    margin: 1em 0;
+  }
+
+  &__buttons {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 1em 0 0;
+    justify-self: flex-end;
+  }
+
+  &__deeplinkFrame {
+    background-color: #ffffff;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.1s linear;
+    width: 100%;
+    z-index: 1;
+  }
+  &__sound {
+    display: none;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 2;
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+}
+.button {
+  &__play {
+    display: none;
+    width: 60px;
+    height: 60px;
+    opacity: 1;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+  }
+}
+.loader {
+  border: 5px solid #ffffff;
+  border-radius: 50%;
+  border-top: 5px solid #000000;
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  z-index: 4;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (max-height: 650px) {
+  .defaultTemplate__info {
+    max-width: 600px;
+  }
+}
+@media only screen and (max-height: 575px) {
+  .defaultTemplate__body {
+    max-width: 400px;
+  }
+  .defaultTemplate__info {
+    max-width: 800px;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  .defaultTemplate__body {
+    max-width: 350px;
+    margin: 2px 0;
+  }
+
+  .defaultTemplate {
+    padding: auto;
+  }
+
+  .button__play {
+    width: 45px;
+    height: 45px;
+  }
+  .loader {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media only screen and (max-height: 400px) and (max-width: 600px) {
+  .defaultTemplate__body {
+    max-width: 300px;
+    margin: 0.5px;
+  }
+  .defaultTemplate__buttons {
+    margin: 0.1em 0;
+  }
+}
+
+@media only screen and (max-height: 420px) and (min-width: 700px) {
+  .defaultTemplate__body {
+    margin-bottom: 1px;
+  }
+}
+
+// iOS < 11.2
+@supports(padding-top: constant(safe-area-inset-top)) {
+    html, body {
+        height: 100vh;
+    }
+    .defaultTemplate {
+        padding-left: calc(1em + constant(safe-area-inset-left));
+        padding-right: calc(1em + constant(safe-area-inset-right));
+        padding-top: calc(2em + constant(safe-area-inset-top));
+        padding-bottom: calc(2em + constant(safe-area-inset-bottom));
+    }
+    .defaultTemplate__close {
+        right: calc(1em + constant(safe-area-inset-right));
+        top: calc(.5em + constant(safe-area-inset-top));
+    }
+}
+
+// iOS >= 11.2
+@supports(padding: max(0px)) {
+    html, body {
+        height: 100vh;
+    }
+    .defaultTemplate {
+        padding-left: max(1em, env(safe-area-inset-left));
+        padding-right: max(1em, env(safe-area-inset-right));
+        padding-top: max(2em, env(safe-area-inset-top));
+        padding-bottom: max(2em, env(safe-area-inset-bottom));
+    }
+    .defaultTemplate__close {
+        right: max(1em, env(safe-area-inset-right));
+        top: max(.5em, env(safe-area-inset-top));
+    }
+}

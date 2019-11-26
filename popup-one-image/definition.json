@@ -1,0 +1,75 @@
+{
+  "template_options": {
+    "technical_name": "popup_custom_template",
+    "title": {
+      "en": "One Image Popup",
+      "fr": "Popup une image"
+    },
+    "description": {
+      "en": "One image pop up template is composed of an image to be displayed as pop up. It proposes to upload images for landscape and portrait modes.",
+      "fr": "La Pop up Image est composé d’une image à afficher en pop-up. Ça permet d'ajouter plusieurs formats d'image pour l'affichage des modes portrait et paysage."
+    },
+    "version": "1.0.0",
+    "author": "FollowAnalytics"
+  },
+  "sdk_options": {
+    "type": "popup",
+    "window": {
+      "timeout": 0
+    },
+    "animation": {
+      "entry": {
+        "delay": 0.5,
+        "effect": "fadeIn"
+      },
+      "exit": {
+        "delay": 1.5,
+        "effect": "fadeOut"
+      }
+    },
+    "close_button": {
+      "appear_timeout": "never"
+    }
+  },
+  "inputs": [
+    {
+      "name": "background",
+      "label": {
+        "en": "Background",
+        "fr": "Arrière-plan"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "image",
+          "default": "./assets/images/sample-image-1.png"
+        }
+      ]
+    },
+    {
+      "name": "close",
+      "label": {
+        "en": "Close Button",
+        "fr": "Bouton Fermer"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "type": "color",
+          "size": 35,
+          "default": "#FFFFFF"
+        }
+      ]
+    }
+  ]
+}

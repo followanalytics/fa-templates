@@ -1,0 +1,119 @@
+/*Define max and min function */
+
+@function max($numbers...) {
+    @return m#{a}x(#{$numbers});
+}
+
+// Unused class, only to include the assets in the build
+#sampleBgs {
+  background-image: url('../assets/images/interstitial_mobile_portrait.png');
+  background-image: url('../assets/images/interstitial_mobile_landscape.png');
+  background-image: url('../assets/images/interstitial_tablet_portrait.png');
+  background-image: url('../assets/images/interstitial_tablet_landscape.png');
+}
+
+.defaultTemplate {
+  background-color: transparent;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  display: flex;
+  flex-flow: column wrap;
+  height: 100%;
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    z-index: 2;
+
+    svg {
+      height: 25px;
+      width: 25px;
+    }
+  }
+
+  &__mobilePortrait,
+  &__mobileLandscape,
+  &__tabletPortrait,
+  &__tabletLandscape {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: none;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+
+  &__buttons {
+    align-items: center;
+    display: flex;
+    margin-top: auto;
+  }
+
+  &__deeplinkFrame {
+    background-color: #FFFFFF;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.1s linear;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+@media only screen and (orientation: portrait) {
+  .defaultTemplate__mobilePortrait {
+    display: block;
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .defaultTemplate__mobileLandscape {
+    display: block;
+  }
+}
+
+@media only screen and (orientation: portrait) and (min-width: 768px) {
+  .defaultTemplate__tabletPortrait {
+    display: block;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 768px) {
+  .defaultTemplate__tabletLandscape {
+    display: block;
+  }
+}
+
+// support for iOS with safe area not defined (iOS < 11)
+@supports (-webkit-overflow-scrolling: touch) {
+  .defaultTemplate__close {
+      right: 1em;
+      top: 1.5em;
+  }
+}
+
+// iOS < 11.2
+@supports(padding-top: constant(safe-area-inset-top)) {
+    html, body {
+        height: 100vh;
+    }
+    .defaultTemplate__close {
+        right: calc(1em + constant(safe-area-inset-right));
+        top: calc(.5em + constant(safe-area-inset-top));
+    }
+}
+
+// iOS >= 11.2
+@supports(padding: max(0px)) {
+    html, body {
+        height: 100vh;
+    }
+    .defaultTemplate__close {
+        right: max(1em, env(safe-area-inset-right));
+        top: max(.5em, env(safe-area-inset-top));
+    }
+}

@@ -1,0 +1,124 @@
+{
+  "template_options": {
+    "technical_name": "fullscreen_interstitial_template",
+    "title": {
+      "en": "Interstitial Template",
+      "fr": "Template interstitiel"
+    },
+    "description": {
+      "en": "Interstitial template is composed of an image to be displayed in fullscreen. It requires multiple image uploads for mobile phone and tablet portrait and landscape modes.",
+      "fr": "Le template interstitiel est composé d'une image à afficher en plein écran. Il nécessite plusieurs téléchargements d'images pour les modes portrait et paysage de téléphone mobile et de tablette."
+    },
+    "version": "1.0.0",
+    "author": "FollowAnalytics"
+  },
+  "sdk_options": {
+    "type": "fullscreen",
+    "window": {
+      "timeout": 0
+    },
+    "animation": {
+      "entry": {
+        "delay": 0.5,
+        "effect": "fadeIn"
+      },
+      "exit": {
+        "delay": 1.5,
+        "effect": "fadeOut"
+      }
+    },
+    "close_button": {
+      "appear_timeout": "never"
+    }
+  },
+  "inputs": [
+    {
+      "name": "background",
+      "label": {
+        "en": "Background",
+        "fr": "Arrière-plan"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "mobile_portrait",
+          "label": {
+            "en": "Mobile Portrait",
+            "fr": "Portrait mobile"
+          },
+          "type": "image",
+          "default": "./assets/images/interstitial_mobile_portrait.png"
+        },
+        {
+          "name": "mobile_landscape",
+          "label": {
+            "en": "Mobile Landscape",
+            "fr": "Paysage mobile"
+          },
+          "type": "image",
+          "default": "./assets/images/interstitial_mobile_landscape.png"
+        },
+        {
+          "name": "tablet_portrait",
+          "label": {
+            "en": "Tablet Portrait",
+            "fr": "Portrait tablette"
+          },
+          "type": "image",
+          "default": "./assets/images/interstitial_tablet_portrait.png"
+        },
+        {
+          "name": "tablet_landscape",
+          "label": {
+            "en": "Tablet Landscape",
+            "fr": "Paysage tablette"
+          },
+          "type": "image",
+          "default": "./assets/images/interstitial_tablet_landscape.png"
+        }
+      ]
+    },
+    {
+      "name": "close",
+      "label": {
+        "en": "Close Button",
+        "fr": "Bouton Fermer"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "type": "color",
+          "size": 35,
+          "default": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "name": "action",
+      "label": {
+        "en": "Action",
+        "fr": "Action"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "deeplink_url",
+          "label": {
+            "en": "Deeplink Url",
+            "fr": "Url de Deeplink"
+          },
+          "type": "string",
+          "tooltip": {
+            "en": "Deeplink URL will be opened when the user clicks everywhere in the in-app except for the close button 'X'.",
+            "fr": "L'Url deeplink s'ouvrira si l'utilisateur clique sur l'in-app sauf pour le bouton de fermeture 'X'."
+          }
+        }
+      ]
+    }
+  ]
+}

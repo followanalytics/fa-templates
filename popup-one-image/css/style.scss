@@ -1,0 +1,63 @@
+// Unused class, only to include the assets in the build
+#sampleBgs {
+  background-image: url('../assets/images/sample-image-1.png');
+}
+
+body#popupTemplate.backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.defaultTemplate {
+  border-radius: 10px;
+  box-shadow: 0 0 10px 1px rgba(71, 71, 71, 0.5);
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: auto 1em;
+  min-height: 300px;
+  position: relative;
+
+  &__info {
+    border-radius: 10px;
+    position: relative;
+    max-width: 100%;
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    right: 0.5em;
+    top: 0.5em;
+    z-index: 2;
+
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .defaultTemplate {
+    margin: auto;
+  }
+  .defaultTemplate .defaultTemplate__info {
+    min-width: 500px;
+  }
+}
+
+// iOS < 11.2
+@supports(padding-top: constant(safe-area-inset-top)) {
+    html, body {
+        height: 100vh;
+    }
+}
+
+// iOS >= 11.2
+@supports(padding: max(0px)) {
+    html, body {
+        height: 100vh;
+    }
+}

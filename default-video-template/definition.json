@@ -1,0 +1,324 @@
+{
+  "template_options": {
+    "technical_name": "fullscreen_video_template",
+    "title": {
+      "en": "Video Template",
+      "fr": "Template Video"
+    },
+    "description": {
+      "en": "Basic fullscreen template with a background, title, body, action buttons and a library of icons. It doesn't require to upload any image.",
+      "fr": "Template plein écran de base avec un arrière-plan, un titre, un corps, des boutons d’action et une bibliothèque d’icônes. Aucune image n'est requise pour ce template."
+    },
+    "version": "1.0.0",
+    "author": "FollowAnalytics"
+  },
+  "sdk_options": {
+    "type": "fullscreen",
+    "window": {
+      "timeout": 0
+    },
+    "animation": {
+      "entry": {
+        "delay": 0.5,
+        "effect": "fadeIn"
+      },
+      "exit": {
+        "delay": 1.5,
+        "effect": "fadeOut"
+      }
+    },
+    "close_button": {
+      "appear_timeout": "never"
+    }
+  },
+  "inputs": [
+    {
+      "name": "background",
+      "label": {
+        "en": "Background",
+        "fr": "Arrière-plan"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "type": "color",
+          "size": 35,
+          "default": "#000000"
+        },
+        {
+          "name":"image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "image",
+          "default":"./assets/images/defaultBackgroundImage.jpg",
+          "max_filesize":10000000
+        }
+      ]
+    },
+    {
+      "name": "title",
+      "label": {
+        "en": "Title",
+        "fr": "Titre"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "text",
+          "label": {
+            "en": "Text",
+            "fr": "Texte"
+          },
+          "type": "string",
+          "default": "Your title here!",
+          "min_length": 1,
+          "max_length": 80
+        },
+        {
+          "name": "font",
+          "label": {
+            "en": "Font",
+            "fr": "Police"
+          },
+          "size": 67,
+          "type": "enum",
+          "default": "Open Sans",
+          "values": [
+            {"value": "Times", "caption": "Times"},
+            {"value": "Raleway", "caption": "Raleway"},
+            {"value": "Rockwell", "caption": "Rockwell"},
+            {"value": "Open Sans", "caption": "Open Sans"},
+            {"value": "Futura Bk", "caption": "Futura Book"},
+            {"value": "Tekton Pro", "caption": "Tekton Pro"},
+            {"value": "Montserrat", "caption": "Montserrat"}
+          ]
+        },
+        {
+          "name": "size",
+          "label": {
+            "en": "Size",
+            "fr": "Taille"
+          },
+          "size": 15,
+          "hide_label": true,
+          "type": "number",
+          "default": 19,
+          "min": 19,
+          "max": 32
+        },
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "size": 18,
+          "hide_label": true,
+          "type": "color",
+          "default": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "name":"body",
+      "label":{
+        "en": "Top Image",
+        "fr": "Image de front"
+      },
+      "type":"group",
+      "inputs": [
+        {
+          "name":"topImage",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "image",
+          "max_filesize":10000000
+        },
+        {
+          "name":"video",
+          "label": {
+            "en": "Video",
+            "fr": "Vidéo"
+          },
+          "type": "video",
+          "default":"./assets/videos/sampleVideo.mp4"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "label": {
+        "en": "Text",
+        "fr": "Texte"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "content",
+          "label": {
+            "en": "Content",
+            "fr": "Contenu"
+          },
+          "type": "string",
+          "default": "Lorem ipsum dolor sit amet, vel libris scripta et, iudico detracto consetetur et duo. Te bonorum facilis vix. Ut est legere insolens adipisci, sed ubique aliquam no. In habeo harum duo.",
+          "max_length": 255,
+          "lines": 4
+        },
+        {
+          "name": "font",
+          "label": {
+            "en": "Font",
+            "fr": "Police"
+          },
+          "size": 67,
+          "type": "enum",
+          "default": "Open Sans",
+          "values": [
+            {"value": "Times", "caption": "Times"},
+            {"value": "Raleway", "caption": "Raleway"},
+            {"value": "Rockwell", "caption": "Rockwell"},
+            {"value": "Open Sans", "caption": "Open Sans"},
+            {"value": "Futura Bk", "caption": "Futura Book"},
+            {"value": "Tekton Pro", "caption": "Tekton Pro"},
+            {"value": "Montserrat", "caption": "Montserrat"}
+          ]
+        },
+        {
+          "name": "size",
+          "label": {
+            "en": "Size",
+            "fr": "Taille"
+          },
+          "size": 15,
+          "hide_label": true,
+          "type": "number",
+          "default": 15,
+          "min": 13,
+          "max": 19
+        },
+        {
+          "name": "color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "size": 18,
+          "hide_label": true,
+          "type": "color",
+          "default": "#FFFFFF"
+        }
+      ]
+    },
+    {
+      "name": "buttons",
+      "label": {
+        "en": "Buttons",
+        "fr": "Boutons"
+      },
+      "type": "table",
+      "min_size": 1,
+      "max_size": 2,
+      "inputs": [
+        {
+          "name": "text",
+          "label": {
+            "en": "Text",
+            "fr": "Texte"
+          },
+          "type": "string",
+          "default": "Button 1",
+          "min_length": 1,
+          "max_length": 30
+        },
+        {
+          "name": "font_family",
+          "label": {
+            "en": "Font",
+            "fr": "Police"
+          },
+          "size": 64,
+          "type": "enum",
+          "default": "Open Sans",
+          "values": [
+            { "value": "Times", "caption": "Times" },
+            { "value": "Raleway", "caption": "Raleway" },
+            { "value": "Rockwell", "caption": "Rockwell" },
+            { "value": "Open Sans", "caption": "Open Sans" },
+            { "value": "Futura Bk", "caption": "Futura Book" },
+            { "value": "Tekton Pro", "caption": "Tekton Pro" },
+            { "value": "Montserrat", "caption": "Montserrat" }
+          ]
+        },
+        {
+          "name": "font_size",
+          "label": {
+            "en": "Font Size",
+            "fr": "Taille de police"
+          },
+          "size": 16,
+          "hide_label": true,
+          "type": "number",
+          "default": 17,
+          "min": 14,
+          "max": 19
+        },
+        {
+          "name": "font_color",
+          "label": {
+            "en": "Color",
+            "fr": "Couleur"
+          },
+          "size": 20,
+          "hide_label": true,
+          "type": "color",
+          "default": "#FFFFFF"
+        },
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "size": 40,
+          "type": "color",
+          "default": "#5f7384"
+        },
+        {
+          "name": "deeplink_url",
+          "label": {
+            "en": "Deeplink Url",
+            "fr": "Url de Deeplink"
+          },
+          "type": "string"
+        }
+      ],
+      "defaults": [
+        {
+          "text": "Action 1",
+          "font_family": "Open Sans",
+          "font_size": 15,
+          "font_color": "#FFFFFF",
+          "background": "#FF007D",
+          "deeplink_url": ""
+        },
+        {
+          "text": "Action 2",
+          "font_family": "Open Sans",
+          "font_size": 15,
+          "font_color": "#000000",
+          "background": "#FFFFFF",
+          "deeplink_url": ""
+        }
+      ]
+    }
+  ]
+}

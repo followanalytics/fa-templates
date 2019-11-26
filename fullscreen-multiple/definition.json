@@ -1,0 +1,478 @@
+{
+  "template_options": {
+    "technical_name": "multi_fullscreen_template",
+    "title": {
+      "en": "Multi fullscreen",
+      "fr": "Multi plein écran"
+    },
+    "description": {
+      "en": "Multi fullscreen template provides up to 5 pages including texts, icons, illustration images and action buttons, that can be customized in the editor of in-apps. It can be used for user's on-boarding and new features presentation.",
+      "fr": "Le template multi plein écran propose jusqu'à 5 écrans avec des textes, icônes, images d'illustration et boutons d'actions, qui peuvent être personnalisés dans l'éditeur des in-apps. Il peut être utilisé pour l'embarquement d'utilisateurs et pour la présentation de nouvelles fonctionnalités."
+    },
+    "version": "1.0",
+    "author": "FollowAnalytics"
+  },
+  "sdk_options": {
+    "type": "fullscreen",
+    "window": {
+      "timeout": 0
+    },
+    "animation": {
+      "entry": {
+        "delay": 0.5,
+        "effect": "fadeIn"
+      },
+      "exit": {
+        "delay": 1.5,
+        "effect": "fadeOut"
+      }
+    },
+    "close_button": {
+      "appear_timeout": "never"
+    }
+  },
+  "inputs": [
+    {
+      "name": "global_params",
+      "label": {
+        "en": "Global Parameters",
+        "fr": "Paramètres globaux"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "font",
+          "label": {
+            "en": "Global Font",
+            "fr": "Police générale"
+          },
+          "size": 70,
+          "type": "enum",
+          "default": "Open Sans",
+          "values": [
+            {"value": "Times", "caption": "Times"},
+            {"value": "Raleway", "caption": "Raleway"},
+            {"value": "Rockwell", "caption": "Rockwell"},
+            {"value": "Open Sans", "caption": "Open Sans"},
+            {"value": "Futura Bk", "caption": "Futura Book"},
+            {"value": "Tekton Pro", "caption": "Tekton Pro"},
+            {"value": "Montserrat", "caption": "Montserrat"}
+          ]
+        },
+        {
+          "name": "page_selector_color",
+          "label": {
+            "en": "Page Indicator Color",
+            "fr": "Couleur de l'indicateur de page"
+          },
+          "type": "color",
+          "default": "#5f7384"
+        }
+      ]
+    },
+    {
+      "name": "pages",
+      "label": {
+        "en": "Pages",
+        "fr": "Pages"
+      },
+      "type": "pages",
+      "hide_label": true,
+      "min_pages": 2,
+      "max_pages": 5,
+      "inputs": [
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#FAFAFA"
+            },
+            {
+              "name": "image",
+              "label": {
+                "en": "Image",
+                "fr": "Image"
+              },
+              "type": "image",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "upload",
+              "label": {
+                "en": "Upload",
+                "fr": "Uploader"
+              },
+              "type": "image",
+              "default": "./assets/images/sample-image-1.png"
+            }
+          ]
+        },
+        {
+          "name": "title",
+          "label": {
+            "en": "Title",
+            "fr": "Titre"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Your title here!",
+              "min_length": 1,
+              "max_length": 80
+            },
+            {
+              "name": "size",
+              "label": {
+                "en": "Font",
+                "fr": "Police"
+              },
+              "size": 35,
+              "type": "number",
+              "default": 24,
+              "min": 19,
+              "max": 32
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "size": 18,
+              "hide_label": true,
+              "type": "color",
+              "default": "#5f7384"
+            }
+          ]
+        },
+        {
+          "name": "icon",
+          "label": {
+            "en": "Icon",
+            "fr": "Icône"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "svg",
+              "label": {
+                "en": "Icon",
+                "fr": "Icône"
+              },
+              "type": "enum",
+              "size": 53.5,
+              "default": "icoGrowth",
+              "values": [
+                {"value": "none", "caption": "None"},
+                {"value": "icoBook", "caption": "Book"},
+                {"value": "icoCalendar", "caption": "Calendar"},
+                {"value": "icoCar", "caption": "Car"},
+                {"value": "icoCart", "caption": "Cart"},
+                {"value": "icoCloud", "caption": "Cloud"},
+                {"value": "icoCommunity", "caption": "Community"},
+                {"value": "icoCoupon", "caption": "Coupon"},
+                {"value": "icoDownload", "caption": "Download"},
+                {"value": "icoEnvironment", "caption": "Environment"},
+                {"value": "icoFavorite", "caption": "Favorite"},
+                {"value": "icoFile", "caption": "File"},
+                {"value": "icoFolder", "caption": "Folder"},
+                {"value": "icoGift", "caption": "Gift"},
+                {"value": "icoGrowth", "caption": "Growth"},
+                {"value": "icoHealth", "caption": "Health"},
+                {"value": "icoHome", "caption": "Home"},
+                {"value": "icoKit", "caption": "Kit"},
+                {"value": "icoLocation", "caption": "Location"},
+                {"value": "icoMail", "caption": "Mail"},
+                {"value": "icoMessage", "caption": "Message"},
+                {"value": "icoNotification", "caption": "Notification"},
+                {"value": "icoProfile", "caption": "Profile"},
+                {"value": "icoQuestion", "caption": "Question"},
+                {"value": "icoRate", "caption": "Rate"},
+                {"value": "icoSearch", "caption": "Search"},
+                {"value": "icoShopping", "caption": "Shopping"},
+                {"value": "icoSport", "caption": "Sport"},
+                {"value": "icoSupport", "caption": "Support"},
+                {"value": "icoTag", "caption": "Tag"},
+                {"value": "icoTravel", "caption": "Travel"},
+                {"value": "icoValidate", "caption": "Validate"},
+                {"value": "icoVoice", "caption": "Voice"},
+                {"value": "icoWarning", "caption": "Warning"},
+                {"value": "icoWeb", "caption": "Web"}
+              ]
+            },
+            {
+              "name": "size",
+              "label": {
+                "en": "Size",
+                "fr": "Taille"
+              },
+              "hide_label": true,
+              "size": 27,
+              "type": "enum",
+              "default": "small",
+              "values": [
+                {"value": "x-small", "caption": {"en": "Extra small", "fr": "Très petit"}},
+                {"value": "small", "caption": {"en": "Small", "fr": "Petit"}},
+                {"value": "medium", "caption": {"en": "Medium", "fr": "Moyen"}},
+                {"value": "large", "caption": {"en": "Large", "fr": "Grand"}},
+                {"value": "x-large", "caption": {"en": "Extra large", "fr": "Très grand"}}
+              ]
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "hide_label": true,
+              "size": 18,
+              "type": "color",
+              "default": "#5f7384"
+            }
+          ]
+        },
+        {
+          "name": "body",
+          "label": {
+            "en": "Body",
+            "fr": "Corps"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Lorem ipsum dolor sit amet, vel libris scripta et, iudico detracto consetetur et duo. Te bonorum facilis vix. Ut est legere insolens adipisci, sed ubique aliquam no. In habeo harum duo.",
+              "max_length": 255,
+              "lines": 5
+            },
+            {
+              "name": "size",
+              "label": {
+                "en": "Font",
+                "fr": "Police"
+              },
+              "size": 35,
+              "type": "number",
+              "default": 15,
+              "min": 13,
+              "max": 19
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "size": 18,
+              "hide_label": true,
+              "type": "color",
+              "default": "#5f7384"
+            }
+          ]
+        },
+        {
+          "name": "close",
+          "label": {
+            "en": "Close Button",
+            "fr": "Bouton Fermer"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "size": 35,
+              "default": "#5f7384"
+            }
+          ]
+        },
+        {
+          "name": "buttons",
+          "label": {
+            "en": "Buttons",
+            "fr": "Boutons"
+          },
+          "type": "table",
+          "max_size": 2,
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Button 1",
+              "min_length": 1,
+              "max_length": 25
+            },
+            {
+              "name": "font_size",
+              "label": {
+                "en": "Font",
+                "fr": "Police"
+              },
+              "size": 39,
+              "type": "number",
+              "default": 17,
+              "min": 14,
+              "max": 19
+            },
+            {
+              "name": "font_color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "size": 20,
+              "hide_label": true,
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#5f7384"
+            },
+            {
+              "name": "deeplink_url",
+              "label": {
+                "en": "Deeplink Url",
+                "fr": "Url de Deeplink"
+              },
+              "type": "string"
+            }
+          ]
+        }
+      ],
+      "defaults": [
+        {
+          "background": {
+            "color": "#FAFAFA",
+            "image": ""
+          },
+          "image": {
+            "upload": "./assets/images/sample-image-1.png"
+          },
+          "title": {
+            "text": "Your title here!",
+            "size": 24,
+            "color": "#5f7384"
+          },
+          "icon": {
+            "svg": "icoGrowth",
+            "size": "small",
+            "color": "#5f7384"
+          },
+          "body": {
+            "text": "Lorem ipsum dolor sit amet, vel libris scripta et, iudico detracto consetetur et duo. Te bonorum facilis vix. Ut est legere insolens adipisci, sed ubique aliquam no. In habeo harum duo.",
+            "size": 15,
+            "color": "#5f7384"
+          },
+          "close": {
+            "color": "#5f7384"
+          },
+          "buttons": [
+            {
+              "text": "Button 1",
+              "font_size": 17,
+              "font_color": "#FFFFFF",
+              "background": "#5f7384",
+              "deeplink_url": ""
+            },
+            {
+              "text": "Button 2",
+              "font_size": 17,
+              "font_color": "#5f7384",
+              "background": "#FFFFFF",
+              "deeplink_url": ""
+            }
+          ]
+        },
+        {
+          "background": {
+            "color": "#FAFAFA",
+            "image": ""
+          },
+          "image": {
+            "upload": "./assets/images/sample-image-1.png"
+          },
+          "title": {
+            "text": "Your title here!",
+            "size": 24,
+            "color": "#5f7384"
+          },
+          "icon": {
+            "svg": "icoGrowth",
+            "size": "small",
+            "color": "#5f7384"
+          },
+          "body": {
+            "text": "Lorem ipsum dolor sit amet, vel libris scripta et, iudico detracto consetetur et duo. Te bonorum facilis vix. Ut est legere insolens adipisci, sed ubique aliquam no. In habeo harum duo.",
+            "size": 15,
+            "color": "#5f7384"
+          },
+          "close": {
+            "color": "#5f7384"
+          },
+          "buttons": [
+            {
+              "text": "Button 1",
+              "font_size": 17,
+              "font_color": "#FFFFFF",
+              "background": "#5f7384",
+              "deeplink_url": ""
+            },
+            {
+              "text": "Button 2",
+              "font_size": 17,
+              "font_color": "#5f7384",
+              "background": "#FFFFFF",
+              "deeplink_url": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,193 @@
+@font-face {
+  font-family: 'Times';
+  src:
+    url('../assets/fonts/Times/Times.woff2') format('woff2'),
+    url('../assets/fonts/Times/Times.woff') format('woff'),
+    url('../assets/fonts/Times/Times.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src:
+    url('../assets/fonts/Montserrat/Montserrat-Regular.woff2') format('woff2'),
+    url('../assets/fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
+    url('../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rockwell';
+  src:
+    url('../assets/fonts/Rockwell/Rockwell.woff2') format('woff2'),
+    url('../assets/fonts/Rockwell/Rockwell.woff') format('woff'),
+    url('../assets/fonts/Rockwell/Rockwell.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src:
+    url('../assets/fonts/OpenSans/OpenSans.woff2') format('woff2'),
+    url('../assets/fonts/OpenSans/OpenSans.woff') format('woff'),
+    url('../assets/fonts/OpenSans/OpenSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura Bk';
+  src:
+    url('../assets/fonts/Futura-Book/Futura-Book.woff2') format('woff2'),
+    url('../assets/fonts/Futura-Book/Futura-Book.woff') format('woff'),
+    url('../assets/fonts/Futura-Book/Futura-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src:
+    url('../assets/fonts/Raleway/Raleway-Regular.woff2') format('woff2'),
+    url('../assets/fonts/Raleway/Raleway-Regular.woff') format('woff'),
+    url('../assets/fonts/Raleway/Raleway-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tekton Pro';
+  src:
+    url('../assets/fonts/TektonPro/TektonPro-Regular.woff2') format('woff2'),
+    url('../assets/fonts/TektonPro/TektonPro-Regular.woff') format('woff'),
+    url('../assets/fonts/TektonPro/TektonPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del,
+dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup,
+tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form,
+label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+q, blockquote {
+  quotes: none;
+
+  &:before,
+  &:after {
+    content: '';
+    content: none;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: auto;
+}
+
+h1 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+p {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  display: block;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.buttonGrid {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  z-index: 2;
+
+  .buttonCell {
+    max-width: 300px;    
+
+    .actionButton {
+      align-items: center;
+      border-radius: 25px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      line-height: 20px;
+      padding: auto;
+      text-align: center;
+      word-break: break-word;
+      height: 48px;
+    }
+  }
+
+  &--withMargins {
+    &> .buttonCell {
+      flex: 1;
+      margin-bottom: 0;
+      margin-left: 0.5em;
+      width: 160px;
+      
+      &:last-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &--full {
+    width: 100%;
+    flex-direction: column;
+
+    &> .buttonCell {
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (orientation: landscape) {
+  .buttonGrid {
+    margin-bottom: auto;
+  }
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Default Video Template</title>
+  <meta name="description" content="basic fullscreen in-app">
+  <meta name="author" content="FollowAnalytics">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="containerBackground"></div>
+  <div class="defaultTemplate">
+    <div id="templateClose" class="defaultTemplate__close"></div>
+
+    <div class="defaultTemplate__info">
+      <div class="defaultTemplate__title">
+        <span id="templateTitle"></span>
+      </div>
+
+      <div class="defaultTemplate__body" id="templateBody">
+        <div class="loader"></div>
+        <img id='buttonPlay' src='./assets/images/buttonPlay.png' class="button__play" />
+        <div id='videoSound' class="defaultTemplate__sound"></div>
+      </div>
+
+      <div class="defaultTemplate__text">
+        <span id=templateText></span>
+      </div>
+
+      <div id="templateButtons" class="defaultTemplate__buttons buttonGrid buttonGrid--full">
+        <div class="buttonCell">
+          <div class="actionButton">Action 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="fa-params.js" type="text/javascript"></script>
+  <script src="bundle.js" type="text/javascript"></script>
+</body>
+
+</html>
