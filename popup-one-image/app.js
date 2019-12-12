@@ -6,7 +6,7 @@ import Assets from './assets/assets';
 
 (function () {
   if (FollowAnalyticsParams.background.image !== null) {
-    $('.defaultTemplate__info').attr('src', `${FollowAnalyticsParams.background.image}`);
+    $('.defaultTemplate__image').attr('src', `${FollowAnalyticsParams.background.image}`);
 
     const closeButtonContainer = $('#templateClose');
     closeButtonContainer.html(Assets.icoClose);

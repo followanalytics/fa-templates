@@ -8,20 +8,22 @@ body#popupTemplate.backdrop {
 }
 
 .defaultTemplate {
-  border-radius: 10px;
-  box-shadow: 0 0 10px 1px rgba(71, 71, 71, 0.5);
   box-sizing: border-box;
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
   margin: auto 1em;
-  min-height: 300px;
   position: relative;
+  height: auto;
+  width: 100%;
+  max-height: calc(100% - 2em);
+  max-width: calc(100% - 2em);
 
-  &__info {
+  &__image {
+    box-shadow: 0 0 10px 1px rgba(71,71,71,0.5);
     border-radius: 10px;
     position: relative;
-    max-width: 100%;
+    width: 100%;
   }
 
   &__close {
@@ -38,13 +40,16 @@ body#popupTemplate.backdrop {
   }
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media (orientation: landscape) {
   .defaultTemplate {
     margin: auto;
+    width: auto;
   }
-  .defaultTemplate .defaultTemplate__info {
-    min-width: 500px;
+
+  .defaultTemplate__image {
+    width: auto;
+    max-height: 100%;
+    max-width: 100%;
   }
 }
 
