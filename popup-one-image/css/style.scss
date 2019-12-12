@@ -15,15 +15,15 @@ body#popupTemplate.backdrop {
   margin: auto 1em;
   position: relative;
   height: auto;
-  width: 100%;
-  max-height: calc(100% - 2em);
-  max-width: calc(100% - 2em);
+  width: 100vw;
+  max-height: calc(100vh - 2em);
+  max-width: calc(100vw - 2em);
 
   &__image {
     box-shadow: 0 0 10px 1px rgba(71,71,71,0.5);
     border-radius: 10px;
     position: relative;
-    width: 100%;
+    width: calc(100vw - 2em);
   }
 
   &__close {
@@ -48,21 +48,7 @@ body#popupTemplate.backdrop {
 
   .defaultTemplate__image {
     width: auto;
-    max-height: 100%;
-    max-width: 100%;
+    max-height: calc(100vh - 2em);
+    max-width: calc(100vw - 2em);
   }
-}
-
-// iOS < 11.2
-@supports(padding-top: constant(safe-area-inset-top)) {
-    html, body {
-        height: 100vh;
-    }
-}
-
-// iOS >= 11.2
-@supports(padding: max(0px)) {
-    html, body {
-        height: 100vh;
-    }
 }
