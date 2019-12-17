@@ -3,7 +3,11 @@ import _ from 'lodash';
 import './css/main.scss';
 import './css/style.scss';
 import Assets from './assets/assets';
-import {escapeHtml, checkSDKVersion} from './lib/utils';
+import {escapeHtml, checkSDKVersion, setUpFollowAnalyticsSDKMockAPI} from './lib/utils';
+
+if (typeof FollowAnalytics === 'undefined') {
+  setUpFollowAnalyticsSDKMockAPI();
+}
 
 const setActivePage = (index) => {
   currentPage = index;
@@ -43,7 +47,7 @@ let totalPages = 0;
     closeButtonHtml.find('svg').css({fill: page.close_button.color});
     closeButtonHtml.on('click', () => {
       if (!inappClosed) {
-        if (FollowAnalytics.CurrentCampaign.logAction) {
+        if (FollowAnalytics && _.get(FollowAnalytics.CurrentCampaign.logAction)) {
           FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1}: Dismiss`);
         }
         $('.deeplinkFrame').removeAttr('style');
@@ -56,33 +60,33 @@ let totalPages = 0;
 
     // Uploaded image config
     if (!!page.image.upload) {
-      const imageHtml = $('<div class="page__image" />');
-      imageHtml.css({
-        backgroundImage: `url(${page.image.upload})`,
-        display: 'flex',
-      });
+      const imageHtml = $(`<img class="page__image" src="${page.image.upload}" alt="" />`);
       pageContainer.append(imageHtml);
     }
 
+    const pageInfoContainer = $('<div class="page__info" />')
+
     // Title text configs
-    const titleContainer = $('<div class="page__title" />');
+    const titleContainer = $('<div class="page__info__title" />');
     const titleHtml = $('<span />');
     titleHtml.text(page.title.text);
     titleHtml.css({color: page.title.color});
     titleContainer.append(titleHtml);
-    pageContainer.append(titleContainer);
+    pageInfoContainer.append(titleContainer);
 
     // Body text configs
-    const bodyContainer = $('<div class="page__body" />');
-    const bodyHtml = $('<span />');
-    bodyHtml.html(escapeHtml(page.body.text));
-    bodyHtml.css({color: page.body.color});
-    bodyContainer.append(bodyHtml);
-    pageContainer.append(bodyContainer);
+    if (page.body.text !== '') {
+      const bodyContainer = $('<div class="page__info__body" />');
+      const bodyHtml = $('<span />');
+      bodyHtml.html(escapeHtml(page.body.text));
+      bodyHtml.css({color: page.body.color});
+      bodyContainer.append(bodyHtml);
+      pageInfoContainer.append(bodyContainer);
+    }
 
-    const buttonsContainer = $('<div class="page__buttons" />');
+    const buttonsContainer = $('<div class="page__info__buttons" />');
     _.forEach(page.buttons, (btn) => {
-      const buttonHtml = $(`<div class="surveyButton">${btn.text}</div>`);
+      const buttonHtml = $(`<div class="surveyButton"><span>${btn.text}</span></div>`);
       buttonHtml.css({
         backgroundColor: btn.background,
         borderColor: btn.border,
@@ -90,14 +94,13 @@ let totalPages = 0;
       });
 
       buttonHtml.on('click', (_event) => {
-        if (FollowAnalytics.CurrentCampaign.logAction) {
+        if (FollowAnalytics && FollowAnalytics.CurrentCampaign.logAction) {
           FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1}: ${btn.text}`);
         }
         // Close on last page clicks
         if (currentPage === totalPages - 1 && btn.deeplink_url !== '') {
-          if (FollowAnalytics.getSDKVersion
-            && typeof FollowAnalytics.getSDKVersion === 'function'
-            && checkSDKVersion(FollowAnalytics.getSDKVersion(), 6, 3, 0)) {
+          if (FollowAnalytics.getSDKVersion && typeof FollowAnalytics.getSDKVersion === 'function'
+              && checkSDKVersion(FollowAnalytics.getSDKVersion(), 6, 3, 0)) {
             window.location.href = btn.deeplink_url;
           }
           else {
@@ -128,7 +131,8 @@ let totalPages = 0;
       });
       buttonsContainer.append(buttonHtml);
     });
-    pageContainer.append(buttonsContainer);
+    pageInfoContainer.append(buttonsContainer);
+    pageContainer.append(pageInfoContainer);
 
     // Page number config
     const pageNumberHtml = $(`<div class="page__pageNumber">${index + 1}/${totalPages}</div>`);
