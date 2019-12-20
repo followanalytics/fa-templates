@@ -17,16 +17,6 @@
     "window": {
       "timeout": 0
     },
-    "animation": {
-      "entry": {
-        "delay": 0.5,
-        "effect": "fadeIn"
-      },
-      "exit": {
-        "delay": 1.5,
-        "effect": "fadeOut"
-      }
-    },
     "close_button": {
       "appear_timeout": "never"
     }
@@ -160,7 +150,7 @@
               "type": "string",
               "default": "Button 1",
               "min_length": 1,
-              "max_length": 30
+              "max_length": 25
             },
             {
               "name": "text_color",
@@ -290,19 +280,19 @@
           },
           "buttons": [
             {
-              "text": "Lorem ipsum dolor sit amet 1",
+              "text": "Lorem ipsum dolor 1",
               "text_color": "#777777",
               "background": "#FFFFFF",
               "border": "#89C5CC"
             },
             {
-              "text": "Lorem ipsum dolor sit amet 2",
+              "text": "Lorem ipsum dolor 2",
               "text_color": "#777777",
               "background": "#FFFFFF",
               "border": "#89C5CC"
             },
             {
-              "text": "Lorem ipsum dolor sit amet 3",
+              "text": "Lorem ipsum dolor 3",
               "text_color": "#FFFFFF",
               "background": "#89C5CC",
               "border": "#89C5CC"
