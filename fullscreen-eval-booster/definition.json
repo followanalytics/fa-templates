@@ -1,0 +1,844 @@
+{
+  "template_options": {
+    "technical_name": "evaluation_booster",
+    "title": {
+      "en": "Evaluation Booster",
+      "fr": "Amélioration des notes"
+    },
+    "description": {
+      "en": "",
+      "fr": ""
+    },
+    "version": "1.0.0",
+    "author": "FollowAnalytics"
+  },
+  "sdk_options": {
+    "type": "fullscreen",
+    "window": {
+      "timeout": 0
+    },
+    "close_button": {
+      "appear_timeout": "never"
+    }
+  },
+  "inputs": [
+    {
+      "name": "global_params",
+      "label": {
+        "en": "Global parameters",
+        "fr": "Paramètres globaux"
+      },
+      "type": "group",
+      "inputs": [
+        {
+          "name": "font",
+          "label": {
+            "en": "General font",
+            "fr": "Police générale"
+          },
+          "type": "enum",
+          "size": 50,
+          "default": "Open Sans",
+          "values": [
+            {"value": "Times", "caption": "Times"},
+            {"value": "Raleway", "caption": "Raleway"},
+            {"value": "Rockwell", "caption": "Rockwell"},
+            {"value": "Open Sans", "caption": "Open Sans"},
+            {"value": "Futura Bk", "caption": "Futura Book"},
+            {"value": "Tekton Pro", "caption": "Tekton Pro"},
+            {"value": "Montserrat", "caption": "Montserrat"}
+          ]
+        },
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "type": "color",
+          "default": "#F0F0F0"
+        }
+      ]
+    },
+    {
+      "name": "rating_page",
+      "label": "Evaluation",
+      "type": "pages",
+      "min_pages": 1,
+      "max_pages": 1,
+      "inputs": [
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "name": "image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "upload",
+              "label": {
+                "en": "Upload",
+                "fr": "Uploader"
+              },
+              "type": "image",
+              "default": "./assets/images/sample-image.png"
+            }
+          ]
+        },
+        {
+          "name": "title",
+          "label": {
+            "en": "Title",
+            "fr": "Titre"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Do you like our app?",
+              "max_length": 80
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#2F3676"
+            }
+          ]
+        },
+        {
+          "name": "body",
+          "label": {
+            "en": "Body",
+            "fr": "Corps"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur",
+              "max_length": 125,
+              "lines": 4
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#5D5D5D"
+            }
+          ]
+        },
+        {
+          "name": "positive_answer_btn",
+          "label": {
+            "en": "Positive answer button",
+            "fr": "Bouton de réponse positive"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Yes!",
+              "min_length": 1,
+              "max_length": 25
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#FF4133"
+            }
+          ]
+        },
+        {
+          "name": "negative_answer_btn",
+          "label": {
+            "en": "Negative answer button",
+            "fr": "Bouton de réponse négative"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "No...",
+              "min_length": 1,
+              "max_length": 25
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#5C63AB"
+            }
+          ]
+        },
+        {
+          "name": "action",
+          "label": {
+            "en": "Action",
+            "fr": "Action"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "enabled",
+              "label": {
+                "en": "Enabled",
+                "fr": "Activé"
+              },
+              "type": "boolean",
+              "default": false
+            },
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Don't show this message again",
+              "max_length": 75
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#5C63AB"
+            },
+            {
+              "name": "deeplink_url",
+              "label": "Deeplink",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "close_button",
+          "label": {
+            "en": "Close Button",
+            "fr": "Close Button"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#5C63AB"
+            }
+          ]
+        }
+      ],
+      "defaults": [
+        {
+          "background": {
+            "color": "#FFFFFF"
+          },
+          "image": {
+            "upload": "./assets/images/sample-image.png"
+          },
+          "title": {
+            "text": "Do you like our app?",
+            "color": "#2F3676"
+          },
+          "body": {
+            "text": "Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet consectetur",
+            "color": "#5D5D5D"
+          },
+          "positive_answer_btn": {
+            "text": "Yes!",
+            "text_color": "#FFFFFF",
+            "background": "#FF4133"
+          },
+          "negative_answer_btn": {
+            "text": "No...",
+            "text_color": "#FFFFFF",
+            "background": "#5C63AB"
+          },
+          "action": {
+            "enabled": false,
+            "text": "Don't show this message again",
+            "color": "#5C63AB",
+            "deeplink_url": ""
+          },
+          "close_button": {
+            "color": "#5C63AB"
+          }
+        }
+      ]
+    },
+    {
+      "name": "positive_feedback_page",
+      "label": "Positive feedback",
+      "type": "pages",
+      "min_pages": 1,
+      "max_pages": 1,
+      "inputs": [
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "name": "image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "upload",
+              "label": {
+                "en": "Upload",
+                "fr": "Uploader"
+              },
+              "type": "image",
+              "default": "./assets/images/sample-image.png"
+            }
+          ]
+        },
+        {
+          "name": "title",
+          "label": {
+            "en": "Title",
+            "fr": "Titre"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Thanks for your loyalty!",
+              "max_length": 80
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#2F3676"
+            }
+          ]
+        },
+        {
+          "name": "body",
+          "label": {
+            "en": "Body",
+            "fr": "Corps"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Would you like to take a few seconds to take us on the App store?",
+              "max_length": 125,
+              "lines": 4
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#5D5D5D"
+            }
+          ]
+        },
+        {
+          "name": "positive_answer_btn",
+          "label": {
+            "en": "Positive answer button",
+            "fr": "Bouton de réponse positive"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Yes, sure!",
+              "min_length": 1,
+              "max_length": 25
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#FF4133"
+            },
+            {
+              "name": "deeplink_url",
+              "label": "Deeplink",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "negative_answer_btn",
+          "label": {
+            "en": "Negative answer button",
+            "fr": "Bouton de réponse négative"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "No thanks",
+              "min_length": 1,
+              "max_length": 25
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#5C63AB"
+            },
+            {
+              "name": "deeplink_url",
+              "label": "Deeplink",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "close_button",
+          "label": {
+            "en": "Close Button",
+            "fr": "Close Button"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#5C63AB"
+            }
+          ]
+        }
+      ],
+      "defaults": [
+        {
+          "background": {
+            "color": "#FFFFFF"
+          },
+          "image": {
+            "upload": "./assets/images/sample-image.png"
+          },
+          "title": {
+            "text": "Thanks for your loyalty!",
+            "color": "#2F3676"
+          },
+          "body": {
+            "text": "Would you like to take a few seconds to rate us on the App store?",
+            "color": "#5D5D5D"
+          },
+          "positive_answer_btn": {
+            "text": "Yes, sure!",
+            "text_color": "#FFFFFF",
+            "background": "#FF4133",
+            "deeplink_url": ""
+          },
+          "negative_answer_btn": {
+            "text": "No thanks",
+            "text_color": "#FFFFFF",
+            "background": "#5C63AB",
+            "deeplink_url": ""
+          },
+          "close_button": {
+            "color": "#5C63AB"
+          }
+        }
+      ]
+    },
+    {
+      "name": "negative_feedback_page",
+      "label": "Negative feedback",
+      "type": "pages",
+      "min_pages": 1,
+      "max_pages": 1,
+      "inputs": [
+        {
+          "name": "background",
+          "label": {
+            "en": "Background",
+            "fr": "Arrière-plan"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            }
+          ]
+        },
+        {
+          "name": "image",
+          "label": {
+            "en": "Image",
+            "fr": "Image"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "upload",
+              "label": {
+                "en": "Upload",
+                "fr": "Uploader"
+              },
+              "type": "image",
+              "default": "./assets/images/sample-image.png"
+            }
+          ]
+        },
+        {
+          "name": "title",
+          "label": {
+            "en": "Title",
+            "fr": "Titre"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Thank you for your feedback",
+              "max_length": 80
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#2F3676"
+            }
+          ]
+        },
+        {
+          "name": "body",
+          "label": {
+            "en": "Body",
+            "fr": "Corps"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Help us improve our app, leave a comment!",
+              "max_length": 125,
+              "lines": 4
+            },
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#5D5D5D"
+            }
+          ]
+        },
+        {
+          "name": "positive_answer_btn",
+          "label": {
+            "en": "Positive answer button",
+            "fr": "Bouton de réponse positive"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Leave a message",
+              "min_length": 1,
+              "max_length": 25
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#FF4133"
+            },
+            {
+              "name": "deeplink_url",
+              "label": "Deeplink",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "negative_answer_btn",
+          "label": {
+            "en": "Negative answer button",
+            "fr": "Bouton de réponse négative"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "text",
+              "label": {
+                "en": "Text",
+                "fr": "Texte"
+              },
+              "type": "string",
+              "default": "Call customer support",
+              "min_length": 1,
+              "max_length": 25
+            },
+            {
+              "name": "text_color",
+              "label": {
+                "en": "Text color",
+                "fr": "Couleur du texte"
+              },
+              "type": "color",
+              "default": "#FFFFFF"
+            },
+            {
+              "name": "background",
+              "label": {
+                "en": "Background",
+                "fr": "Arrière-plan"
+              },
+              "type": "color",
+              "default": "#5C63AB"
+            },
+            {
+              "name": "deeplink_url",
+              "label": "Deeplink",
+              "type": "string",
+              "default": ""
+            }
+          ]
+        },
+        {
+          "name": "close_button",
+          "label": {
+            "en": "Close Button",
+            "fr": "Close Button"
+          },
+          "type": "group",
+          "inputs": [
+            {
+              "name": "color",
+              "label": {
+                "en": "Color",
+                "fr": "Couleur"
+              },
+              "type": "color",
+              "default": "#5C63AB"
+            }
+          ]
+        }
+      ],
+      "defaults": [
+        {
+          "background": {
+            "color": "#FFFFFF"
+          },
+          "image": {
+            "upload": "./assets/images/sample-image.png"
+          },
+          "title": {
+            "text": "Thanks for your loyalty!",
+            "color": "#2F3676"
+          },
+          "body": {
+            "text": "Would you like to take a few seconds to rate us on the App store?",
+            "color": "#5D5D5D"
+          },
+          "positive_answer_btn": {
+            "text": "Leave a message",
+            "text_color": "#FFFFFF",
+            "background": "#FF4133",
+            "deeplink_url": ""
+          },
+          "negative_answer_btn": {
+            "text": "Call customer support",
+            "text_color": "#FFFFFF",
+            "background": "#5C63AB",
+            "deeplink_url": ""
+          },
+          "close_button": {
+            "color": "#5C63AB"
+          }
+        }
+      ]
+    }
+  ]
+}
