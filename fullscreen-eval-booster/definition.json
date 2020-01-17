@@ -260,16 +260,6 @@
               "default": false
             },
             {
-              "name": "text",
-              "label": {
-                "en": "Text",
-                "fr": "Texte"
-              },
-              "type": "string",
-              "default": "Don't show this message again",
-              "max_length": 75
-            },
-            {
               "name": "color",
               "label": {
                 "en": "Color",
@@ -331,12 +321,6 @@
             "text": "No...",
             "text_color": "#FFFFFF",
             "background": "#5C63AB"
-          },
-          "action": {
-            "enabled": false,
-            "text": "Don't show this message again",
-            "color": "#5C63AB",
-            "deeplink_url": ""
           },
           "close_button": {
             "color": "#5C63AB"

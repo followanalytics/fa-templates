@@ -1,9 +1,69 @@
 @font-face {
+  font-family: 'Times';
+  src:
+    url('../assets/fonts/Times/Times.woff2') format('woff2'),
+    url('../assets/fonts/Times/Times.woff') format('woff'),
+    url('../assets/fonts/Times/Times.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src:
+    url('../assets/fonts/Montserrat/Montserrat-Regular.woff2') format('woff2'),
+    url('../assets/fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
+    url('../assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Rockwell';
+  src:
+    url('../assets/fonts/Rockwell/Rockwell.woff2') format('woff2'),
+    url('../assets/fonts/Rockwell/Rockwell.woff') format('woff'),
+    url('../assets/fonts/Rockwell/Rockwell.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Open Sans';
   src:
     url('../assets/fonts/OpenSans/OpenSans.woff2') format('woff2'),
     url('../assets/fonts/OpenSans/OpenSans.woff') format('woff'),
     url('../assets/fonts/OpenSans/OpenSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura Bk';
+  src:
+    url('../assets/fonts/Futura-Book/Futura-Book.woff2') format('woff2'),
+    url('../assets/fonts/Futura-Book/Futura-Book.woff') format('woff'),
+    url('../assets/fonts/Futura-Book/Futura-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src:
+    url('../assets/fonts/Raleway/Raleway-Regular.woff2') format('woff2'),
+    url('../assets/fonts/Raleway/Raleway-Regular.woff') format('woff'),
+    url('../assets/fonts/Raleway/Raleway-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Tekton Pro';
+  src:
+    url('../assets/fonts/TektonPro/TektonPro-Regular.woff2') format('woff2'),
+    url('../assets/fonts/TektonPro/TektonPro-Regular.woff') format('woff'),
+    url('../assets/fonts/TektonPro/TektonPro-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
