@@ -157,7 +157,6 @@ try {
         if (FollowAnalytics && FollowAnalytics.CurrentCampaign.logAction) {
           FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: ${btn.text}`);
         }
-        // Close on "last" page clicks
         if (currentPage !== 'page-eval' && btn.deeplink_url && btn.deeplink_url !== '') {
           handleDeeplinkClick(btn);
         }

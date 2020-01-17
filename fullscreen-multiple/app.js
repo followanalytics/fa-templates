@@ -4,7 +4,13 @@ import './css/main.scss';
 import './css/style.scss';
 import Assets from './assets/assets';
 import SwipeManager from './lib/swiper';
-import {escapeHtml, getIconDimensions, hexToRgb, checkSDKVersion} from './lib/utils';
+import {
+  escapeHtml,
+  getIconDimensions,
+  hexToRgb,
+  handleConsoleMessage,
+} from './lib/utils';
+import {FollowAnalyticsWrapper as FA} from './lib/FollowAnalyticsWrapper';
 
 const setActivePage = (index) => {
   const templateContainer = $('.multiFullcreenTemplate');
@@ -59,7 +65,12 @@ const setUpSwipeCallbacks = (swipeManager) => {
 let currentPage = 0;
 let lastPage = 0;
 
-(function () {
+try {
+  const FollowAnalytics = new FA().getApi();
+  if (typeof FollowAnalyticsParams === 'undefined') {
+    throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
+  }
+
   // Global configs
   const templateContainer = $('.multiFullcreenTemplate');
   templateContainer.css({
@@ -171,9 +182,7 @@ let lastPage = 0;
           FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1} - ${btn.text}`);
         }
         if (btn.deeplink_url !== '') {
-          if (FollowAnalytics.getSDKVersion
-            && typeof FollowAnalytics.getSDKVersion === 'function'
-            && checkSDKVersion(FollowAnalytics.getSDKVersion(), 6, 3, 0)) {
+          if (typeof FollowAnalytics.getSDKVersion === 'function' && FA.checkMinSdkVersion(6, 3, 0)) {
             window.location.href = btn.deeplink_url;
           }
           else {
@@ -210,4 +219,7 @@ let lastPage = 0;
   });
 
   setActivePage(currentPage);
-})();
+}
+catch (e) {
+  handleConsoleMessage(e);
+}

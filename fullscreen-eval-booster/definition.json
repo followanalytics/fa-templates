@@ -513,12 +513,6 @@
               },
               "type": "color",
               "default": "#5C63AB"
-            },
-            {
-              "name": "deeplink_url",
-              "label": "Deeplink",
-              "type": "string",
-              "default": ""
             }
           ]
         },
@@ -567,8 +561,7 @@
           "negative_answer_btn": {
             "text": "No thanks",
             "text_color": "#FFFFFF",
-            "background": "#5C63AB",
-            "deeplink_url": ""
+            "background": "#5C63AB"
           },
           "close_button": {
             "color": "#5C63AB"
