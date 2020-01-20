@@ -19,18 +19,26 @@ const bannedAttrChars = {
   '\n': '&#10;',
 };
 
-export function escapeHtml(string) {
+export const escapeHtml = (string) => {
   return !!string ? String(string).replace(BANNED_HTML_CHARS_REGEX, (s) => bannedHtmlChars[s]) : '';
 }
 
-export function escapeAttr(string) {
+export const escapeAttr = (string) => {
   return !!string ? String(string).replace(BANNED_ATTR_CHARS_REGEX, (s) => bannedAttrChars[s]) : '';
 }
 
-export function checkSDKVersion(version, minMajor, minMinor = 0, minTertiary = 0) {
-  const versionNums = _.split(version, '.');
-  const currentMajor = versionNums[0];
-  const currentMinor = versionNums[1];
-  const currentTertiary = _.split(versionNums[2], '-')[0];
-  return currentMajor >= minMajor && currentMinor >= minMinor && currentTertiary >= minTertiary;
+export const handleConsoleMessage = (e) => {
+  if (typeof e === 'string') {
+    console.error(`Error: ${e}`);
+  }
+  switch (e.severity) {
+    case 'warning':
+      console.warn(`Warning: ${e.message}`);
+      break;
+    case 'error':
+      console.error(`Error: ${e.message}`);
+      break;
+    default:
+      console.error(`${e}`);
+  }
 }

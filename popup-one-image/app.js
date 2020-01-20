@@ -3,8 +3,9 @@ import _ from 'lodash';
 import './css/main.scss';
 import './css/style.scss';
 import Assets from './assets/assets';
+import {handleConsoleMessage} from './lib/utils';
 
-(function () {
+try {
   if (FollowAnalyticsParams.background.image !== null) {
     $('.defaultTemplate__image').attr('src', `${FollowAnalyticsParams.background.image}`);
 
@@ -17,4 +18,7 @@ import Assets from './assets/assets';
       $('#popupTemplate').removeClass('backdrop');
     });
   }
-})();
+}
+catch (e) {
+  handleConsoleMessage(e);
+}

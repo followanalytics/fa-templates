@@ -3,11 +3,8 @@ import _ from 'lodash';
 import './css/main.scss';
 import './css/style.scss';
 import Assets from './assets/assets';
-import {escapeHtml, checkSDKVersion, setUpFollowAnalyticsSDKMockAPI} from './lib/utils';
-
-if (typeof FollowAnalytics === 'undefined') {
-  setUpFollowAnalyticsSDKMockAPI();
-}
+import {escapeHtml, handleConsoleMessage} from './lib/utils';
+import {FollowAnalyticsWrapper as FA} from './lib/FollowAnalyticsWrapper';
 
 const setActivePage = (index) => {
   currentPage = index;
@@ -25,10 +22,15 @@ const setActivePage = (index) => {
 
 let currentPage = 0;
 let totalPages = 0;
+let inappClosed = false;
 
-(function () {
+try {
+  const FollowAnalytics = new FA().getApi();
+  if (typeof FollowAnalyticsParams === 'undefined') {
+    throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
+  }
+
   // Global configs
-  let inappClosed = false;
   const templateContainer = $('.template');
 
   // Total size = # of questionnaire pages + final page
@@ -99,8 +101,7 @@ let totalPages = 0;
         }
         // Close on last page clicks
         if (currentPage === totalPages - 1 && btn.deeplink_url !== '') {
-          if (FollowAnalytics.getSDKVersion && typeof FollowAnalytics.getSDKVersion === 'function'
-              && checkSDKVersion(FollowAnalytics.getSDKVersion(), 6, 3, 0)) {
+          if (typeof FollowAnalytics.getSDKVersion === 'function' && FA.checkMinSdkVersion(6, 3, 0)) {
             window.location.href = btn.deeplink_url;
           }
           else {
@@ -144,4 +145,7 @@ let totalPages = 0;
 
   setActivePage(currentPage);
   setTimeout(() => $('body').addClass('overlay'), 400);
-})();
+}
+catch (e) {
+  handleConsoleMessage(e);
+}
