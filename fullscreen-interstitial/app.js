@@ -3,9 +3,15 @@ import _ from 'lodash';
 import './css/style.scss';
 import './css/main.scss';
 import Assets from 'assets/assets';
-import {checkSDKVersion} from './lib/utils';
+import {handleConsoleMessage} from './lib/utils';
+import {FollowAnalyticsWrapper as FA} from './lib/FollowAnalyticsWrapper';
 
-(function () {
+try {
+  const FollowAnalytics = new FA().getApi();
+  if (typeof FollowAnalyticsParams === 'undefined') {
+    throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
+  }
+
   const mobilePortraitImage = $('.defaultTemplate__mobilePortrait');
   if (FollowAnalyticsParams.background.mobile_portrait !== null) {
     mobilePortraitImage.css({
@@ -43,9 +49,7 @@ import {checkSDKVersion} from './lib/utils';
   const handleInterstitialClick = (_event) => {
     if (deeplink_url !== '') {
       if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Deeplink');
-      if (FollowAnalytics.getSDKVersion
-        && typeof FollowAnalytics.getSDKVersion === 'function'
-        && checkSDKVersion(FollowAnalytics.getSDKVersion(), 6, 3, 0)) {
+      if (typeof FollowAnalytics.getSDKVersion === 'function' && FA.checkMinSdkVersion(6, 3, 0)) {
         window.location.href = deeplink_url;
       }
       else {
@@ -73,4 +77,7 @@ import {checkSDKVersion} from './lib/utils';
   mobileLandscapeImage.on('click', handleInterstitialClick);
   tabletPortraitImage.on('click', handleInterstitialClick);
   tabletLandscapeImage.on('click', handleInterstitialClick);
-})();
+}
+catch (e) {
+  handleConsoleMessage(e);
+}

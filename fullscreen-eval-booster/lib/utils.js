@@ -1,25 +1,8 @@
-export const getIconDimensions = (size) => {
-  switch (size) {
-    case 'x-small':
-      return {height: '2em', width: '3em'};
-    case 'small':
-      return {height: '3em', width: '4em'};
-    case 'large':
-      return {height: '5em', width: '6em'};
-    case 'x-large':
-      return {height: '6em', width: '7em'};
-    case 'medium':
-    default:
-      return {height: '4em', width: '5em'};
-  }
-};
-
 /**
  * Escapes any HTML tag characters from a string
  * @param  {String} string - the html as a string
  * @return {String}
  */
-
 const BANNED_HTML_CHARS_REGEX = /[&<>]/g;
 const BANNED_ATTR_CHARS_REGEX = /["'\n]/g;
 

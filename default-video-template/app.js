@@ -3,9 +3,15 @@ import _ from 'lodash';
 import './css/main.scss';
 import './css/style.scss';
 import Assets from './assets/assets';
-import { escapeHtml, checkSDKVersion } from './lib/utils';
+import {escapeHtml, checkSDKVersion, handleConsoleMessage} from './lib/utils';
+import {FollowAnalyticsWrapper as FA} from './lib/FollowAnalyticsWrapper';
 
-(function () {
+try {
+  const FollowAnalytics = new FA().getApi();
+  if (typeof FollowAnalyticsParams === 'undefined') {
+    throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
+  }
+
   const containerBackground = $('.containerBackground');
   const defaultTemplate = $('.defaultTemplate');
   defaultTemplate.css({ backgroundColor: FollowAnalyticsParams.background.color });
@@ -116,9 +122,7 @@ import { escapeHtml, checkSDKVersion } from './lib/utils';
     buttonHTML.on('click', (_event) => {
       if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction(faButton.text);
       if (faButton.deeplink_url !== '') {
-        if (FollowAnalytics.getSDKVersion
-          && typeof FollowAnalytics.getSDKVersion === 'function'
-          && checkSDKVersion(FollowAnalytics.getSDKVersion(), 6, 3, 0)) {
+        if (typeof FollowAnalytics.getSDKVersion === 'function' && FA.checkMinSdkVersion(6, 3, 0)) {
           window.location.href = faButton.deeplink_url;
         }
         else {
@@ -142,4 +146,7 @@ import { escapeHtml, checkSDKVersion } from './lib/utils';
     buttonContainerHTML.append(buttonHTML);
     templateButtons.append(buttonContainerHTML);
   });
-})();
+}
+catch (e) {
+  handleConsoleMessage(e);
+}
