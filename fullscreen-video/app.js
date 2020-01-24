@@ -13,28 +13,15 @@ $(window).on('load', () => {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
 
-    const templateContainer = $('.defaultTemplate__info');
+    const containerBackground = $('.containerBackground');
+    const defaultTemplate = $('.defaultTemplate');
+    defaultTemplate.css({ backgroundColor: FollowAnalyticsParams.background.color });
     if (FollowAnalyticsParams.background.image !== null) {
-      templateContainer.css({
+      containerBackground.css({
         backgroundImage: `url(${FollowAnalyticsParams.background.image})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center center',
-      });
-    }
-    else templateContainer.css({backgroundColor: FollowAnalyticsParams.background.color});
-
-    if (FollowAnalyticsParams.image.upload !== null) {
-      const imageContainer = $('#uploadedImage');
-      imageContainer.css({
-        backgroundImage: `url(${FollowAnalyticsParams.image.upload})`,
-        display: 'flex',
-      });
-    }
-    else {
-      templateContainer.css({
-        borderRadius: '10px',
-        flex: '1 1 100%',
       });
     }
 
@@ -47,21 +34,67 @@ $(window).on('load', () => {
     });
 
     const templateBody = $('#templateBody');
+    const video = $(`<video width='100%' height='auto' position='absolute'
+                        id='templateVideo'
+                        autoplay muted playsinline webkit-playsinline
+                        poster=${FollowAnalyticsParams.body.topImage || ''}
+                        >`);
+    video.appendTo(templateBody);
+    if (FollowAnalyticsParams.body.video !== null) {
+      const source = $(`<source src='${FollowAnalyticsParams.body.video}'
+                      type='video/${FollowAnalyticsParams.body.video.split('.').pop()}'>
+                    `);
+      const soundButtonContainer = $('#videoSound');
+      const buttonPlay = $('#buttonPlay');
+      //hide the video until we can play it and show the spinnner instead
+      video.css({ opacity: 0 })
+      source.appendTo(video);
+      soundButtonContainer.html(Assets.icoSoundOff);
+      soundButtonContainer.on('click', () => {
+        video.prop('muted', !video.prop('muted'));
+        const icon = video.prop('muted') ? Assets.icoSoundOff : Assets.icoSoundOn;
+        soundButtonContainer.html(icon);
+      });
+
+      if (!!(!video.currentTime)) {
+        buttonPlay.css({ display: 'initial' })
+      }
+      video.on('canplay', () => {
+        video.css({ opacity: 1 })
+        soundButtonContainer.css({ display: 'initial' })
+        $('.loader').css({ display: 'none' })
+      })
+
+      buttonPlay.on('click', () => {
+        video.trigger('play');
+      });
+      video.on('ended pause', () => {
+        buttonPlay.css({ display: 'initial' })
+      })
+      video.on('play', () => {
+        buttonPlay.css({ display: 'none' })
+      })
+    }
+    else {
+      $('.loader').css({ display: 'none' });
+      if (FollowAnalyticsParams.body.topImage === null)
+        video.remove();
+    }
+
+    const templateText = $('#templateText');
     const newlineRegex = /(?:\r\n|\r|\n)/g;
-    templateBody.html(escapeHtml(FollowAnalyticsParams.body.text).replace(newlineRegex, '<br>'));
-    templateBody.css({
-      fontFamily: `'${FollowAnalyticsParams.body.font}'`,
-      fontSize: `${FollowAnalyticsParams.body.size}px`,
-      color: FollowAnalyticsParams.body.color,
+    templateText.html(escapeHtml(FollowAnalyticsParams.text.content).replace(newlineRegex, '<br>'));
+    templateText.css({
+      fontFamily: `'${FollowAnalyticsParams.text.font}'`,
+      fontSize: `${FollowAnalyticsParams.text.size}px`,
+      color: FollowAnalyticsParams.text.color,
     });
 
     const closeButtonContainer = $('#templateClose');
     closeButtonContainer.html(Assets.icoClose);
-    closeButtonContainer.find('svg').css({fill: FollowAnalyticsParams.close.color});
     closeButtonContainer.on('click', () => {
       if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
       FollowAnalytics.CurrentCampaign.close();
-      $('#popupTemplate').removeClass('.backdrop');
     });
 
     const templateButtons = $('#templateButtons');
@@ -97,22 +130,18 @@ $(window).on('load', () => {
             const deeplinkIframe = $(`
               <iframe
                 src="${faButton.deeplink_url}"
-                class="deeplinkFrame"
+                class="defaultTemplate__deeplinkFrame"
                 sandbox="allow-same-origin allow-scripts"
                 frameborder="0">
               </iframe>
             `);
             deeplinkIframe.on('load', () => {
               deeplinkIframe.css({'opacity': 1});
-              $('#popupTemplate').prepend(closeButtonContainer);
             });
-            $('#popupTemplate').prepend(deeplinkIframe);
+            defaultTemplate.append(deeplinkIframe);
           }
         }
-        else {
-          FollowAnalytics.CurrentCampaign.close();
-          $('#popupTemplate').removeClass('.backdrop');
-        }
+        else FollowAnalytics.CurrentCampaign.close();
       });
 
       buttonContainerHTML.append(buttonHTML);

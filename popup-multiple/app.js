@@ -4,23 +4,10 @@ import './css/main.scss';
 import './css/style.scss';
 import Assets from './assets/assets';
 import SwipeManager from './lib/swiper';
-import {
-  escapeHtml,
-  getIconDimensions,
-  hexToRgb,
-  handleConsoleMessage,
-} from './lib/utils';
+import {escapeHtml, getIconDimensions, hexToRgb, handleConsoleMessage} from './lib/utils';
 import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
 const setActivePage = (index) => {
-  const templateContainer = $('.multiFullcreenTemplate');
-  //Update container background as the same as active page
-  //to avoid color differences during page transition
-  const activePageBackground = FollowAnalyticsParams.pages[index].background.color;
-  templateContainer.css({
-    backgroundColor: activePageBackground
-  });
-
   $('.pageContainer').each((_idx, node) => {
     node.removeAttribute('class');
     node.className = 'pageContainer';
@@ -67,15 +54,15 @@ let lastPage = 0;
 
 $(window).on('load', () => {
   try {
-    const FollowAnalytics = new FA().getApi();
+    const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
     if (typeof FollowAnalyticsParams === 'undefined') {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
 
     // Global configs
-    const templateContainer = $('.multiFullcreenTemplate');
+    const templateContainer = $('.multiScreenTemplate');
     templateContainer.css({
-      fontFamily: FollowAnalyticsParams.global_params.font
+      fontFamily: FollowAnalyticsParams.global_params.font,
     });
 
     const pageSelector = $('<div class="pageSelector" />');
@@ -99,6 +86,7 @@ $(window).on('load', () => {
       const pageHtml = $('<div class="page" />');
       const pageContent = $('<div class="page__contents" />');
       pageHtml.append(pageContent);
+      pageHtml.append(pageSelector.clone(true, true));
       pageHtml.css({
         backgroundColor: page.background.color,
         backgroundImage: `url(${page.background.image})`,
@@ -118,6 +106,7 @@ $(window).on('load', () => {
         FollowAnalytics.CurrentCampaign.close();
         $('#popupTemplate').removeClass('backdrop');
       });
+      pageHtml.append(closeButtonHtml);
 
       // Uploaded image configs
       if (!!page.image.upload) {
@@ -211,9 +200,7 @@ $(window).on('load', () => {
       });
       pageContent.append(buttonsContainer);
 
-      pageContainer.append(closeButtonHtml);
       pageContainer.append(pageHtml);
-      pageContainer.append(pageSelector.clone(true, true));
       templateContainer.append(pageContainer);
     });
 

@@ -243,40 +243,6 @@
           ]
         },
         {
-          "name": "action",
-          "label": {
-            "en": "Action",
-            "fr": "Action"
-          },
-          "type": "group",
-          "inputs": [
-            {
-              "name": "enabled",
-              "label": {
-                "en": "Enabled",
-                "fr": "Activé"
-              },
-              "type": "boolean",
-              "default": false
-            },
-            {
-              "name": "color",
-              "label": {
-                "en": "Color",
-                "fr": "Couleur"
-              },
-              "type": "color",
-              "default": "#5C63AB"
-            },
-            {
-              "name": "deeplink_url",
-              "label": "Deeplink",
-              "type": "string",
-              "default": ""
-            }
-          ]
-        },
-        {
           "name": "close_button",
           "label": {
             "en": "Close Button",
