@@ -1,4 +1,8 @@
 {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/followanalytics/fa-templates"
+  },
   "dependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",
@@ -10,7 +14,7 @@
     "file-loader": "^2.0.0",
     "file-to-string-loader": "0.0.0",
     "jquery": "^3.4.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.4.5",
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -24,7 +28,7 @@
   "scripts": {
     "build": "npm run clean; webpack --mode=development --progress --verbose --colors --display-error-details --config webpack.config.base.js; npm run compress;",
     "build-prod": "npm run clean; webpack --mode=production --progress --verbose --colors --display-error-details --config webpack.config.base.js; npm run compress;",
-    "compress": "zip -r dist/survey-popup dist/",
+    "compress": "zip -r dist/popup-multiple dist/",
     "clean": "rm -rf dist"
   }
 }

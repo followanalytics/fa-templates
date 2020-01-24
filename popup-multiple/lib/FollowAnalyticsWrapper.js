@@ -1,3 +1,36 @@
+export class FollowAnalyticsWrapper {
+  constructor() {
+    if (FollowAnalyticsWrapper.instance) return FollowAnalyticsWrapper.instance;
+    else FollowAnalyticsWrapper.instance = this;
+
+    if (!window.FollowAnalytics) {
+      console.warn('Using mock API for SDK methods.');
+      this.FollowAnalytics = getMockFollowAnalyticsAPI();
+    }
+    else this.FollowAnalytics = window.FollowAnalytics;
+
+    if (!_.get(this.FollowAnalytics, 'CurrentCampaign')) {
+      this.FollowAnalytics.CurrentCampaign = window.CurrentCampaign;
+    }
+    if (!_.get(this.FollowAnalytics, 'UserAttributes')) {
+      this.FollowAnalytics.UserAttributes = window.UserAttributes;
+    }
+
+    return this;
+  }
+
+  static checkMinSdkVersion(minMajor = 0, minMinor = 0, minTertiary = 0) {
+    if (typeof this.instance.FollowAnalytics.getSDKVersion !== 'function') {
+      return false;
+    }
+    const sdkVersion = this.instance.FollowAnalytics.getSDKVersion();
+    const versionNums = _.split(sdkVersion, '.');
+    const [currentMajor, currentMinor] = versionNums;
+    const currentTertiary = _.split(versionNums[2], '-')[0];
+    return currentMajor >= minMajor && currentMinor >= minMinor && currentTertiary >= minTertiary;
+  }
+};
+
 const getMockFollowAnalyticsAPI = () => ({
   getUserId: function () {return null;},
   getDeviceId: function () {return 'PREVIEW_DEVICE_ID';},
@@ -124,38 +157,3 @@ const getMockFollowAnalyticsAPI = () => ({
     return !regexp.test(Object.prototype.toString.call(arg));
   }
 });
-
-export class FollowAnalyticsWrapper {
-  constructor() {
-    if (FollowAnalyticsWrapper.instance) return FollowAnalyticsWrapper.instance;
-    else FollowAnalyticsWrapper.instance = this;
-
-    if (typeof FollowAnalytics === 'undefined') {
-      this.api = getMockFollowAnalyticsAPI();
-      throw {severity: 'warning', message: 'Using mock version of FollowAnalytics SDK API'};
-    }
-    else {
-      this.api = FollowAnalytics;
-      // Fallback some of the API methods
-      if (!this.api.CurrentCampaign) {
-        this.api.CurrentCampaign = CurrentCampaign;
-      }
-      if (!this.api.UserAttributes) {
-        this.api.UserAttributes = UserAttributes;
-      }
-    }
-    return this;
-  }
-
-  getApi() {
-    return this.api;
-  }
-
-  static checkMinSdkVersion(minMajor = 0, minMinor = 0, minTertiary = 0) {
-    const sdkVersion = this.instance.api.getSDKVersion();
-    const versionNums = _.split(sdkVersion, '.');
-    const [currentMajor, currentMinor] = versionNums;
-    const currentTertiary = _.split(versionNums[2], '-')[0];
-    return currentMajor >= minMajor && currentMinor >= minMinor && currentTertiary >= minTertiary;
-  }
-};

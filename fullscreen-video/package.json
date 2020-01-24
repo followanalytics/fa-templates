@@ -28,7 +28,7 @@
   "scripts": {
     "build": "npm run clean; webpack --mode=development --progress --verbose --colors --display-error-details --config webpack.config.base.js; npm run compress;",
     "build-prod": "npm run clean; webpack --mode=production --progress --verbose --colors --display-error-details --config webpack.config.base.js; npm run compress;",
-    "compress": "zip -r dist/multi-screen-template dist/",
+    "compress": "zip -r dist/fullscreen-video dist/",
     "clean": "rm -rf dist"
   }
 }

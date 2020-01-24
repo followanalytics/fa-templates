@@ -1,0 +1,32 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/followanalytics/fa-templates"
+  },
+  "scripts": {
+    "fullscreen-basic": "cd fullscreen-basic && npm run build",
+    "fullscreen-basic-install": "cd fullscreen-basic && npm install",
+    "fullscreen-custom": "cd fullscreen-custom && npm run build",
+    "fullscreen-custom-install": "cd fullscreen-custom && npm install",
+    "fullscreen-eval-booster": "cd fullscreen-eval-booster && npm run build",
+    "fullscreen-eval-booster-install": "cd fullscreen-eval-booster && npm install",
+    "fullscreen-interstitial": "cd fullscreen-interstitial && npm run build",
+    "fullscreen-interstitial-install": "cd fullscreen-interstitial && npm install",
+    "fullscreen-multiple": "cd fullscreen-multiple && npm run build",
+    "fullscreen-multiple-install": "cd fullscreen-multiple && npm install",
+    "fullscreen-video": "cd fullscreen-video && npm run build",
+    "fullscreen-video-install": "cd fullscreen-video && npm install",
+    "popup-basic": "cd popup-basic && npm run build",
+    "popup-basic-install": "cd popup-basic && npm install",
+    "popup-custom": "cd popup-custom && npm run build",
+    "popup-custom-install": "cd popup-custom && npm install",
+    "popup-multiple": "cd popup-multiple && npm run build",
+    "popup-multiple-install": "cd popup-multiple && npm install",
+    "popup-one-image": "cd popup-one-image && npm run build",
+    "popup-one-image-install": "cd popup-one-image && npm install",
+    "popup-survey": "cd popup-survey && npm run build",
+    "popup-survey-install": "cd popup-survey && npm install",
+    "install-all": "npm run fullscreen-basic-install && npm run fullscreen-custom-install && npm run fullscreen-eval-booster-install && npm run fullscreen-interstitial-install && npm run fullscreen-multiple-install && npm run fullscreen-video-install && npm run popup-basic-install && npm run popup-custom-install && npm run popup-multiple-install && npm run popup-one-image-install && npm run popup-survey-install",
+    "build-all": "npm run fullscreen-basic && npm run fullscreen-custom && npm run fullscreen-eval-booster && npm run fullscreen-interstitial && npm run fullscreen-multiple && npm run fullscreen-video && npm run popup-basic && npm run popup-custom && npm run popup-multiple && npm run popup-one-image && npm run popup-survey"
+  }
+}
