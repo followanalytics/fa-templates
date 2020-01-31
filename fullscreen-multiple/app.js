@@ -67,7 +67,7 @@ let lastPage = 0;
 
 $(window).on('load', () => {
   try {
-    const FollowAnalytics = new FA().getApi();
+    const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
     if (typeof FollowAnalyticsParams === 'undefined') {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
