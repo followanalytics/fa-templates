@@ -9,7 +9,7 @@
       "en": "",
       "fr": ""
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
@@ -25,7 +25,7 @@
     {
       "name": "pages",
       "label": {
-        "en": "Questionnaire Pages",
+        "en": "Questionnaire Page",
         "fr": "Pages du questionnaire"
       },
       "type": "pages",

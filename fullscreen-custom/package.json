@@ -16,19 +16,20 @@
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
     "mini-css-extract-plugin": "^0.4.5",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "zip-a-folder": "0.0.10"
   },
   "scripts": {
     "build": "npm run clean; webpack --mode=development --progress --verbose --colors --display-error-details --config webpack.config.base.js; npm run compress;",
     "build-prod": "npm run clean; webpack --mode=production --progress --verbose --colors --display-error-details --config webpack.config.base.js; npm run compress;",
-    "compress": "zip -r dist/custom-fullscreen-template dist/",
+    "compress": "node zip-manager.js",
     "clean": "rm -rf dist"
   }
 }

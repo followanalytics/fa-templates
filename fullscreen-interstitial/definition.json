@@ -9,7 +9,7 @@
       "en": "Interstitial template is composed of an image to be displayed in fullscreen. It requires multiple image uploads for mobile phone and tablet portrait and landscape modes.",
       "fr": "Le template interstitiel est composé d'une image à afficher en plein écran. Il nécessite plusieurs téléchargements d'images pour les modes portrait et paysage de téléphone mobile et de tablette."
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "FollowAnalytics"
   },
   "sdk_options": {

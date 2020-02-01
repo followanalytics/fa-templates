@@ -9,7 +9,7 @@
       "en": "",
       "fr": ""
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
@@ -40,13 +40,34 @@
           "size": 50,
           "default": "Open Sans",
           "values": [
-            {"value": "Times", "caption": "Times"},
-            {"value": "Raleway", "caption": "Raleway"},
-            {"value": "Rockwell", "caption": "Rockwell"},
-            {"value": "Open Sans", "caption": "Open Sans"},
-            {"value": "Futura Bk", "caption": "Futura Book"},
-            {"value": "Tekton Pro", "caption": "Tekton Pro"},
-            {"value": "Montserrat", "caption": "Montserrat"}
+            {
+              "value": "Times",
+              "caption": "Times"
+            },
+            {
+              "value": "Raleway",
+              "caption": "Raleway"
+            },
+            {
+              "value": "Rockwell",
+              "caption": "Rockwell"
+            },
+            {
+              "value": "Open Sans",
+              "caption": "Open Sans"
+            },
+            {
+              "value": "Futura Bk",
+              "caption": "Futura Book"
+            },
+            {
+              "value": "Tekton Pro",
+              "caption": "Tekton Pro"
+            },
+            {
+              "value": "Montserrat",
+              "caption": "Montserrat"
+            }
           ]
         },
         {

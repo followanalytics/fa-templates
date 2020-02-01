@@ -9,7 +9,7 @@
       "en": "Basic pop up template with a background, title, body, action buttons and a library of icons. It doesn't require to upload any image.",
       "fr": "Pop up basique avec un arrière-plan, un titre, un corps, des buttons d’action et une bibliothèque d’icônes. Aucune image n'est requise pour ce template."
     },
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
