@@ -9,7 +9,7 @@
       "en": "",
       "fr": ""
     },
-    "version": "2.0.0",
+    "version": "2.0.1",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
@@ -779,11 +779,11 @@
             "upload": "./assets/images/sample-image.png"
           },
           "title": {
-            "text": "Thanks for your loyalty!",
+            "text": "Thank you for your feedback",
             "color": "#2F3676"
           },
           "body": {
-            "text": "Would you like to take a few seconds to rate us on the App store?",
+            "text": "Help us improve our app, leave a comment.",
             "color": "#5D5D5D"
           },
           "positive_answer_btn": {

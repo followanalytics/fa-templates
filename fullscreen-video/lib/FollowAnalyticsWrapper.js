@@ -40,12 +40,6 @@ const getMockFollowAnalyticsAPI = () => ({
   logError: function (name, arg) { // arg: undefined | null | string | object
     console.log('Followanalytics: Error logged, name:' + name + ' arg:' + arg);
   },
-  setData: function (key, value) {
-    console.log(`Setting value ${value} for data with key ${key}`);
-  },
-  getData: function (key) {
-    console.log(`Retrieving the value stored on key ${key}`);
-  },
   Gender: {
     MALE: 1,
     FEMALE: 2,
@@ -150,6 +144,12 @@ const getMockFollowAnalyticsAPI = () => ({
     },
     logAction: function (name) {
       console.log('Followanalytics: Action ' + name + ' is clicked!');
+    },
+    setData: function (key, value) {
+      console.log(`Setting value ${value} for data with key ${key}`);
+    },
+    getData: function (key) {
+      console.log(`Retrieving the value stored on key ${key}`);
     },
   },
   __wrong_type: function (arg, array_of_types) {
