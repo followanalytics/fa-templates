@@ -12,6 +12,10 @@ import {
 } from './lib/utils';
 import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
+const CURRENT_PAGE_KEY = 'currentPage';
+let currentPage = 0;
+let lastPage = 0;
+
 const setActivePage = (index) => {
   const templateContainer = $('.multiFullcreenTemplate');
   //Update container background as the same as active page
@@ -46,6 +50,12 @@ const setActivePage = (index) => {
       });
     }
   });
+
+  currentPage = index;
+  if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
+    console.log(`Save page: ${index}`);
+    FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, index);
+  }
 }
 
 const setUpSwipeCallbacks = (swipeManager) => {
@@ -62,12 +72,16 @@ const setUpSwipeCallbacks = (swipeManager) => {
   swipeManager.run();
 }
 
-let currentPage = 0;
-let lastPage = 0;
-
 $(window).on('load', () => {
   try {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
+    if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
+      const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
+      currentPage = savedPage || 0;
+      if (!_.isUndefined(savedPage)) {
+        console.log(`Fetched saved page: ${savedPage}`);
+      }
+    }
     if (typeof FollowAnalyticsParams === 'undefined') {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
@@ -82,7 +96,6 @@ $(window).on('load', () => {
     _.forEach(FollowAnalyticsParams.pages, (_page, index) => {
       const pageNode = $(`<div class="nodeContainer"><div id="node-${index}" class="node" /></div>`)
         .on('click', () => {
-          currentPage = index;
           setActivePage(index);
         });
       pageSelector.append(pageNode);
