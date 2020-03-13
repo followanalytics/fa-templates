@@ -6,6 +6,11 @@ import Assets from './assets/assets';
 import {escapeHtml, handleConsoleMessage} from './lib/utils';
 import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
+const CURRENT_PAGE_KEY = 'currentPage';
+let currentPage = 0;
+let totalPages = 0;
+let inappClosed = false;
+
 const setActivePage = (index) => {
   currentPage = index;
   $('.page').each((_idx, node) => {
@@ -18,15 +23,19 @@ const setActivePage = (index) => {
     if (i === index) page.addClass('page--current');
     if (i > index) page.addClass('page--next');
   }
-}
 
-let currentPage = 0;
-let totalPages = 0;
-let inappClosed = false;
+  if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
+    FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, newPage);
+  }
+}
 
 $(window).on('load', () => {
   try {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
+    if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
+      const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
+      currentPage = savedPage || 0;
+    }
     if (typeof FollowAnalyticsParams === 'undefined') {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
