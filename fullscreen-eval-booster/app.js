@@ -7,8 +7,7 @@ import {escapeHtml, handleConsoleMessage} from './lib/utils';
 import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
 const CURRENT_PAGE_KEY = 'currentPage';
-let currentPage = 'eval';
-let inappClosed = false;
+let currentPage = 'page-eval';
 
 const handleDeeplinkClick = (element) => {
   if (FollowAnalyticsWrapper.checkMinSdkVersion(6, 3, 0)) {
@@ -24,7 +23,7 @@ const handleDeeplinkClick = (element) => {
         </iframe>
       `);
     deeplinkIframe.on('load', () => {
-      deeplinkIframe.css({transform: 'scale(1)'});
+      deeplinkIframe.css({opacity: 1});
       // Wait for the animation of the iframe to end
       // Before showing the close button
       setTimeout(() => $(`#${currentPage}`).prepend(closeButtonHtml), 700);
@@ -68,7 +67,7 @@ $(window).on('load', () => {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
     if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
       const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
-      currentPage = savedPage || 'eval';
+      currentPage = savedPage || 'page-eval';
     }
     if (typeof FollowAnalyticsParams === 'undefined') {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
@@ -103,9 +102,16 @@ $(window).on('load', () => {
       },
     ];
     _.forEach(allPages, (pageObj) => {
+      const pageContainer = $(`<div id="${pageObj.id}" class="page" />`);
+      templateContainer.append(pageContainer);
+    });
+    // Pre-set current page
+    setActivePage(currentPage);
+
+    _.forEach(allPages, (pageObj) => {
       const page = pageObj.params;
       // Background config
-      const pageContainer = $(`<div id="${pageObj.id}" class="page" />`)
+      const pageContainer = $(`#${pageObj.id}`);
       pageContainer.css({backgroundColor: page.background.color});
 
       // Close button configs
@@ -113,15 +119,12 @@ $(window).on('load', () => {
       closeButtonHtml.html(Assets.icoClose);
       closeButtonHtml.find('svg').css({fill: page.close_button.color});
       closeButtonHtml.on('click', () => {
-        if (!inappClosed) {
-          if (FollowAnalytics.CurrentCampaign.logAction) {
-            FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: Dismiss`);
-          }
-          $('.deeplinkFrame').removeAttr('style');
-          $('body').removeClass('overlay');
-          $('body').find('.page__close').remove();
-          setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
+        if (FollowAnalytics.CurrentCampaign.logAction) {
+          FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: Dismiss`);
         }
+        $('.deeplinkFrame').removeAttr('style');
+        $('body').find('.page__close').remove();
+        FollowAnalytics.CurrentCampaign.close();
       });
       pageContainer.append(closeButtonHtml);
 
@@ -170,51 +173,21 @@ $(window).on('load', () => {
           if (currentPage !== 'page-eval' && btn.deeplink_url && btn.deeplink_url !== '') {
             handleDeeplinkClick(btn);
           }
-          else if (currentPage !== 'page-eval' && !inappClosed) {
-            inappClosed = true;
-            $('body').removeClass('overlay');
-            setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
+          else if (currentPage !== 'page-eval') {
+            FollowAnalytics.CurrentCampaign.close();
           }
           else {
             // Go to positive reply page
-            if (_.isEqual(btn, page.positive_answer_btn)) setActivePage(allPages[1].id);
+            if (_.isEqual(btn, page.positive_answer_btn)) setActivePage('page-pos');
             // Go to negative reply page
-            else setActivePage(allPages[2].id);
+            else setActivePage('page-neg');
           };
         });
         buttonsContainer.append(buttonHtml);
       });
-      // if (!page.action || !page.action.enabled) {
-      //   buttonsContainer.css({marginBottom: 'auto'});
-      // }
       pageInfoContainer.append(buttonsContainer);
-
-      // NOTE: Disabled for now
-      // if (page.action && page.action.enabled) {
-      //   const actionHtml = $(`<span class="page__info__action">${page.action.text}</span>`);
-      //   actionHtml.css({color: page.action.color});
-      //   actionHtml.on('click', () => {
-      //     if (FollowAnalytics && FollowAnalytics.CurrentCampaign.logAction) {
-      //       FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: ${page.action.text}`);
-      //     }
-      //     if (page.action.deeplink_url && page.action.deeplink_url !== '') {
-      //       handleDeeplinkClick(page.action);
-      //     }
-      //     else {
-      //       inappClosed = true;
-      //       $('body').removeClass('overlay');
-      //       setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
-      //     }
-      //   });
-      //   pageInfoContainer.append(actionHtml);
-      // }
-
       pageContainer.append(pageInfoContainer);
-      templateContainer.append(pageContainer);
     });
-
-    setActivePage(allPages[0].id);
-    setTimeout(() => $('body').addClass('overlay'), 400);
   }
   catch (e) {
     handleConsoleMessage(e);

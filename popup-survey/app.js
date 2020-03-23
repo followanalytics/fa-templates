@@ -9,10 +9,8 @@ import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 const CURRENT_PAGE_KEY = 'currentPage';
 let currentPage = 0;
 let totalPages = 0;
-let inappClosed = false;
 
 const setActivePage = (index) => {
-  currentPage = index;
   $('.page').each((_idx, node) => {
     node.removeAttribute('class');
     node.className = 'page';
@@ -24,8 +22,9 @@ const setActivePage = (index) => {
     if (i > index) page.addClass('page--next');
   }
 
+  currentPage = index;
   if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
-    FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, newPage);
+    FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, index);
   }
 }
 
@@ -49,8 +48,15 @@ $(window).on('load', () => {
     // Page configs
     const allPages = [...FollowAnalyticsParams.pages, ...FollowAnalyticsParams.final_page];
     _.forEach(allPages, (page, index) => {
+      const pageContainer = $(`<div id="page-${index}" class="page" />`);
+      templateContainer.append(pageContainer);
+    });
+    // Pre-set current page
+    setActivePage(currentPage);
+
+    _.forEach(allPages, (page, index) => {
       // Background config
-      const pageContainer = $(`<div id="page-${index}" class="page" />`)
+      const pageContainer = $(`#page-${index}`);
       pageContainer.css({backgroundColor: page.background.color});
 
       // Close button configs
@@ -58,15 +64,12 @@ $(window).on('load', () => {
       closeButtonHtml.html(Assets.icoClose);
       closeButtonHtml.find('svg').css({fill: page.close_button.color});
       closeButtonHtml.on('click', () => {
-        if (!inappClosed) {
-          if (FollowAnalytics.CurrentCampaign.logAction) {
-            FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1}: Dismiss`);
-          }
-          $('.deeplinkFrame').removeAttr('style');
-          $('body').removeClass('overlay');
-          $('body').find('.page__close').remove();
-          setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
+        if (FollowAnalytics.CurrentCampaign.logAction) {
+          FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1}: Dismiss`);
         }
+        $('.deeplinkFrame').removeAttr('style');
+        $('body').find('.page__close').remove();
+        FollowAnalytics.CurrentCampaign.close();
       });
       pageContainer.append(closeButtonHtml);
 
@@ -124,7 +127,7 @@ $(window).on('load', () => {
                 </iframe>
               `);
               deeplinkIframe.on('load', () => {
-                deeplinkIframe.css({transform: 'scale(1)'});
+                deeplinkIframe.css({opacity: 1});
                 // Wait for the animation of the iframe to end
                 // Before showing the close button
                 setTimeout(() => $('body').prepend(closeButtonHtml), 700);
@@ -132,10 +135,8 @@ $(window).on('load', () => {
               $('body').prepend(deeplinkIframe);
             }
           }
-          else if (currentPage === totalPages - 1 && !inappClosed) {
-            inappClosed = true;
-            $('body').removeClass('overlay');
-            setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
+          else if (currentPage === totalPages - 1) {
+            FollowAnalytics.CurrentCampaign.close();
           }
           // Otherwise go to next page
           else setActivePage(currentPage + 1);
@@ -149,12 +150,7 @@ $(window).on('load', () => {
       const pageNumberHtml = $(`<div class="page__pageNumber">${index + 1}/${totalPages}</div>`);
       pageNumberHtml.css({color: page.page_indicator.color});
       pageContainer.append(pageNumberHtml);
-
-      templateContainer.append(pageContainer);
     });
-
-    setActivePage(currentPage);
-    setTimeout(() => $('body').addClass('overlay'), 400);
   }
   catch (e) {
     handleConsoleMessage(e);

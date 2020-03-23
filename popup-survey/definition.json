@@ -9,13 +9,23 @@
       "en": "",
       "fr": ""
     },
-    "version": "2.0.1",
+    "version": "2.0.3",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
     "type": "popup",
     "window": {
       "timeout": 0
+    },
+    "animation": {
+      "entry": {
+        "delay": 0.5,
+        "effect": "fadeIn"
+      },
+      "exit": {
+        "delay": 0.5,
+        "effect": "fadeOut"
+      }
     },
     "close_button": {
       "appear_timeout": "never"
