@@ -47,7 +47,7 @@ $(window).on('load', () => {
 
     // Page configs
     const allPages = [...FollowAnalyticsParams.pages, ...FollowAnalyticsParams.final_page];
-    _.forEach(allPages, (page, index) => {
+    _.forEach(allPages, (_page, index) => {
       const pageContainer = $(`<div id="page-${index}" class="page" />`);
       templateContainer.append(pageContainer);
     });

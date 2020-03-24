@@ -51,6 +51,7 @@ body {
     max-height: 25vh;
     max-width: 100%;
     margin: 0 0 1em;
+    position: relative;
   }
 
   &__close {
@@ -70,6 +71,7 @@ body {
 
   &__info {
     overflow: auto;
+    position: relative;
     width: 100%;
 
     &__title,
@@ -106,7 +108,6 @@ body {
     bottom: 1em;
     font-weight: 600;
     left: 50%;
-    margin-top: 1em;
     position: absolute;
     text-align: center;
     transform: translateX(-50%);
@@ -161,40 +162,46 @@ body {
 
 @media only screen and (orientation: landscape) {
   .template {
+    justify-content: center;
+    align-items: unset;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
   }
 
   .page {
-    align-items: center;
     flex-direction: row;
-    height: calc(100% - 3em);
-    max-width: calc(100% - 3em);
-    padding: 2.5em;
-    width: max-content;
+    height: calc(100vh - 3em);
     left: 50%;
+    max-width: calc(100vw - 3em);
+    padding: 2.5em;
+    top: unset;
+    width: max-content;
 
     &--current {
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
     }
 
     &--previous {
-      transform: translate(calc(-300vw - 50%), -50%);
+      transform: translateX(calc(-300vw - 50%));
     }
 
     &--next {
-      transform: translate(calc(300vw - 50%), -50%);
+      transform: translateX(calc(300vw - 50%));
     }
 
     &__image {
+      margin: 0 1em 0 0;
       max-height: 100%;
       max-width: 25vw;
-      margin: 0 2em 0 0;
+      position: relative;
     }
 
     &__info {
       margin-bottom: 0;
       max-height: 100%;
+      max-width: calc(75vw - 12em);
+      position: relative;
+      width: auto;
 
       &__body,
       &__buttons {
@@ -210,7 +217,7 @@ body {
     }
 
     .page {
-      max-width: calc(100% - 3em - (2 * constant(safe-area-inset-top)));
+      max-width: calc(100vw - 3em - (2 * constant(safe-area-inset-top)));
     }
   }
 
@@ -221,7 +228,7 @@ body {
     }
 
     .page {
-      max-width: calc(100% - 3em - (2 * env(safe-area-inset-top)));
+      max-width: calc(100vw - 3em - (2 * env(safe-area-inset-top)));
     }
   }
 }
