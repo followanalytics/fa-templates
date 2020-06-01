@@ -33,7 +33,7 @@ $(window).on('load', () => {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
     if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
       const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
-      currentPage = savedPage || 0;
+      currentPage = parseInt(savedPage, 10) || 0;
     }
     if (typeof FollowAnalyticsParams === 'undefined') {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
