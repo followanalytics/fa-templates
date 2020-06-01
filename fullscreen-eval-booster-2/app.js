@@ -7,8 +7,7 @@ import {escapeHtml, handleConsoleMessage} from './lib/utils';
 import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
 const CURRENT_PAGE_KEY = 'currentPage';
-let currentPage = 'eval';
-let inappClosed = false;
+let currentPage = 'page-eval';
 
 const handleDeeplinkClick = (element) => {
   if (FollowAnalyticsWrapper.checkMinSdkVersion(6, 3, 0)) {
@@ -24,7 +23,7 @@ const handleDeeplinkClick = (element) => {
         </iframe>
       `);
     deeplinkIframe.on('load', () => {
-      deeplinkIframe.css({transform: 'scale(1)'});
+      deeplinkIframe.css({opacity: 1});
       // Wait for the animation of the iframe to end
       // Before showing the close button
       setTimeout(() => $(`#${currentPage}`).prepend(closeButtonHtml), 700);
@@ -71,7 +70,7 @@ $(window).on('load', () => {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
     if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
       const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
-      currentPage = savedPage || 'eval';
+      currentPage = savedPage || 'page-eval';
     }
     if (typeof FollowAnalyticsParams === 'undefined') {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
@@ -79,10 +78,20 @@ $(window).on('load', () => {
 
     // Global configs
     const templateContainer = $('.template');
-    templateContainer.css({
+    let templateContainerCss = {
       backgroundColor: FollowAnalyticsParams.global_params.background,
       fontFamily: FollowAnalyticsParams.global_params.font,
-    });
+    };
+    if (FollowAnalytics.View && FollowAnalytics.View.safeAreaInsets) {
+      templateContainerCss = {
+        ...templateContainerCss,
+        paddingTop: `calc(2em + ${FollowAnalytics.View.safeAreaInsets.top}px)`,
+        paddingBottom: `calc(2em + ${FollowAnalytics.View.safeAreaInsets.bottom}px)`,
+        paddingLeft: `calc(1em + ${FollowAnalytics.View.safeAreaInsets.left}px)`,
+        paddingRight: `calc(1em + ${FollowAnalytics.View.safeAreaInsets.right}px)`,
+      };
+    }
+    templateContainer.css(templateContainerCss);
 
     // Page configs
     const allPages = [
@@ -106,9 +115,16 @@ $(window).on('load', () => {
       },
     ];
     _.forEach(allPages, (pageObj) => {
+      const pageContainer = $(`<div id="${pageObj.id}" class="page" />`);
+      templateContainer.append(pageContainer);
+    });
+    // Pre-set current page
+    setActivePage(currentPage);
+
+    _.forEach(allPages, (pageObj) => {
       const page = pageObj.params;
       // Background config
-      const pageContainer = $(`<div id="${pageObj.id}" class="page" />`)
+      const pageContainer = $(`#${pageObj.id}`);
       if (pageObj.id === 'page-neg') {
         pageContainer.addClass('page--emailForm');
       }
@@ -116,18 +132,21 @@ $(window).on('load', () => {
 
       // Close button configs
       const closeButtonHtml = $('<div class="page__close">');
+      if (FollowAnalytics.View && FollowAnalytics.View.safeAreaInsets) {
+        closeButtonContainer.css({
+          right: `calc(1em + ${FollowAnalytics.View.safeAreaInsets.right}px)`,
+          top: `calc(.5em + ${FollowAnalytics.View.safeAreaInsets.top}px)`,
+        });
+      }
       closeButtonHtml.html(Assets.icoClose);
       closeButtonHtml.find('svg').css({fill: page.close_button.color});
       closeButtonHtml.on('click', () => {
-        if (!inappClosed) {
-          if (FollowAnalytics.CurrentCampaign.logAction) {
-            FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: Dismiss`);
-          }
-          $('.deeplinkFrame').removeAttr('style');
-          $('body').removeClass('overlay');
-          $('body').find('.page__close').remove();
-          setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
+        if (FollowAnalytics.CurrentCampaign.logAction) {
+          FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: Dismiss`);
         }
+        $('.deeplinkFrame').removeAttr('style');
+        $('body').find('.page__close').remove();
+        FollowAnalytics.CurrentCampaign.close();
       });
       pageContainer.append(closeButtonHtml);
 
@@ -182,16 +201,14 @@ $(window).on('load', () => {
           if (currentPage !== 'page-eval' && btn.deeplink_url && btn.deeplink_url !== '') {
             handleDeeplinkClick(btn);
           }
-          else if (currentPage !== 'page-eval' && !inappClosed) {
-            inappClosed = true;
-            $('body').removeClass('overlay');
-            setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
+          else if (currentPage !== 'page-eval') {
+            FollowAnalytics.CurrentCampaign.close();
           }
           else {
             // Go to positive reply page
-            if (_.isEqual(btn, page.positive_answer_btn)) setActivePage(allPages[1].id);
+            if (_.isEqual(btn, page.positive_answer_btn)) setActivePage('page-pos');
             // Go to negative reply page
-            else setActivePage(allPages[2].id);
+            else setActivePage('page-neg');
           };
         });
         buttonsContainer.append(buttonHtml);
@@ -212,21 +229,14 @@ $(window).on('load', () => {
           if (FollowAnalytics.CurrentCampaign.logAction) {
             FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: ${mailToButton.text}`);
           }
-          inappClosed = true;
-          $('body').removeClass('overlay');
-          setTimeout(() => FollowAnalytics.CurrentCampaign.close(), 700);
           window.location.href = `mailto:${encodeURIComponent(mailToButton.email_address)}?subject=${encodeURIComponent(mailToButton.email_subject)}&body=${encodeURIComponent(feedbackTextHtml.val())}`;
         });
         buttonsContainer.append(buttonHtml);
       }
+
       pageInfoContainer.append(buttonsContainer);
-
       pageContainer.append(pageInfoContainer);
-      templateContainer.append(pageContainer);
     });
-
-    setActivePage(allPages[0].id);
-    setTimeout(() => $('body').addClass('overlay'), 400);
   }
   catch (e) {
     handleConsoleMessage(e);
