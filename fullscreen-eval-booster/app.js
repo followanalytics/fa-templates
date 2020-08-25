@@ -8,6 +8,7 @@ import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
 const CURRENT_PAGE_KEY = 'currentPage';
 let currentPage = 'page-eval';
+let alreadyClosed = false;
 
 const handleDeeplinkClick = (element) => {
   if (FollowAnalyticsWrapper.checkMinSdkVersion(6, 3, 0)) {
@@ -119,12 +120,15 @@ $(window).on('load', () => {
       closeButtonHtml.html(Assets.icoClose);
       closeButtonHtml.find('svg').css({fill: page.close_button.color});
       closeButtonHtml.on('click', () => {
-        if (FollowAnalytics.CurrentCampaign.logAction) {
-          FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: Dismiss`);
+        if (!alreadyClosed) {
+          alreadyClosed = true;
+          if (FollowAnalytics.CurrentCampaign.logAction) {
+            FollowAnalytics.CurrentCampaign.logAction(`${pageObj.label}: Dismiss`);
+          }
+          $('.deeplinkFrame').removeAttr('style');
+          $('body').find('.page__close').remove();
+          FollowAnalytics.CurrentCampaign.close();
         }
-        $('.deeplinkFrame').removeAttr('style');
-        $('body').find('.page__close').remove();
-        FollowAnalytics.CurrentCampaign.close();
       });
       pageContainer.append(closeButtonHtml);
 
@@ -164,7 +168,7 @@ $(window).on('load', () => {
         });
 
         buttonHtml.on('click', () => {
-          if (page.buttonsDisabled) return;
+          if (alreadyClosed || page.buttonsDisabled) return;
           else page.buttonsDisabled = true;
 
           if (FollowAnalytics.CurrentCampaign.logAction) {
@@ -174,6 +178,7 @@ $(window).on('load', () => {
             handleDeeplinkClick(btn);
           }
           else if (currentPage !== 'page-eval') {
+            alreadyClosed = true;
             FollowAnalytics.CurrentCampaign.close();
           }
           else {
