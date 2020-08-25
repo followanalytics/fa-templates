@@ -13,6 +13,8 @@ $(window).on('load', () => {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
 
+    let alreadyClosed = false;
+
     const templateContainer = $('.defaultTemplate');
     templateContainer.css({backgroundColor: FollowAnalyticsParams.background.color});
 
@@ -50,8 +52,11 @@ $(window).on('load', () => {
     closeButtonContainer.html(Assets.icoClose);
     closeButtonContainer.find('svg').css({fill: FollowAnalyticsParams.close.color});
     closeButtonContainer.on('click', () => {
-      if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
-      FollowAnalytics.CurrentCampaign.close();
+      if (!alreadyClosed) {
+        alreadyClosed = true;
+        if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
+        FollowAnalytics.CurrentCampaign.close();
+      }
     });
 
     const templateButtons = $('#templateButtons');
@@ -78,6 +83,7 @@ $(window).on('load', () => {
       });
 
       buttonHTML.on('click', (_event) => {
+        if (alreadyClosed) return;
         if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction(faButton.text);
         if (faButton.deeplink_url !== '') {
           if (FollowAnalyticsWrapper.checkMinSdkVersion(6, 3, 0)) {
@@ -98,7 +104,10 @@ $(window).on('load', () => {
             templateContainer.append(deeplinkIframe);
           }
         }
-        else FollowAnalytics.CurrentCampaign.close();
+        else {
+          alreadyClosed = true;
+          FollowAnalytics.CurrentCampaign.close();
+        }
       });
 
       buttonContainerHTML.append(buttonHTML);

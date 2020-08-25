@@ -1,9 +1,3 @@
-/*Define max and min function */
-
-@function max($numbers...) {
-    @return m#{a}x(#{$numbers});
-}
-
 // Unused class, only to include the assets in the build
 #sampleBgs {
   background-image: url('../assets/images/sample-image-1.jpg');
@@ -42,11 +36,10 @@
 }
 
 .uploadedImage {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+  max-height: 33%;
+  width: 100%;
+  object-fit: cover;
   display: none;
-  flex: 1;
 }
 
 .defaultTemplate {
@@ -103,6 +96,15 @@
   }
 }
 
+@media only screen and (orientation: landscape) {
+  .uploadedImage {
+    max-height: unset;
+    height: 100%;
+    max-width: 33%;
+    object-fit: cover;
+  }
+}
+
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   .defaultTemplate .defaultTemplate__title,
@@ -127,10 +129,6 @@
   .defaultTemplate .defaultTemplate__body span {
     max-width: 500px;
   }
-
-  .uploadedImage {
-    flex: 1 1 30%;
-  }
 }
 
 @media only screen and (max-height: 599px) and (orientation: portrait) {
@@ -149,9 +147,6 @@
       flex-direction: column;
       justify-content: center;
     }
-  }
-  .uploadedImage {
-    flex: 1 1 15%;
   }
 }
 
@@ -177,32 +172,31 @@
 // iOS < 11.2
 @supports(padding-top: constant(safe-area-inset-top)) {
     html, body {
-        height: 100vh;
+      height: 100vh;
     }
     .defaultTemplate{
-      &__info {
-        padding-right: constant(safe-area-inset-right);
-      }
-      &__buttons {
-        margin-bottom: constant(safe-area-inset-bottom);
-      }
+      padding-top: calc(1em + constant(safe-area-inset-top));
+      padding-right: calc(1em + constant(safe-area-inset-right));
+      padding-bottom: calc(1em + constant(safe-area-inset-bottom));
+      padding-left: calc(1em + constant(safe-area-inset-left));
     }
 
     @media only screen and (orientation: portrait) {
       .customTemplateContainer{
         &__close{
-          top: constant(safe-area-inset-top);
+          top: calc(0.5em + constant(safe-area-inset-top));
+          right: calc(0.5em + constant(safe-area-inset-right));
         }
       }
     }
 
     // iPhone X
   @media only screen and (device-height: 812px) and (device-width: 375px){
-
     @media only screen and (orientation: portrait) {
       .customTemplateContainer{
         &__close{
-          right: calc(1em + constant(safe-area-inset-right));
+          top: calc(0.5em + constant(safe-area-inset-top));
+          right: calc(0.5em + constant(safe-area-inset-right));
         }
       }
     }
@@ -210,7 +204,8 @@
     @media only screen and (orientation: landscape) {
       .customTemplateContainer{
         &__close{
-          right: constant(safe-area-inset-right);
+          top: calc(0.5em + constant(safe-area-inset-top));
+          right: calc(0.5em + constant(safe-area-inset-right));
         }
       }
     }
@@ -218,22 +213,20 @@
 }
 
 // iOS >= 11.2
-@supports(padding: max(0px)) {
+@supports(padding: env(safe-area-inset-top)) {
     html, body {
-        height: 100vh;
+      height: 100vh;
     }
     .defaultTemplate{
-      &__info {
-        padding-right: env(safe-area-inset-right);
-      }
-      &__buttons {
-        margin-bottom: env(safe-area-inset-bottom);
-      }
+      padding-top: calc(1em + env(safe-area-inset-top));
+      padding-right: calc(1em + env(safe-area-inset-right));
+      padding-bottom: calc(1em + env(safe-area-inset-bottom));
+      padding-left: calc(1em + env(safe-area-inset-left));
     }
     .customTemplateContainer{
       &__close {
-        right: max(1em, env(safe-area-inset-right));
-        top: max(.5em, env(safe-area-inset-top));
+        right: calc(.5em + env(safe-area-inset-right));
+        top: calc(.5em + env(safe-area-inset-top));
       }
     }
 }

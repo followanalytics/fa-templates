@@ -13,6 +13,8 @@ $(window).on('load', () => {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
 
+    let alreadyClosed = false;
+
     const customTemplateContainer = $('.customTemplateContainer');
     if (FollowAnalyticsParams.background.image !== null) {
       customTemplateContainer.css({
@@ -43,10 +45,8 @@ $(window).on('load', () => {
 
     if (FollowAnalyticsParams.image.upload !== null) {
       const imageContainer = $('#uploadedImage');
-      imageContainer.css({
-        backgroundImage: `url(${FollowAnalyticsParams.image.upload})`,
-        display: 'flex',
-      });
+      imageContainer.attr('src', FollowAnalyticsParams.image.upload);
+      imageContainer.css({display: 'block'});
     }
     else {
       const titleContainer = $('.defaultTemplate__title');
@@ -57,8 +57,11 @@ $(window).on('load', () => {
     closeButtonContainer.html(Assets.icoClose);
     closeButtonContainer.find('svg').css({fill: FollowAnalyticsParams.close.color});
     closeButtonContainer.on('click', () => {
-      if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
-      FollowAnalytics.CurrentCampaign.close();
+      if (!alreadyClosed) {
+        alreadyClosed = true;
+        if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
+        FollowAnalytics.CurrentCampaign.close();
+      }
     });
 
     const templateButtons = $('#templateButtons');
@@ -85,6 +88,7 @@ $(window).on('load', () => {
       });
 
       buttonHTML.on('click', (_event) => {
+        if (alreadyClosed) return;
         if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction(faButton.text);
         if (faButton.deeplink_url !== '') {
           if (FollowAnalyticsWrapper.checkMinSdkVersion(6, 3, 0)) {
@@ -105,7 +109,10 @@ $(window).on('load', () => {
             customTemplateContainer.append(deeplinkIframe);
           }
         }
-        else FollowAnalytics.CurrentCampaign.close();
+        else {
+          alreadyClosed = true;
+          FollowAnalytics.CurrentCampaign.close();
+        }
       });
 
       buttonContainerHTML.append(buttonHTML);
