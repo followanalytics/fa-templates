@@ -12,13 +12,17 @@ $(window).on('load', () => {
     if (FollowAnalyticsParams.background.image !== null) {
       $('.defaultTemplate__image').attr('src', `${FollowAnalyticsParams.background.image}`);
 
+      let alreadyClosed = false;
       const closeButtonContainer = $('#templateClose');
       closeButtonContainer.html(Assets.icoClose);
       closeButtonContainer.find('svg').css({fill: FollowAnalyticsParams.close.color});
       closeButtonContainer.on('click', () => {
-        if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
-        FollowAnalytics.CurrentCampaign.close();
-        $('#popupTemplate').removeClass('backdrop');
+        if (!alreadyClosed) {
+          alreadyClosed = true;
+          if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
+          FollowAnalytics.CurrentCampaign.close();
+          $('#popupTemplate').removeClass('backdrop');
+        }
       });
     }
   }

@@ -73,6 +73,8 @@ $(window).on('load', () => {
       throw {severity: 'warning', message: 'Missing template parameters, shutting down.'};
     }
 
+    let alreadyClosed = false;
+
     // Global configs
     const templateContainer = $('.multiScreenTemplate');
     templateContainer.css({
@@ -114,11 +116,14 @@ $(window).on('load', () => {
       closeButtonHtml.html(Assets.icoClose);
       closeButtonHtml.find('svg').css({fill: page.close.color});
       closeButtonHtml.on('click', () => {
-        if (FollowAnalytics.CurrentCampaign.logAction) {
-          FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1} - Dismiss`);
+        if (!alreadyClosed) {
+          alreadyClosed = true;
+          if (FollowAnalytics.CurrentCampaign.logAction) {
+            FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1} - Dismiss`);
+          }
+          FollowAnalytics.CurrentCampaign.close();
+          $('#popupTemplate').removeClass('backdrop');
         }
-        FollowAnalytics.CurrentCampaign.close();
-        $('#popupTemplate').removeClass('backdrop');
       });
       pageHtml.append(closeButtonHtml);
 
@@ -180,6 +185,7 @@ $(window).on('load', () => {
         });
 
         buttonHtml.on('click', (_event) => {
+          if (alreadyClosed) return;
           if (FollowAnalytics.CurrentCampaign.logAction) {
             FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1} - ${btn.text}`);
           }
@@ -204,6 +210,7 @@ $(window).on('load', () => {
             }
           }
           else {
+            alreadyClosed = true;
             FollowAnalytics.CurrentCampaign.close();
             $('#popupTemplate').removeClass('backdrop');
           }

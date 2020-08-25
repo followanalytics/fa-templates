@@ -9,6 +9,7 @@ import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 const CURRENT_PAGE_KEY = 'currentPage';
 let currentPage = 0;
 let totalPages = 0;
+let alreadyClosed = false;
 
 const setActivePage = (index) => {
   $('.page').each((_idx, node) => {
@@ -64,12 +65,15 @@ $(window).on('load', () => {
       closeButtonHtml.html(Assets.icoClose);
       closeButtonHtml.find('svg').css({fill: page.close_button.color});
       closeButtonHtml.on('click', () => {
-        if (FollowAnalytics.CurrentCampaign.logAction) {
-          FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1}: Dismiss`);
+        if (!alreadyClosed) {
+          alreadyClosed = true;
+          if (FollowAnalytics.CurrentCampaign.logAction) {
+            FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1}: Dismiss`);
+          }
+          $('.deeplinkFrame').removeAttr('style');
+          $('body').find('.page__close').remove();
+          FollowAnalytics.CurrentCampaign.close();
         }
-        $('.deeplinkFrame').removeAttr('style');
-        $('body').find('.page__close').remove();
-        FollowAnalytics.CurrentCampaign.close();
       });
       pageContainer.append(closeButtonHtml);
 
@@ -109,6 +113,7 @@ $(window).on('load', () => {
         });
 
         buttonHtml.on('click', (_event) => {
+          if (alreadyClosed) return;
           if (FollowAnalytics.CurrentCampaign.logAction) {
             FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1}: ${btn.text}`);
           }
@@ -136,6 +141,7 @@ $(window).on('load', () => {
             }
           }
           else if (currentPage === totalPages - 1) {
+            alreadyClosed = true;
             FollowAnalytics.CurrentCampaign.close();
           }
           // Otherwise go to next page
