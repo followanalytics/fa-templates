@@ -9,7 +9,7 @@
       "en": "Basic fullscreen template with a background, title, body, action buttons and a library of icons. It doesn't require to upload any image.",
       "fr": "Template plein écran de base avec un arrière-plan, un titre, un corps, des boutons d’action et une bibliothèque d’icônes. Aucune image n'est requise pour ce template."
     },
-    "version": "2.0.1",
+    "version": "2.0.2",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
@@ -23,7 +23,7 @@
         "effect": "fadeIn"
       },
       "exit": {
-        "delay": 1.5,
+        "delay": 0.5,
         "effect": "fadeOut"
       }
     },

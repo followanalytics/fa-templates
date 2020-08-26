@@ -1,9 +1,3 @@
-/*Define max and min function */
-
-@function max($numbers...) {
-    @return m#{a}x(#{$numbers});
-}
-
 // Unused class, only to include the assets in the build
 #sampleBgs {
   background-image: url('../assets/images/interstitial_mobile_portrait.png');
@@ -20,6 +14,7 @@
   display: flex;
   flex-flow: column wrap;
   height: 100%;
+  overflow: hidden;
 
   &__close {
     cursor: pointer;
@@ -88,32 +83,24 @@
   }
 }
 
-// support for iOS with safe area not defined (iOS < 11)
-@supports (-webkit-overflow-scrolling: touch) {
-  .defaultTemplate__close {
-      right: 1em;
-      top: 1.5em;
-  }
-}
-
 // iOS < 11.2
 @supports(padding-top: constant(safe-area-inset-top)) {
     html, body {
-        height: 100vh;
+      height: 100%;
     }
     .defaultTemplate__close {
-        right: calc(1em + constant(safe-area-inset-right));
-        top: calc(.5em + constant(safe-area-inset-top));
+      right: calc(.5em + constant(safe-area-inset-right));
+      top: calc(.5em + constant(safe-area-inset-top));
     }
 }
 
 // iOS >= 11.2
-@supports(padding: max(0px)) {
+@supports(padding: env(safe-area-inset-top)) {
     html, body {
-        height: 100vh;
+      height: 100%;
     }
     .defaultTemplate__close {
-        right: max(1em, env(safe-area-inset-right));
-        top: max(.5em, env(safe-area-inset-top));
+      right: calc(.5em + env(safe-area-inset-right));
+      top: calc(.5em + env(safe-area-inset-top));
     }
 }

@@ -6,6 +6,8 @@ import Assets from 'assets/assets';
 import {handleConsoleMessage} from './lib/utils';
 import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
+let alreadyClosed = false;
+
 $(window).on('load', () => {
   try {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
@@ -42,12 +44,16 @@ $(window).on('load', () => {
     closeButtonContainer.html(Assets.icoClose);
     closeButtonContainer.find('svg').css({fill: FollowAnalyticsParams.close.color});
     closeButtonContainer.on('click', () => {
-      if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
-      FollowAnalytics.CurrentCampaign.close();
+      if (!alreadyClosed) {
+        alreadyClosed = true;
+        if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
+        FollowAnalytics.CurrentCampaign.close();
+      }
     });
 
     const deeplink_url = FollowAnalyticsParams.action.deeplink_url;
     const handleInterstitialClick = (_event) => {
+      if (alreadyClosed) return;
       if (deeplink_url !== '') {
         if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Deeplink');
         if (FollowAnalyticsWrapper.checkMinSdkVersion(6, 3, 0)) {
@@ -69,6 +75,7 @@ $(window).on('load', () => {
         }
       }
       else {
+        alreadyClosed = true;
         if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
         FollowAnalytics.CurrentCampaign.close();
       }

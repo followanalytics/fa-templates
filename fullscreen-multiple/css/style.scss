@@ -190,17 +190,6 @@ body#popupTemplate.backdrop {
   }
 }
 
-@media only screen and (min-width: 600px) and (max-height: 475px) {}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
-
 // support for iOS with safe area not defined (iOS < 11)
 @supports (-webkit-overflow-scrolling: touch) {
   @media only screen and (orientation: portrait) {
@@ -218,9 +207,6 @@ body#popupTemplate.backdrop {
 
 // iOS < 11.2
 @supports(padding-top: constant(safe-area-inset-top)) {
-  html, body {
-    height: 100vh;
-  }
   .multiFullcreenTemplate {
     .pageContainer {
       padding-left: constant(safe-area-inset-left);
@@ -232,7 +218,8 @@ body#popupTemplate.backdrop {
 
   @media only screen and (orientation: portrait) {
     .closeButton {
-      top: constant(safe-area-inset-top);
+      top: calc(.5em + constant(safe-area-inset-top));
+      right: calc(.5em + constant(safe-area-inset-right));
     }
   }
 
@@ -241,20 +228,22 @@ body#popupTemplate.backdrop {
 
     @media only screen and (orientation: portrait) {
       .closeButton {
-        right: calc(1em + constant(safe-area-inset-right));
+        top: calc(.5em + constant(safe-area-inset-top));
+        right: calc(.5em + constant(safe-area-inset-right));
       }
     }
 
     @media only screen and (orientation: landscape) {
       .closeButton {
-        right: constant(safe-area-inset-right);
+        top: calc(.5em + constant(safe-area-inset-top));
+        right: calc(.5em + constant(safe-area-inset-right));
       }
     }
 
     .multiFullcreenTemplate {
       .pageContainer {
         .pageSelector {
-          height: calc(1em + constant(safe-area-inset-bottom));
+          height: calc(30px + constant(safe-area-inset-bottom));
         }
       }
     }
@@ -263,9 +252,6 @@ body#popupTemplate.backdrop {
 
 // iOS >= 11.2
 @supports(padding: max(0px)) {
-  html, body {
-      height: 100vh;
-  }
   .multiFullcreenTemplate {
     .pageContainer {
       padding-left: env(safe-area-inset-left);
@@ -274,12 +260,12 @@ body#popupTemplate.backdrop {
       padding-bottom: env(safe-area-inset-bottom);
 
       .pageSelector {
-        height: max(30px, calc(1em + env(safe-area-inset-bottom)));
+        height: calc(30px + env(safe-area-inset-bottom));
       }
     }
   }
   .closeButton {
-      right: max(1em, env(safe-area-inset-right));
-      top: max(.5em, env(safe-area-inset-top));
+    right: calc(.5em + env(safe-area-inset-right));
+    top: calc(.5em + env(safe-area-inset-top));
   }
 }

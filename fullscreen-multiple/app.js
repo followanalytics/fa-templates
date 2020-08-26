@@ -15,6 +15,7 @@ import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 const CURRENT_PAGE_KEY = 'currentPage';
 let currentPage = 0;
 let lastPage = 0;
+let alreadyClosed = false;
 
 const setActivePage = (index) => {
   const templateContainer = $('.multiFullcreenTemplate');
@@ -125,11 +126,14 @@ $(window).on('load', () => {
       closeButtonHtml.html(Assets.icoClose);
       closeButtonHtml.find('svg').css({fill: page.close.color});
       closeButtonHtml.on('click', () => {
-        if (FollowAnalytics.CurrentCampaign.logAction) {
-          FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1} - Dismiss`);
+        if (!alreadyClosed) {
+          alreadyClosed = true;
+          if (FollowAnalytics.CurrentCampaign.logAction) {
+            FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1} - Dismiss`);
+          }
+          FollowAnalytics.CurrentCampaign.close();
+          $('#popupTemplate').removeClass('backdrop');
         }
-        FollowAnalytics.CurrentCampaign.close();
-        $('#popupTemplate').removeClass('backdrop');
       });
 
       // Uploaded image configs
@@ -190,6 +194,7 @@ $(window).on('load', () => {
         });
 
         buttonHtml.on('click', (_event) => {
+          if (alreadyClosed) return;
           if (FollowAnalytics.CurrentCampaign.logAction) {
             FollowAnalytics.CurrentCampaign.logAction(`Page ${index + 1} - ${btn.text}`);
           }
@@ -214,6 +219,7 @@ $(window).on('load', () => {
             }
           }
           else {
+            alreadyClosed = true;
             FollowAnalytics.CurrentCampaign.close();
             $('#popupTemplate').removeClass('backdrop');
           }

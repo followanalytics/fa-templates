@@ -6,6 +6,8 @@ import Assets from './assets/assets';
 import {escapeHtml, handleConsoleMessage} from './lib/utils';
 import {FollowAnalyticsWrapper} from './lib/FollowAnalyticsWrapper';
 
+let alreadyClosed = false;
+
 $(window).on('load', () => {
   try {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
@@ -93,8 +95,11 @@ $(window).on('load', () => {
     const closeButtonContainer = $('#templateClose');
     closeButtonContainer.html(Assets.icoClose);
     closeButtonContainer.on('click', () => {
-      if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
-      FollowAnalytics.CurrentCampaign.close();
+      if (!alreadyClosed) {
+        alreadyClosed = true;
+        if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction('Dismiss');
+        FollowAnalytics.CurrentCampaign.close();
+      }
     });
 
     const templateButtons = $('#templateButtons');
@@ -121,6 +126,7 @@ $(window).on('load', () => {
       });
 
       buttonHTML.on('click', (_event) => {
+        if (alreadyClosed) return;
         if (FollowAnalytics.CurrentCampaign.logAction) FollowAnalytics.CurrentCampaign.logAction(faButton.text);
         if (faButton.deeplink_url !== '') {
           if (FollowAnalyticsWrapper.checkMinSdkVersion(6, 3, 0)) {
@@ -141,7 +147,10 @@ $(window).on('load', () => {
             defaultTemplate.append(deeplinkIframe);
           }
         }
-        else FollowAnalytics.CurrentCampaign.close();
+        else {
+          alreadyClosed = true;
+          FollowAnalytics.CurrentCampaign.close();
+        }
       });
 
       buttonContainerHTML.append(buttonHTML);
