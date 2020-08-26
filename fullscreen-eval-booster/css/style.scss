@@ -35,11 +35,11 @@ body {
   }
 
   &--previous {
-    transform: translateX(-300vw);
+    transform: translateX(-300%);
   }
 
   &--next {
-    transform: translateX(300vw);
+    transform: translateX(300%);
   }
 
   &__image {
