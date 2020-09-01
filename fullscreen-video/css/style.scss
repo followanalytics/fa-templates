@@ -34,8 +34,8 @@
   &__close {
     cursor: pointer;
     position: absolute;
-    right: 0.5em;
-    top: 0.5em;
+    right: 1em;
+    top: 1em;
     z-index: 2;
     color: #ffffff;
     svg {
@@ -202,34 +202,28 @@
 
 // iOS < 11.2
 @supports(padding-top: constant(safe-area-inset-top)) {
-    html, body {
-        height: 100vh;
-    }
-    .defaultTemplate {
-        padding-left: calc(1em + constant(safe-area-inset-left));
-        padding-right: calc(1em + constant(safe-area-inset-right));
-        padding-top: calc(2em + constant(safe-area-inset-top));
-        padding-bottom: calc(2em + constant(safe-area-inset-bottom));
-    }
-    .defaultTemplate__close {
-        right: calc(1em + constant(safe-area-inset-right));
-        top: calc(.5em + constant(safe-area-inset-top));
-    }
+  .defaultTemplate {
+    padding-left: calc(1em + constant(safe-area-inset-left));
+    padding-right: calc(1em + constant(safe-area-inset-right));
+    padding-top: calc(2em + constant(safe-area-inset-top));
+    padding-bottom: calc(2em + constant(safe-area-inset-bottom));
+  }
+  .defaultTemplate__close {
+    right: calc(1em + constant(safe-area-inset-right));
+    top: calc(1em + constant(safe-area-inset-top));
+  }
 }
 
 // iOS >= 11.2
 @supports(padding: max(0px)) {
-    html, body {
-        height: 100vh;
-    }
-    .defaultTemplate {
-        padding-left: max(1em, env(safe-area-inset-left));
-        padding-right: max(1em, env(safe-area-inset-right));
-        padding-top: max(2em, env(safe-area-inset-top));
-        padding-bottom: max(2em, env(safe-area-inset-bottom));
-    }
-    .defaultTemplate__close {
-        right: max(1em, env(safe-area-inset-right));
-        top: max(.5em, env(safe-area-inset-top));
-    }
+  .defaultTemplate {
+    padding-left: max(1em, env(safe-area-inset-left));
+    padding-right: max(1em, env(safe-area-inset-right));
+    padding-top: max(2em, env(safe-area-inset-top));
+    padding-bottom: max(2em, env(safe-area-inset-bottom));
+  }
+  .defaultTemplate__close {
+    right: max(1em, env(safe-area-inset-right));
+    top: max(1em, env(safe-area-inset-top));
+  }
 }

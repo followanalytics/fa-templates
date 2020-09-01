@@ -24,7 +24,6 @@ body#popupTemplate.backdrop {
   position: relative;
 
   .pageContainer {
-    box-shadow: 0 0 10px 1px rgba(71, 71, 71, 0.5);
     box-sizing: border-box;
     display: flex;
     opacity: 1;
@@ -62,7 +61,7 @@ body#popupTemplate.backdrop {
       justify-content: center;
       margin-left: 0;
       overflow: hidden;
-      padding: 30px 1em 35px;
+      padding: 1em 1em 2em;
       position: relative;
 
       &__contents {
@@ -133,7 +132,7 @@ body#popupTemplate.backdrop {
       bottom: 0;
       box-sizing: border-box;
       display: flex;
-      height: 30px;
+      height: 25px;
       justify-content: center;
       padding-top: 2px;
       position: absolute;
@@ -168,8 +167,8 @@ body#popupTemplate.backdrop {
 .closeButton {
   cursor: pointer;
   position: absolute;
-  right: 0.5em;
-  top: 0.5em;
+  right: 1em;
+  top: 1em;
   z-index: 2;
 
   svg {
@@ -190,36 +189,21 @@ body#popupTemplate.backdrop {
   }
 }
 
-// support for iOS with safe area not defined (iOS < 11)
-@supports (-webkit-overflow-scrolling: touch) {
-  @media only screen and (orientation: portrait) {
-    .closeButton {
-      top: 1.5em;
-    }
-  }
-  /* Medium devices (tablets, 768px and up) */
-  @media only screen and (min-device-width: 768px) {
-    .closeButton {
-      top: 1.5em;
-    }
-  }
-}
-
 // iOS < 11.2
 @supports(padding-top: constant(safe-area-inset-top)) {
   .multiFullcreenTemplate {
     .pageContainer {
-      padding-left: constant(safe-area-inset-left);
-      padding-right: constant(safe-area-inset-right);
-      padding-top: constant(safe-area-inset-top);
-      padding-bottom: constant(safe-area-inset-bottom);
+      padding-left: calc(1em + constant(safe-area-inset-left));
+      padding-right: calc(1em + constant(safe-area-inset-right));
+      padding-top: calc(1em + constant(safe-area-inset-top));
+      padding-bottom: calc(1em + constant(safe-area-inset-bottom));
     }
   }
 
   @media only screen and (orientation: portrait) {
     .closeButton {
-      top: calc(.5em + constant(safe-area-inset-top));
-      right: calc(.5em + constant(safe-area-inset-right));
+      top: calc(1em + constant(safe-area-inset-top));
+      right: calc(1em + constant(safe-area-inset-right));
     }
   }
 
@@ -228,15 +212,15 @@ body#popupTemplate.backdrop {
 
     @media only screen and (orientation: portrait) {
       .closeButton {
-        top: calc(.5em + constant(safe-area-inset-top));
-        right: calc(.5em + constant(safe-area-inset-right));
+        top: calc(1em + constant(safe-area-inset-top));
+        right: calc(1em + constant(safe-area-inset-right));
       }
     }
 
     @media only screen and (orientation: landscape) {
       .closeButton {
-        top: calc(.5em + constant(safe-area-inset-top));
-        right: calc(.5em + constant(safe-area-inset-right));
+        top: calc(1em + constant(safe-area-inset-top));
+        right: calc(1em + constant(safe-area-inset-right));
       }
     }
 
@@ -254,10 +238,10 @@ body#popupTemplate.backdrop {
 @supports(padding: max(0px)) {
   .multiFullcreenTemplate {
     .pageContainer {
-      padding-left: env(safe-area-inset-left);
-      padding-right: env(safe-area-inset-right);
-      padding-top: env(safe-area-inset-top);
-      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: calc(1em + env(safe-area-inset-left));
+      padding-right: calc(1em + env(safe-area-inset-right));
+      padding-top: calc(1em + env(safe-area-inset-top));
+      padding-bottom: calc(1em + env(safe-area-inset-bottom));
 
       .pageSelector {
         height: calc(30px + env(safe-area-inset-bottom));
@@ -265,7 +249,7 @@ body#popupTemplate.backdrop {
     }
   }
   .closeButton {
-    right: calc(.5em + env(safe-area-inset-right));
-    top: calc(.5em + env(safe-area-inset-top));
+    right: calc(1em + env(safe-area-inset-right));
+    top: calc(1em + env(safe-area-inset-top));
   }
 }

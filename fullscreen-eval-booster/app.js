@@ -33,39 +33,40 @@ const handleDeeplinkClick = (element) => {
   }
 };
 
-const setActivePage = (newPage) => {
-  $('.page').each((_idx, pageNode) => {
-    const pageId = pageNode.getAttribute('id');
-    pageNode.removeAttribute('class');
-    pageNode.className = 'page';
-    switch (pageId) {
-      case 'page-eval': {
-        if (newPage !== pageId) {
-          pageNode.classList.add('page--previous');
-        }
-        else pageNode.classList.add('page--current');
-        break;
-      }
-      case 'page-pos':
-      case 'page-neg':
-        if (newPage === pageId) {
-          pageNode.classList.add('page--current');
-        }
-        else {
-          pageNode.classList.add('page--next');
-        }
-    }
-  });
-
-  currentPage = newPage;
-  if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
-    FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, newPage);
-  }
-};
-
 $(window).on('load', () => {
   try {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
+
+    const setActivePage = (newPage) => {
+      $('.page').each((_idx, pageNode) => {
+        const pageId = pageNode.getAttribute('id');
+        pageNode.removeAttribute('class');
+        pageNode.className = 'page';
+        switch (pageId) {
+          case 'page-eval': {
+            if (newPage !== pageId) {
+              pageNode.classList.add('page--previous');
+            }
+            else pageNode.classList.add('page--current');
+            break;
+          }
+          case 'page-pos':
+          case 'page-neg':
+            if (newPage === pageId) {
+              pageNode.classList.add('page--current');
+            }
+            else {
+              pageNode.classList.add('page--next');
+            }
+        }
+      });
+
+      currentPage = newPage;
+      if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
+        FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, newPage);
+      }
+    };
+
     if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
       const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
       currentPage = savedPage || 'page-eval';

@@ -14,8 +14,8 @@
   &__close {
     cursor: pointer;
     position: absolute;
-    right: 0.5em;
-    top: 0.5em;
+    right: 1em;
+    top: 1em;
     z-index: 2;
 
     svg {
@@ -155,7 +155,7 @@
   @media only screen and (orientation: portrait) {
     .customTemplateContainer{
       &__close {
-        top: 1.5em;
+        top: 1em;
       }
     }
   }
@@ -163,7 +163,7 @@
   @media only screen and (min-device-width: 768px) {
     .customTemplateContainer{
       &__close {
-        top: 1.5em;
+        top: 1em;
       }
     }
   }
@@ -171,9 +171,6 @@
 
 // iOS < 11.2
 @supports(padding-top: constant(safe-area-inset-top)) {
-    html, body {
-      height: 100vh;
-    }
     .defaultTemplate{
       padding-top: calc(1em + constant(safe-area-inset-top));
       padding-right: calc(1em + constant(safe-area-inset-right));
@@ -184,8 +181,8 @@
     @media only screen and (orientation: portrait) {
       .customTemplateContainer{
         &__close{
-          top: calc(0.5em + constant(safe-area-inset-top));
-          right: calc(0.5em + constant(safe-area-inset-right));
+          top: calc(1em + constant(safe-area-inset-top));
+          right: calc(1em + constant(safe-area-inset-right));
         }
       }
     }
@@ -195,8 +192,8 @@
     @media only screen and (orientation: portrait) {
       .customTemplateContainer{
         &__close{
-          top: calc(0.5em + constant(safe-area-inset-top));
-          right: calc(0.5em + constant(safe-area-inset-right));
+          top: calc(1em + constant(safe-area-inset-top));
+          right: calc(1em + constant(safe-area-inset-right));
         }
       }
     }
@@ -204,8 +201,8 @@
     @media only screen and (orientation: landscape) {
       .customTemplateContainer{
         &__close{
-          top: calc(0.5em + constant(safe-area-inset-top));
-          right: calc(0.5em + constant(safe-area-inset-right));
+          top: calc(1em + constant(safe-area-inset-top));
+          right: calc(1em + constant(safe-area-inset-right));
         }
       }
     }
@@ -214,9 +211,6 @@
 
 // iOS >= 11.2
 @supports(padding: env(safe-area-inset-top)) {
-    html, body {
-      height: 100vh;
-    }
     .defaultTemplate{
       padding-top: calc(1em + env(safe-area-inset-top));
       padding-right: calc(1em + env(safe-area-inset-right));
@@ -225,8 +219,8 @@
     }
     .customTemplateContainer{
       &__close {
-        right: calc(.5em + env(safe-area-inset-right));
-        top: calc(.5em + env(safe-area-inset-top));
+        right: calc(1em + env(safe-area-inset-right));
+        top: calc(1em + env(safe-area-inset-top));
       }
     }
 }

@@ -1,3 +1,7 @@
+@function max($numbers...) {
+  @return m#{a}x(#{$numbers});
+}
+
 body {
   background-color: transparent;
   box-sizing: border-box;
@@ -11,7 +15,6 @@ body {
 
 .template {
   height: 100%;
-  overflow: hidden;
   padding-top: 25vh;
   position: relative;
   width: 100%;
@@ -22,7 +25,8 @@ body {
   align-items: flex-end;
   box-sizing: border-box;
   display: flex;
-  padding: 7em 3em 2em;
+  padding: 5em 3em;
+  padding-bottom: 2em;
   height: 75%;
   width: 100%;
   opacity: 0;
@@ -56,7 +60,7 @@ body {
     height: 1em;
     position: absolute;
     right: 1em;
-    top: calc(1em - 33.3%);
+    top: calc(1em - 25vh);
     width: 1em;
     z-index: 2;
 
@@ -207,7 +211,7 @@ body {
 
     &--emailForm {
       margin-top: 0;
-      margin-left: -25vw;
+      margin-left: -20vw;
       padding: 2em;
       width: 100%;
 
@@ -274,6 +278,80 @@ body {
       &__title,
       &__body {
         max-width: 400px;
+      }
+    }
+  }
+}
+
+@supports(padding-top: env(safe-area-inset-top)) {
+  .page {
+    padding-bottom: calc(2em + env(safe-area-inset-bottom));
+
+    &__close {
+      top: calc(1em + env(safe-area-inset-top) - 25vh);
+    }
+
+    &--emailForm {
+      padding-top: calc(2em + env(safe-area-inset-top));
+      padding-bottom: calc(2em + env(safe-area-inset-bottom));
+
+      .page__close {
+        top: calc(1em + env(safe-area-inset-top));
+      }
+    }
+  }
+
+  @media only screen and (orientation: landscape) {
+    .page {
+      padding-right: calc(3em + env(safe-area-inset-right));
+
+      &__close {
+        top: calc(1em + env(safe-area-inset-top));
+        right: calc(1em + env(safe-area-inset-right));
+      }
+
+      &--emailForm {
+        margin-top: 0;
+        margin-left: -25vw;
+        padding-left: calc(2em + env(safe-area-inset-left));
+        padding-right: calc(2em + env(safe-area-inset-right));
+      }
+    }
+  }
+}
+
+@supports(padding-top: constant(safe-area-inset-top)) {
+  .page {
+    padding-bottom: max(2em, constant(safe-area-inset-bottom));
+
+    &__close {
+      top: calc(1em + constant(safe-area-inset-top) - 25vh);
+    }
+
+    &--emailForm {
+      padding-top: calc(2em + constant(safe-area-inset-top));
+      padding-bottom: calc(2em + constant(safe-area-inset-bottom));
+
+      .page__close {
+        top: calc(1em + constant(safe-area-inset-top));
+      }
+    }
+  }
+
+  @media only screen and (orientation: landscape) {
+    .page {
+      padding-right: calc(3em + constant(safe-area-inset-right));
+
+      &__close {
+        top: calc(1em + constant(safe-area-inset-top));
+        right: calc(1em + constant(safe-area-inset-right));
+      }
+
+      &--emailForm {
+        margin-top: 0;
+        margin-left: -25vw;
+        padding-left: calc(2em + constant(safe-area-inset-left));
+        padding-right: calc(2em + constant(safe-area-inset-right));
       }
     }
   }

@@ -19,8 +19,6 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   line-height: 1;
 }
 
@@ -44,7 +42,10 @@ table {
 }
 
 html, body {
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
 }
 
 body {
@@ -68,102 +69,4 @@ a {
   display: block;
   font-size: 16px;
   text-decoration: none;
-}
-
-.buttonGrid {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: auto;
-
-  .buttonCell {
-    flex: 0 0 100%;
-    margin-bottom: 0.5em;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    .actionButton {
-      align-items: center;
-      border-radius: 2px;
-      cursor: pointer;
-      display: flex;
-      flex: 0 0 100%;
-      justify-content: center;
-      line-height: 20px;
-      padding: 10px;
-      text-align: center;
-      word-break: break-word;
-    }
-  }
-
-  &--withMargins {
-    &> .buttonCell {
-      flex: 1;
-      margin-bottom: 0;
-      margin-left: 0.5em;
-
-      &:last-child {
-        margin-left: 0;
-      }
-    }
-  }
-
-  &--full {
-    flex-direction: column;
-    justify-content: normal;
-
-    &> .buttonCell {
-      width: 100%;
-    }
-  }
-}
-
-@media only screen and (orientation: landscape) {
-  .buttonGrid {
-    margin-bottom: auto;
-  }
-}
-
-/* Small phones landscape */
-@media only screen and (max-height: 399px) {
-  .buttonGrid {
-    &.buttonGrid--full {
-      flex-direction: row-reverse;
-      justify-content: center;
-
-      &> .buttonCell {
-        flex: 1;
-        margin-bottom: 0;
-        margin-left: 0.5em;
-
-        &:last-child {
-          margin-left: 0;
-        }
-      }
-    }
-  }
-}
-
-/* Tablet (medium) screens */
-@media (min-width: 600px) {
-  .buttonCell {
-    max-width: 250px;
-  }
-}
-
-@media only screen and (min-width: 600px) and (min-height: 500px) {
-  .buttonGrid {
-    margin-top: 3em;
-    margin-bottom: auto;
-  }
-}
-
-/* Large screens */
-@media (min-width: 960px) {
-  .buttonGrid--withMargins > .buttonCell {
-    flex: 1;
-  }
 }
