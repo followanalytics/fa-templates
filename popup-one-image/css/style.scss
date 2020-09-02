@@ -3,8 +3,15 @@
   background-image: url('../assets/images/sample-image-1.png');
 }
 
-body#popupTemplate.backdrop {
-  background-color: rgba(0, 0, 0, 0.55);
+body#popupTemplate {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+
+  &.backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+  }
 }
 
 .defaultTemplate {
@@ -12,18 +19,18 @@ body#popupTemplate.backdrop {
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-  margin: auto 1em;
+  margin: auto 0;
   position: relative;
   height: auto;
-  width: 100vw;
-  max-height: calc(100vh - 2em);
-  max-width: calc(100vw - 2em);
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
 
   &__image {
     box-shadow: 0 0 10px 1px rgba(71,71,71,0.5);
     border-radius: 10px;
     position: relative;
-    width: calc(100vw - 2em);
+    width: 100%;
   }
 
   &__close {
@@ -42,14 +49,35 @@ body#popupTemplate.backdrop {
 
 @media (orientation: landscape) {
   .defaultTemplate {
-    margin: auto;
+    height: 100%;
+    margin: 0 auto;
     width: auto;
   }
 
   .defaultTemplate__image {
-    height: 100vh;
-    max-height: calc(100vh - 2em);
-    max-width: calc(100vw - 2em);
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
     width: auto;
+  }
+}
+
+// iOS < 11.2
+@supports(padding-top: constant(safe-area-inset-top)) {
+  body#popupTemplate {
+    padding-top: calc(1em + constant(safe-area-inset-top));
+    padding-bottom: calc(1em + constant(safe-area-inset-bottom));
+    padding-left: calc(1em + constant(safe-area-inset-left));
+    padding-right: calc(1em + constant(safe-area-inset-right));
+  }
+}
+
+// iOS >= 11.2
+@supports(padding-top: env(safe-area-inset-top)) {
+  body#popupTemplate {
+    padding-top: calc(1em + env(safe-area-inset-top));
+    padding-bottom: calc(1em + env(safe-area-inset-bottom));
+    padding-left: calc(1em + env(safe-area-inset-left));
+    padding-right: calc(1em + env(safe-area-inset-right));
   }
 }

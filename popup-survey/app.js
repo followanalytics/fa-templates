@@ -11,27 +11,28 @@ let currentPage = 0;
 let totalPages = 0;
 let alreadyClosed = false;
 
-const setActivePage = (index) => {
-  $('.page').each((_idx, node) => {
-    node.removeAttribute('class');
-    node.className = 'page';
-  });
-  for (let i = 0; i < totalPages; i++) {
-    const page = $(`#page-${i}`);
-    if (i < index) page.addClass('page--previous');
-    if (i === index) page.addClass('page--current');
-    if (i > index) page.addClass('page--next');
-  }
-
-  currentPage = index;
-  if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
-    FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, index);
-  }
-}
-
 $(window).on('load', () => {
   try {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
+
+    const setActivePage = (index) => {
+      $('.page').each((_idx, node) => {
+        node.removeAttribute('class');
+        node.className = 'page';
+      });
+      for (let i = 0; i < totalPages; i++) {
+        const page = $(`#page-${i}`);
+        if (i < index) page.addClass('page--previous');
+        if (i === index) page.addClass('page--current');
+        if (i > index) page.addClass('page--next');
+      }
+
+      currentPage = index;
+      if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
+        FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, index);
+      }
+    }
+
     if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
       const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
       currentPage = parseInt(savedPage, 10) || 0;

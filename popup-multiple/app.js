@@ -11,57 +11,58 @@ const CURRENT_PAGE_KEY = 'currentPage';
 let currentPage = 0;
 let lastPage = 0;
 
-const setActivePage = (index) => {
-  $('.pageContainer').each((_idx, node) => {
-    node.removeAttribute('class');
-    node.className = 'pageContainer';
-  });
-  for (let i = 0; i <= lastPage; i++) {
-    const page = $(`#page-${i}`);
-    if (i < index) page.addClass('pageContainer--previous');
-    if (i === index) page.addClass('pageContainer--current');
-    if (i > index) page.addClass('pageContainer--next');
-  }
-
-  $('.node').each((_idx, node) => {
-    node.removeAttribute('style');
-    const rgbaColor = hexToRgb(FollowAnalyticsParams.global_params.page_selector_color);
-    if (node.getAttribute('id') === `node-${index}`) {
-      $(node).css({
-        backgroundColor: FollowAnalyticsParams.global_params.page_selector_color,
-      });
-    }
-    else {
-      $(node).css({
-        backgroundColor: `rgba(${rgbaColor.r}, ${rgbaColor.g}, ${rgbaColor.b}, 0.4)`,
-      });
-    }
-  });
-
-  currentPage = index;
-  if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
-    console.log(`Save page: ${index}`);
-    FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, index);
-  }
-}
-
-const setUpSwipeCallbacks = (swipeManager) => {
-  swipeManager.onLeft(() => {
-    if (currentPage < lastPage) {
-      setActivePage(++currentPage);
-    }
-  });
-  swipeManager.onRight(() => {
-    if (currentPage > 0) {
-      setActivePage(--currentPage);
-    }
-  });
-  swipeManager.run();
-}
-
 $(window).on('load', () => {
   try {
     const FollowAnalytics = new FollowAnalyticsWrapper().FollowAnalytics;
+
+    const setActivePage = (index) => {
+      $('.pageContainer').each((_idx, node) => {
+        node.removeAttribute('class');
+        node.className = 'pageContainer';
+      });
+      for (let i = 0; i <= lastPage; i++) {
+        const page = $(`#page-${i}`);
+        if (i < index) page.addClass('pageContainer--previous');
+        if (i === index) page.addClass('pageContainer--current');
+        if (i > index) page.addClass('pageContainer--next');
+      }
+
+      $('.node').each((_idx, node) => {
+        node.removeAttribute('style');
+        const rgbaColor = hexToRgb(FollowAnalyticsParams.global_params.page_selector_color);
+        if (node.getAttribute('id') === `node-${index}`) {
+          $(node).css({
+            backgroundColor: FollowAnalyticsParams.global_params.page_selector_color,
+          });
+        }
+        else {
+          $(node).css({
+            backgroundColor: `rgba(${rgbaColor.r}, ${rgbaColor.g}, ${rgbaColor.b}, 0.4)`,
+          });
+        }
+      });
+
+      currentPage = index;
+      if (typeof FollowAnalytics.CurrentCampaign.setData === 'function') {
+        console.log(`Save page: ${index}`);
+        FollowAnalytics.CurrentCampaign.setData(CURRENT_PAGE_KEY, index);
+      }
+    }
+
+    const setUpSwipeCallbacks = (swipeManager) => {
+      swipeManager.onLeft(() => {
+        if (currentPage < lastPage) {
+          setActivePage(++currentPage);
+        }
+      });
+      swipeManager.onRight(() => {
+        if (currentPage > 0) {
+          setActivePage(--currentPage);
+        }
+      });
+      swipeManager.run();
+    }
+
     if (typeof FollowAnalytics.CurrentCampaign.getData === 'function') {
       const savedPage = FollowAnalytics.CurrentCampaign.getData(CURRENT_PAGE_KEY);
       currentPage = parseInt(savedPage, 10) || 0;

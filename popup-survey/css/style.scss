@@ -11,9 +11,9 @@ body {
 
 .template {
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
   position: relative;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   padding: 1.5em;
 }
@@ -175,7 +175,7 @@ body {
     max-width: calc(100vw - 3em);
     padding: 2.5em;
     top: unset;
-    width: max-content;
+    width: auto;
 
     &--current {
       transform: translateX(-50%);
@@ -199,9 +199,9 @@ body {
     &__info {
       margin-bottom: 0;
       max-height: 100%;
-      max-width: calc(75vw - 12em);
+      max-width: calc(75% - 6em);
       position: relative;
-      width: auto;
+      width: max-content;
 
       &__body,
       &__buttons {
@@ -212,23 +212,23 @@ body {
 
   @supports(padding-top: constant(safe-area-inset-top)) {
     .template {
-      padding-left: calc(1.5em + constant(safe-area-inset-top));
-      padding-right: calc(1.5em + constant(safe-area-inset-top));
+      padding-left: calc(1.5em + constant(safe-area-inset-left));
+      padding-right: calc(1.5em + constant(safe-area-inset-right));
     }
 
     .page {
-      max-width: calc(100vw - 3em - (2 * constant(safe-area-inset-top)));
+      max-width: calc(100vw - 3em - constant(safe-area-inset-left) - constant(safe-area-inset-right));
     }
   }
 
   @supports(padding-top: env(safe-area-inset-top)) {
     .template {
-      padding-left: calc(1.5em + env(safe-area-inset-top));
-      padding-right: calc(1.5em + env(safe-area-inset-top));
+      padding-left: calc(1.5em + env(safe-area-inset-left));
+      padding-right: calc(1.5em + env(safe-area-inset-right));
     }
 
     .page {
-      max-width: calc(100vw - 3em - (2 * env(safe-area-inset-top)));
+      max-width: calc(100vw - 3em - env(safe-area-inset-left) - env(safe-area-inset-right));
     }
   }
 }

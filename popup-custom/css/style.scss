@@ -5,6 +5,8 @@
 }
 
 body#popupTemplate {
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   box-sizing: border-box;
   padding: 1em;
@@ -43,7 +45,7 @@ body#popupTemplate {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: auto 0;
+  margin: auto;
   min-height: 300px;
   overflow: hidden;
   position: relative;
@@ -144,14 +146,20 @@ body#popupTemplate {
 
 // iOS < 11.2
 @supports(padding-top: constant(safe-area-inset-top)) {
-    html, body {
-        height: 100vh;
-    }
+  body#popupTemplate {
+    padding-top: calc(1em + constant(safe-area-inset-top));
+    padding-bottom: calc(1em + constant(safe-area-inset-bottom));
+    padding-left: calc(1em + constant(safe-area-inset-left));
+    padding-right: calc(1em + constant(safe-area-inset-right));
+  }
 }
 
 // iOS >= 11.2
-@supports(padding: max(0px)) {
-    html, body {
-        height: 100vh;
-    }
+@supports(padding-top: env(safe-area-inset-top)) {
+  body#popupTemplate {
+    padding-top: calc(1em + env(safe-area-inset-top));
+    padding-bottom: calc(1em + env(safe-area-inset-bottom));
+    padding-left: calc(1em + env(safe-area-inset-left));
+    padding-right: calc(1em + env(safe-area-inset-right));
+  }
 }

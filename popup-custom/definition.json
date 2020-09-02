@@ -9,7 +9,7 @@
       "en": "Customized Pop up template with a background, title, body, action buttons and images. It enable to upload images for the background and as notification media.",
       "fr": "Pop up personnalisée avec un arrière-plan, un titre, un corps, des buttons d’action et des images. Il permet d'ajouter des images comme arrière-plan et en illustration."
     },
-    "version": "2.0.2",
+    "version": "2.0.3",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
