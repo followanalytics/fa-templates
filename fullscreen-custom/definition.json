@@ -57,7 +57,11 @@
             "fr": "Image"
           },
           "type": "image",
-          "default": "./assets/images/sample-image-1.jpg"
+          "default": "./assets/images/sample-image-1.jpg",
+          "tooltip": {
+            "en": "dimension: 1024 × 1024",
+            "fr": "dimension: 1024 × 1024"
+          }
         }
       ]
     },
@@ -76,7 +80,11 @@
             "fr": "Uploader"
           },
           "type": "image",
-          "default": "./assets/images/sample-image-4.jpg"
+          "default": "./assets/images/sample-image-4.jpg",
+          "tooltip": {
+            "en": "dimension: 1024 × 1024",
+            "fr": "dimension: 1024 × 1024"
+          }
         }
       ]
     },

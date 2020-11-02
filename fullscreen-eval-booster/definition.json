@@ -132,7 +132,11 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png"
+              "default": "./assets/images/sample-image.png",
+              "tooltip": {
+                "en": "dimension: 607 × 314",
+                "fr": "dimension: 607 × 314"
+              }
             }
           ]
         },
@@ -366,7 +370,11 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png"
+              "default": "./assets/images/sample-image.png",
+              "tooltip": {
+                "en": "dimension: 607 × 314",
+                "fr": "dimension: 607 × 314"
+              }
             }
           ]
         },
@@ -607,7 +615,11 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png"
+              "default": "./assets/images/sample-image.png",
+              "tooltip": {
+                "en": "dimension: 607 × 314",
+                "fr": "dimension: 607 × 314"
+              }
             }
           ]
         },

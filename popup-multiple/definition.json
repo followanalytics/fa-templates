@@ -124,7 +124,11 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image-1.png"
+              "default": "./assets/images/sample-image-1.png",
+              "tooltip": {
+                "en": "dimension: 318 × 296",
+                "fr": "dimension: 318 × 296"
+              }
             }
           ]
         },
