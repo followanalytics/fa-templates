@@ -57,7 +57,11 @@
             "fr": "Image"
           },
           "type": "image",
-          "default": "./assets/images/sample-image-1.jpg"
+          "default": "./assets/images/sample-image-1.jpg",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          }
         }
       ]
     },
@@ -76,7 +80,11 @@
             "fr": "Uploader"
           },
           "type": "image",
-          "default": "./assets/images/sample-image-2.jpg"
+          "default": "./assets/images/sample-image-2.jpg",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          }
         }
       ]
     },
