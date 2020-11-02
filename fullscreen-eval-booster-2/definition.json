@@ -132,11 +132,7 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png",
-              "tooltip": {
-                "en": "dimension: 607 × 314",
-                "fr": "dimension: 607 × 314"
-              }
+              "default": "./assets/images/sample-image.png"
             }
           ]
         },
@@ -370,11 +366,7 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png",
-              "tooltip": {
-                "en": "dimension: 607 × 314",
-                "fr": "dimension: 607 × 314"
-              }
+              "default": "./assets/images/sample-image.png"
             }
           ]
         },
