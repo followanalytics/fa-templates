@@ -47,7 +47,11 @@
             "fr": "Portrait mobile"
           },
           "type": "image",
-          "default": "./assets/images/interstitial_mobile_portrait.png"
+          "default": "./assets/images/interstitial_mobile_portrait.png",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          }
         },
         {
           "name": "mobile_landscape",
@@ -56,7 +60,11 @@
             "fr": "Paysage mobile"
           },
           "type": "image",
-          "default": "./assets/images/interstitial_mobile_landscape.png"
+          "default": "./assets/images/interstitial_mobile_landscape.png",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          }
         },
         {
           "name": "tablet_portrait",
@@ -65,7 +73,11 @@
             "fr": "Portrait tablette"
           },
           "type": "image",
-          "default": "./assets/images/interstitial_tablet_portrait.png"
+          "default": "./assets/images/interstitial_tablet_portrait.png",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          }
         },
         {
           "name": "tablet_landscape",
@@ -74,7 +86,11 @@
             "fr": "Paysage tablette"
           },
           "type": "image",
-          "default": "./assets/images/interstitial_tablet_landscape.png"
+          "default": "./assets/images/interstitial_tablet_landscape.png",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          }
         }
       ]
     },

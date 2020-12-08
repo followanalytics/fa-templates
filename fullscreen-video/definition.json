@@ -58,6 +58,10 @@
           },
           "type": "image",
           "default":"./assets/images/defaultBackgroundImage.jpg",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          },
           "max_filesize":10000000
         }
       ]
@@ -141,6 +145,10 @@
             "fr": "Image"
           },
           "type": "image",
+          "tooltip": {
+            "en": "Recommended image dimensions: <width> x <height>",
+            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+          },
           "max_filesize":10000000
         },
         {

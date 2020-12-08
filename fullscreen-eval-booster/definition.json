@@ -132,7 +132,11 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png"
+              "default": "./assets/images/sample-image.png",
+              "tooltip": {
+                "en": "Recommended image dimensions: <width> x <height>",
+                "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+              }
             }
           ]
         },
@@ -366,7 +370,11 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png"
+              "default": "./assets/images/sample-image.png",
+              "tooltip": {
+                "en": "Recommended image dimensions: <width> x <height>",
+                "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+              }
             }
           ]
         },
@@ -607,7 +615,11 @@
                 "fr": "Uploader"
               },
               "type": "image",
-              "default": "./assets/images/sample-image.png"
+              "default": "./assets/images/sample-image.png",
+              "tooltip": {
+                "en": "Recommended image dimensions: <width> x <height>",
+                "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+              }
             }
           ]
         },
