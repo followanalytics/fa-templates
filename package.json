@@ -10,6 +10,8 @@
     "fullscreen-custom-install": "cd fullscreen-custom && npm install",
     "fullscreen-eval-booster": "cd fullscreen-eval-booster && npm run build",
     "fullscreen-eval-booster-install": "cd fullscreen-eval-booster && npm install",
+    "fullscreen-eval-booster-2": "cd fullscreen-eval-booster && npm run build",
+    "fullscreen-eval-booster-2-install": "cd fullscreen-eval-booster && npm install",
     "fullscreen-interstitial": "cd fullscreen-interstitial && npm run build",
     "fullscreen-interstitial-install": "cd fullscreen-interstitial && npm install",
     "fullscreen-multiple": "cd fullscreen-multiple && npm run build",
@@ -26,7 +28,7 @@
     "popup-one-image-install": "cd popup-one-image && npm install",
     "popup-survey": "cd popup-survey && npm run build",
     "popup-survey-install": "cd popup-survey && npm install",
-    "install-all": "npm run fullscreen-basic-install && npm run fullscreen-custom-install && npm run fullscreen-eval-booster-install && npm run fullscreen-interstitial-install && npm run fullscreen-multiple-install && npm run fullscreen-video-install && npm run popup-basic-install && npm run popup-custom-install && npm run popup-multiple-install && npm run popup-one-image-install && npm run popup-survey-install",
-    "build-all": "npm run fullscreen-basic && npm run fullscreen-custom && npm run fullscreen-eval-booster && npm run fullscreen-interstitial && npm run fullscreen-multiple && npm run fullscreen-video && npm run popup-basic && npm run popup-custom && npm run popup-multiple && npm run popup-one-image && npm run popup-survey"
+    "install-all": "npm run fullscreen-basic-install && npm run fullscreen-custom-install && npm run fullscreen-eval-booster-install && npm run fullscreen-eval-booster-2-install && npm run fullscreen-interstitial-install && npm run fullscreen-multiple-install && npm run fullscreen-video-install && npm run popup-basic-install && npm run popup-custom-install && npm run popup-multiple-install && npm run popup-one-image-install && npm run popup-survey-install",
+    "build-all": "npm run fullscreen-basic && npm run fullscreen-custom && npm run fullscreen-eval-booster && npm run fullscreen-eval-booster-2 && npm run fullscreen-interstitial && npm run fullscreen-multiple && npm run fullscreen-video && npm run popup-basic && npm run popup-custom && npm run popup-multiple && npm run popup-one-image && npm run popup-survey"
   }
 }
