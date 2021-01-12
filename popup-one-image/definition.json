@@ -9,7 +9,7 @@
       "en": "One image pop up template is composed of an image to be displayed as pop up. It proposes to upload images for landscape and portrait modes.",
       "fr": "La Pop up Image est composé d’une image à afficher en pop-up. Ça permet d'ajouter plusieurs formats d'image pour l'affichage des modes portrait et paysage."
     },
-    "version": "2.0.3",
+    "version": "2.0.4",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
