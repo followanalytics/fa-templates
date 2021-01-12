@@ -9,7 +9,7 @@
       "en": "Customized fullscreen template with a background, title, body, action buttons and images. It enables uploading images for the background and as notification media.",
       "fr": "Template plein écran personnalisé avec un arrière-plan, un titre, un corps, des boutons d'action et des images. Il permet de télécharger des images pour le arrière-plan et comme support de notification."
     },
-    "version": "2.0.3",
+    "version": "2.0.4",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
