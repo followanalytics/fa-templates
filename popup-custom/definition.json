@@ -59,8 +59,8 @@
           "type": "image",
           "default": "./assets/images/sample-image-1.jpg",
           "tooltip": {
-            "en": "Recommended image dimensions: <width> x <height>",
-            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+            "en": "Recommended image dimensions : 1024 x 1024",
+            "fr": "Dimensions d'image recommandées : 1024 x 1024"
           }
         }
       ]
@@ -82,8 +82,8 @@
           "type": "image",
           "default": "./assets/images/sample-image-2.jpg",
           "tooltip": {
-            "en": "Recommended image dimensions: <width> x <height>",
-            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+            "en": "Recommended image dimensions : 1024 x 1024",
+            "fr": "Dimensions d'image recommandées : 1024 x 1024"
           }
         }
       ]

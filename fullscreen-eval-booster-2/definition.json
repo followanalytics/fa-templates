@@ -134,8 +134,8 @@
               "type": "image",
               "default": "./assets/images/sample-image.png",
               "tooltip": {
-                "en": "Recommended image dimensions: <width> x <height>",
-                "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+                "en": "Recommended image dimensions : 607 x 314",
+                "fr": "Dimensions d'image recommandées : 607 x 314"
               }
             }
           ]
@@ -372,8 +372,8 @@
               "type": "image",
               "default": "./assets/images/sample-image.png",
               "tooltip": {
-                "en": "Recommended image dimensions: <width> x <height>",
-                "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+                "en": "Recommended image dimensions : 607 x 314",
+                "fr": "Dimensions d'image recommandées : 607 x 314"
               }
             }
           ]

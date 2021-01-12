@@ -49,8 +49,8 @@
           "type": "image",
           "default": "./assets/images/sample-image-1.png",
           "tooltip": {
-            "en": "Recommended image dimensions: <width> x <height>",
-            "fr": "Dimensions d'image recommandées : <largeur> x <hauteur>"
+            "en": "Recommended image dimensions : 640 x 546",
+            "fr": "Dimensions d'image recommandées : 640 x 546"
           }
         }
       ]
