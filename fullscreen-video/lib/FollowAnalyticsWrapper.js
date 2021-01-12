@@ -26,8 +26,10 @@ export class FollowAnalyticsWrapper {
     const sdkVersion = this.instance.FollowAnalytics.getSDKVersion();
     const versionNums = _.split(sdkVersion, '.');
     const [currentMajor, currentMinor] = versionNums;
-    const currentTertiary = _.split(versionNums[2], '-')[0];
-    return currentMajor >= minMajor && currentMinor >= minMinor && currentTertiary >= minTertiary;
+    const currentTertiary = _.split(versionNums[2], '-')[0] || 0;
+    const minVersionSum = (minMajor * 100) + (minMinor * 10) + minTertiary;
+    const currentVersionSum = (currentMajor * 100) + (currentMinor * 10) + currentTertiary;
+    return currentVersionSum >= minVersionSum;
   }
 };
 
