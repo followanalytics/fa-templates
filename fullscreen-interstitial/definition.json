@@ -49,7 +49,7 @@
           "type": "image",
           "default": "./assets/images/interstitial_mobile_portrait.png",
           "tooltip": {
-            "en": "Recommended image dimensions : 375 x 680",
+            "en": "Recommended image dimensions: 375 x 680",
             "fr": "Dimensions d'image recommandées : 375 x 680"
           }
         },
@@ -62,7 +62,7 @@
           "type": "image",
           "default": "./assets/images/interstitial_mobile_landscape.png",
           "tooltip": {
-            "en": "Recommended image dimensions : 667 x 375",
+            "en": "Recommended image dimensions: 667 x 375",
             "fr": "Dimensions d'image recommandées : 667 x 375"
           }
         },
@@ -75,7 +75,7 @@
           "type": "image",
           "default": "./assets/images/interstitial_tablet_portrait.png",
           "tooltip": {
-            "en": "Recommended image dimensions : 768 x 1024",
+            "en": "Recommended image dimensions: 768 x 1024",
             "fr": "Dimensions d'image recommandées : 768 x 1024"
           }
         },
@@ -88,7 +88,7 @@
           "type": "image",
           "default": "./assets/images/interstitial_tablet_landscape.png",
           "tooltip": {
-            "en": "Recommended image dimensions : 1024 x 768",
+            "en": "Recommended image dimensions: 1024 x 768",
             "fr": "Dimensions d'image recommandées : 1024 x 768"
           }
         }

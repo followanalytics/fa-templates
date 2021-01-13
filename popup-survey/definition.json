@@ -79,7 +79,7 @@
               "type": "image",
               "default": "./assets/images/sample-image.png",
               "tooltip": {
-                "en": "Recommended image dimensions : 334 x 264",
+                "en": "Recommended image dimensions: 334 x 264",
                 "fr": "Dimensions d'image recommandées : 334 x 264"
               }
             }
@@ -368,7 +368,7 @@
               "type": "image",
               "default": "./assets/images/sample-image.png",
               "tooltip": {
-                "en": "Recommended image dimensions : 334 x 264",
+                "en": "Recommended image dimensions: 334 x 264",
                 "fr": "Dimensions d'image recommandées : 334 x 264"
               }
             }
