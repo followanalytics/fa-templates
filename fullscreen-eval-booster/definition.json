@@ -476,9 +476,16 @@
             },
             {
               "name": "deeplink_url",
-              "label": "Deeplink",
+              "default": "myapp://path/to/content or http://your.url",
+              "label": {
+                "en": "URL",
+                "fr": "URL"
+              },
               "type": "string",
-              "default": ""
+              "tooltip": {
+                "en": "App link or web page",
+                "fr": "Lien dans l'app ou page web"
+              }
             }
           ]
         },
@@ -721,9 +728,16 @@
             },
             {
               "name": "deeplink_url",
-              "label": "Deeplink",
+              "default": "myapp://path/to/content or http://your.url",
+              "label": {
+                "en": "URL",
+                "fr": "URL"
+              },
               "type": "string",
-              "default": ""
+              "tooltip": {
+                "en": "App link or web page",
+                "fr": "Lien dans l'app ou page web"
+              }
             }
           ]
         },
@@ -766,9 +780,16 @@
             },
             {
               "name": "deeplink_url",
-              "label": "Deeplink",
+              "default": "myapp://path/to/content or http://your.url",
+              "label": {
+                "en": "URL",
+                "fr": "URL"
+              },
               "type": "string",
-              "default": ""
+              "tooltip": {
+                "en": "App link or web page",
+                "fr": "Lien dans l'app ou page web"
+              }
             }
           ]
         },

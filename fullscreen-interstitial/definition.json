@@ -124,14 +124,15 @@
       "inputs": [
         {
           "name": "deeplink_url",
+          "default": "myapp://path/to/content or http://your.url",
           "label": {
-            "en": "Deeplink Url",
-            "fr": "Url de Deeplink"
+            "en": "URL",
+            "fr": "URL"
           },
           "type": "string",
           "tooltip": {
-            "en": "Deeplink URL will be opened when the user clicks everywhere in the in-app except for the close button 'X'.",
-            "fr": "L'Url deeplink s'ouvrira si l'utilisateur clique sur l'in-app sauf pour le bouton de fermeture 'X'."
+            "en": "App link or web page",
+            "fr": "Lien dans l'app ou page web"
           }
         }
       ]
