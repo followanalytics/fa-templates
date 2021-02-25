@@ -9,7 +9,7 @@
       "en": "",
       "fr": ""
     },
-    "version": "1.0.6",
+    "version": "1.0.8",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
@@ -568,7 +568,7 @@
             "text": "Yes, sure!",
             "text_color": "#FFFFFF",
             "background": "#FF4133",
-            "deeplink_url": ""
+            "deeplink_url": "myapp://path/to/content or http://your.url"
           },
           "negative_answer_btn": {
             "text": "No thanks",
