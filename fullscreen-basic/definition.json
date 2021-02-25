@@ -9,7 +9,7 @@
       "en": "Basic fullscreen template with a background, title, body, action buttons and a library of icons. It doesn't require to upload any image.",
       "fr": "Template plein écran de base avec un arrière-plan, un titre, un corps, des boutons d’action et une bibliothèque d’icônes. Aucune image n'est requise pour ce template."
     },
-    "version": "2.0.4",
+    "version": "2.0.5",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
@@ -381,7 +381,7 @@
           "font_size": 17,
           "font_color": "#FFFFFF",
           "background": "#5f7384",
-          "deeplink_url": ""
+          "deeplink_url": "myapp://path/to/content or http://your.url"
         },
         {
           "text": "Button 2",
@@ -389,7 +389,7 @@
           "font_size": 17,
           "font_color": "#5f7384",
           "background": "#FFFFFF",
-          "deeplink_url": ""
+          "deeplink_url": "myapp://path/to/content or http://your.url"
         }
       ]
     }

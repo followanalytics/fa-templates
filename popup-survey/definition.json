@@ -9,7 +9,7 @@
       "en": "",
       "fr": ""
     },
-    "version": "2.0.6",
+    "version": "2.0.8",
     "author": "FollowAnalytics"
   },
   "sdk_options": {
@@ -558,14 +558,14 @@
               "text_color": "#FFFFFF",
               "background": "#89C5CC",
               "border": "#89C5CC",
-              "deeplink_url": ""
+              "deeplink_url": "myapp://path/to/content or http://your.url"
             },
             {
               "text": "No thanks",
               "text_color": "#777777",
               "background": "#FFFFFF",
               "border": "#89C5CC",
-              "deeplink_url": ""
+              "deeplink_url": "myapp://path/to/content or http://your.url"
             }
           ],
           "close_button": {
