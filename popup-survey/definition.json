@@ -484,7 +484,7 @@
             },
             {
               "name": "deeplink_url",
-              "default": "myapp://path/to/content or http://your.url",
+              "placeholder": "myapp://path/to/content or http://your.url",
               "label": {
                 "en": "URL",
                 "fr": "URL"
@@ -558,14 +558,14 @@
               "text_color": "#FFFFFF",
               "background": "#89C5CC",
               "border": "#89C5CC",
-              "deeplink_url": "myapp://path/to/content or http://your.url"
+              "placeholder": "myapp://path/to/content or http://your.url"
             },
             {
               "text": "No thanks",
               "text_color": "#777777",
               "background": "#FFFFFF",
               "border": "#89C5CC",
-              "deeplink_url": "myapp://path/to/content or http://your.url"
+              "placeholder": "myapp://path/to/content or http://your.url"
             }
           ],
           "close_button": {

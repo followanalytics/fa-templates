@@ -303,7 +303,7 @@
         },
         {
           "name": "deeplink_url",
-          "default": "myapp://path/to/content or http://your.url",
+          "placeholder": "myapp://path/to/content or http://your.url",
           "label": {
             "en": "URL",
             "fr": "URL"
@@ -322,7 +322,7 @@
           "font_size": 15,
           "font_color": "#FFFFFF",
           "background": "#FF007D",
-          "deeplink_url": "myapp://path/to/content or http://your.url"
+          "placeholder": "myapp://path/to/content or http://your.url"
         },
         {
           "text": "Action 2",
@@ -330,7 +330,7 @@
           "font_size": 15,
           "font_color": "#000000",
           "background": "#FFFFFF",
-          "deeplink_url": "myapp://path/to/content or http://your.url"
+          "placeholder": "myapp://path/to/content or http://your.url"
         }
       ]
     }

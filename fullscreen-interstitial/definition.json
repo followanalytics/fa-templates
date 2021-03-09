@@ -124,7 +124,7 @@
       "inputs": [
         {
           "name": "deeplink_url",
-          "default": "myapp://path/to/content or http://your.url",
+          "placeholder": "myapp://path/to/content or http://your.url",
           "label": {
             "en": "URL",
             "fr": "URL"
