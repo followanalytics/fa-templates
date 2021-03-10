@@ -303,6 +303,7 @@
         },
         {
           "name": "deeplink_url",
+          "default": "",
           "placeholder": "myapp://path/to/content or http://your.url",
           "label": {
             "en": "URL",
@@ -322,6 +323,7 @@
           "font_size": 15,
           "font_color": "#FFFFFF",
           "background": "#FF007D",
+          "deeplink_url": "",
           "placeholder": "myapp://path/to/content or http://your.url"
         },
         {
@@ -330,6 +332,7 @@
           "font_size": 15,
           "font_color": "#000000",
           "background": "#FFFFFF",
+          "deeplink_url": "",
           "placeholder": "myapp://path/to/content or http://your.url"
         }
       ]

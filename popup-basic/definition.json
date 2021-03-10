@@ -337,6 +337,7 @@
         },
         {
           "name": "deeplink_url",
+          "default": "",
           "placeholder": "myapp://path/to/content or http://your.url",
           "label": {
             "en": "URL",

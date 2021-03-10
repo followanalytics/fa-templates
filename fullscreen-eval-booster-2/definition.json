@@ -476,6 +476,7 @@
             },
             {
               "name": "deeplink_url",
+              "default": "",
               "placeholder": "myapp://path/to/content or http://your.url",
               "label": {
                 "en": "URL",
@@ -568,6 +569,7 @@
             "text": "Yes, sure!",
             "text_color": "#FFFFFF",
             "background": "#FF4133",
+            "deeplink_url": "",
             "placeholder": "myapp://path/to/content or http://your.url"
           },
           "negative_answer_btn": {

@@ -384,6 +384,7 @@
             },
             {
               "name": "deeplink_url",
+              "default": "",
               "placeholder": "myapp://path/to/content or http://your.url",
               "label": {
                 "en": "URL",
@@ -431,6 +432,7 @@
               "font_size": 17,
               "font_color": "#FFFFFF",
               "background": "#5f7384",
+              "deeplink_url": "",
               "placeholder": "myapp://path/to/content or http://your.url"
             },
             {
@@ -438,6 +440,7 @@
               "font_size": 17,
               "font_color": "#5f7384",
               "background": "#FFFFFF",
+              "deeplink_url": "",
               "placeholder": "myapp://path/to/content or http://your.url"
             }
           ]
@@ -474,6 +477,7 @@
               "font_size": 17,
               "font_color": "#FFFFFF",
               "background": "#5f7384",
+              "deeplink_url": "",
               "placeholder": "myapp://path/to/content or http://your.url"
             },
             {
@@ -481,6 +485,7 @@
               "font_size": 17,
               "font_color": "#5f7384",
               "background": "#FFFFFF",
+              "deeplink_url": "",
               "placeholder": "myapp://path/to/content or http://your.url"
             }
           ]
