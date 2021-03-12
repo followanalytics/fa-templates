@@ -569,8 +569,7 @@
             "text": "Yes, sure!",
             "text_color": "#FFFFFF",
             "background": "#FF4133",
-            "deeplink_url": "",
-            "placeholder": "myapp://path/to/content or http://your.url"
+            "deeplink_url": ""
           },
           "negative_answer_btn": {
             "text": "No thanks",
