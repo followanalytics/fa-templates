@@ -476,7 +476,8 @@
             },
             {
               "name": "deeplink_url",
-              "default": "myapp://path/to/content or http://your.url",
+              "default": "",
+              "placeholder": "myapp://path/to/content or http://your.url",
               "label": {
                 "en": "URL",
                 "fr": "URL"
@@ -568,7 +569,7 @@
             "text": "Yes, sure!",
             "text_color": "#FFFFFF",
             "background": "#FF4133",
-            "deeplink_url": "myapp://path/to/content or http://your.url"
+            "deeplink_url": ""
           },
           "negative_answer_btn": {
             "text": "No thanks",
@@ -728,7 +729,8 @@
             },
             {
               "name": "deeplink_url",
-              "default": "myapp://path/to/content or http://your.url",
+              "default": "",
+              "placeholder": "myapp://path/to/content or http://your.url",
               "label": {
                 "en": "URL",
                 "fr": "URL"
@@ -780,7 +782,8 @@
             },
             {
               "name": "deeplink_url",
-              "default": "myapp://path/to/content or http://your.url",
+              "default": "",
+              "placeholder": "myapp://path/to/content or http://your.url",
               "label": {
                 "en": "URL",
                 "fr": "URL"
@@ -833,13 +836,13 @@
             "text": "Leave a message",
             "text_color": "#FFFFFF",
             "background": "#FF4133",
-            "deeplink_url": "myapp://path/to/content or http://your.url"
+            "deeplink_url": ""
           },
           "negative_answer_btn": {
             "text": "Call customer support",
             "text_color": "#FFFFFF",
             "background": "#5C63AB",
-            "deeplink_url": "myapp://path/to/content or http://your.url"
+            "deeplink_url": ""
           },
           "close_button": {
             "color": "#5C63AB"
